@@ -9,6 +9,7 @@ final GetIt getIt = GetIt.instance;
 @InjectableInit()
 Future<void> configureDependencies() async => getIt.init();
 
+/// Third party dependencies
 @module
 abstract class RegisterAppModule {
   @lazySingleton

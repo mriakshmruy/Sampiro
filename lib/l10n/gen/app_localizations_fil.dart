@@ -21,5 +21,14 @@ class AppLocalizationsFil extends AppLocalizations {
   String get prayers => 'Prayers';
 
   @override
+  String get name => 'Name';
+
+  @override
+  String get name2Tw => 'Name2';
+
+  @override
+  String get cairo => 'Cairo';
+
+  @override
   String get goToHome => 'Go to Home';
 }

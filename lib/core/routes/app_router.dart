@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:injectable/injectable.dart';
 import 'package:sampiro/features/home/presentation/pages/home_page.dart';
+import 'package:sampiro/features/menu/presentation/pages/menu_page.dart';
 import 'package:sampiro/features/prayers/presentation/pages/prayers_page.dart';
 
 part 'app_router.gr.dart';
@@ -18,6 +19,10 @@ class AppRouter extends RootStackRouter {
     AutoRoute(
       path: '/prayers',
       page: PrayersRoute.page,
+    ),
+    AutoRoute(
+      path: '/menu',
+      page: MenuRoute.page,
     ),
   ];
 }

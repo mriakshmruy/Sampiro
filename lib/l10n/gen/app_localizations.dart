@@ -115,6 +115,24 @@ abstract class AppLocalizations {
   /// **'Prayers'**
   String get prayers;
 
+  /// No description provided for @name.
+  ///
+  /// In en, this message translates to:
+  /// **'Name'**
+  String get name;
+
+  /// No description provided for @name2Tw.
+  ///
+  /// In en, this message translates to:
+  /// **'Name2'**
+  String get name2Tw;
+
+  /// No description provided for @cairo.
+  ///
+  /// In en, this message translates to:
+  /// **'Cairo'**
+  String get cairo;
+
   /// No description provided for @goToHome.
   ///
   /// In en, this message translates to:
