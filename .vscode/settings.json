@@ -1,0 +1,32 @@
+{
+  // "dart.flutterSdkPath": "/Users/jw-n/Developer/flutter",
+  "[dart]": {
+    "editor.formatOnSave": true,
+    "editor.formatOnType": true,
+    "editor.rulers": [120]
+  },
+
+  "[javascript]": {
+    "editor.formatOnSave": false
+  },
+  "search.exclude": {
+    "**/.git": true,
+    "**/.fvm": true,
+    "**/node_modules": true,
+    "**/bower_components": true,
+    "**/tmp": true,
+    "**/**.freezed.dart": true,
+    "**/**.g.dart": true,
+    "**/*.config.dart": true,
+    "**/*.ast.gql.dart": true,
+    "**/*.req.gql.dart": true,
+    "**/*.data.gql.dart": true,
+    "**/*.var.gql.dart": true,
+    "**/*.gql.g.dart": true
+  },
+  "dart.lineLength": 120,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "explicit"
+  },
+  "cSpell.words": []
+}
