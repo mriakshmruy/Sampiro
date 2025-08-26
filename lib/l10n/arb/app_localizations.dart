@@ -94,7 +94,7 @@ abstract class AppLocalizations {
   /// A list of this localizations delegate's supported locales.
   static const List<Locale> supportedLocales = <Locale>[Locale('en')];
 
-  /// Text shown in the AppBar of the Counter Page
+  /// No description provided for @counterAppBarTitle.
   ///
   /// In en, this message translates to:
   /// **'Counter'**
