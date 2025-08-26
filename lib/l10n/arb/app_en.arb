@@ -1,4 +1,7 @@
 {
   "@@locale": "en",
-  "counterAppBarTitle": "Counter"
+  "home": "Home",
+  "goToPrayers": "Go to prayers",
+  "prayers": "Prayers",
+  "goToHome": "Go to Home"
 }

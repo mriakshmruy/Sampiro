@@ -12,5 +12,14 @@ class AppLocalizationsEn extends AppLocalizations {
   AppLocalizationsEn([String locale = 'en']) : super(locale);
 
   @override
-  String get counterAppBarTitle => 'Counter';
+  String get home => 'Home';
+
+  @override
+  String get goToPrayers => 'Go to prayers';
+
+  @override
+  String get prayers => 'Prayers';
+
+  @override
+  String get goToHome => 'Go to Home';
 }

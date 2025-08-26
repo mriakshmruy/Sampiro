@@ -10,7 +10,11 @@ environment:
   # flutter: 3.35.1
 
 dependencies:
+  app_ui:
+    path: packages/app_ui
+  auto_route: ^10.1.2
   bloc: ^9.0.0
+  cloud_firestore: ^6.0.0
   cupertino_icons: ^1.0.8
   dio: ^5.9.0
   firebase_analytics: ^12.0.0
@@ -22,6 +26,8 @@ dependencies:
   flutter_bloc: ^9.1.1
   flutter_localizations:
     sdk: flutter
+  flutter_web_plugins:
+    sdk: flutter
   fpdart: ^1.1.1
   freezed_annotation: ^3.1.0
   get_it: ^8.2.0
@@ -29,6 +35,7 @@ dependencies:
   intl: ^0.20.2
   json_annotation: ^4.9.0
   logger: ^2.6.1
+  package_info_plus: ^8.3.1
   retrofit: ^4.7.2
 
 dev_dependencies:

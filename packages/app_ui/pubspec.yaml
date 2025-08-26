@@ -1,0 +1,75 @@
+name: app_ui
+description: UI Toolkit for the App Flutter Application
+version: 0.0.1
+publish_to: none
+
+environment:
+  sdk: ^3.9.0
+  # flutter: 3.35.1
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  very_good_analysis: ^9.0.0
+
+flutter:
+  fonts:
+    - family: Raleway
+      fonts:
+        - asset: assets/fonts/Raleway-Black.ttf
+          weight: 900
+        - asset: assets/fonts/Raleway-BlackItalic.ttf
+          weight: 900
+          style: italic
+
+        - asset: assets/fonts/Raleway-ExtraBold.ttf
+          weight: 800
+        - asset: assets/fonts/Raleway-ExtraBoldItalic.ttf
+          weight: 800
+          style: italic
+
+        - asset: assets/fonts/Raleway-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/Raleway-BoldItalic.ttf
+          weight: 700
+          style: italic
+
+        - asset: assets/fonts/Raleway-Semibold.ttf
+          weight: 600
+        - asset: assets/fonts/Raleway-SemiboldItalic.ttf
+          weight: 600
+          style: italic
+
+        - asset: assets/fonts/Raleway-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Raleway-MediumItalic.ttf
+          weight: 500
+          style: italic
+
+        - asset: assets/fonts/Raleway-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/Raleway-Italic.ttf
+          weight: 400
+          style: italic
+
+        - asset: assets/fonts/Raleway-Light.ttf
+          weight: 300
+        - asset: assets/fonts/Raleway-LightItalic.ttf
+          weight: 300
+          style: italic
+
+        - asset: assets/fonts/Raleway-Extralight.ttf
+          weight: 200
+        - asset: assets/fonts/Raleway-ExtralightItalic.ttf
+          weight: 200
+          style: italic
+
+        - asset: assets/fonts/Raleway-Thin.ttf
+          weight: 100
+        - asset: assets/fonts/Raleway-ThinItalic.ttf
+          weight: 100
+          style: italic
