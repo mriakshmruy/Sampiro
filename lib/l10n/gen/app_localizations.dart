@@ -149,11 +149,35 @@ abstract class AppLocalizations {
   /// **'Cairo'**
   String get cairo;
 
+  /// No description provided for @stsPeterAndPaulParish.
+  ///
+  /// In en, this message translates to:
+  /// **'Sts. Peter and Paul Parish'**
+  String get stsPeterAndPaulParish;
+
   /// No description provided for @goToHome.
   ///
   /// In en, this message translates to:
   /// **'Go to Home'**
   String get goToHome;
+
+  /// No description provided for @testimonials.
+  ///
+  /// In en, this message translates to:
+  /// **'Testimonials'**
+  String get testimonials;
+
+  /// No description provided for @dailyReflection.
+  ///
+  /// In en, this message translates to:
+  /// **'Daily Reflection'**
+  String get dailyReflection;
+
+  /// No description provided for @videos.
+  ///
+  /// In en, this message translates to:
+  /// **'Videos'**
+  String get videos;
 
   /// No description provided for @menu.
   ///

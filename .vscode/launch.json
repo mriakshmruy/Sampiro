@@ -14,8 +14,7 @@
     "chrome",
     "--web-hostname",
     "localhost",
-    "--web-port",
-    "55483",
+    
     "--no-web-experimental-hot-reload"
       ],
     }

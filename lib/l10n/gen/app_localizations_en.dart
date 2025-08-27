@@ -39,7 +39,19 @@ class AppLocalizationsEn extends AppLocalizations {
   String get cairo => 'Cairo';
 
   @override
+  String get stsPeterAndPaulParish => 'Sts. Peter and Paul Parish';
+
+  @override
   String get goToHome => 'Go to Home';
+
+  @override
+  String get testimonials => 'Testimonials';
+
+  @override
+  String get dailyReflection => 'Daily Reflection';
+
+  @override
+  String get videos => 'Videos';
 
   @override
   String get menu => 'Menu';
