@@ -32,6 +32,18 @@ class HomeView extends StatelessWidget {
                 style: theme.textTheme.headlineMedium?.copyWith(color: theme.colorScheme.primary),
               ),
             ),
+            const SizedBox(
+              height: 20,
+            ),
+            ElevatedButton(
+              onPressed: () {
+                context.pushRoute(const DashboardRoute());
+              },
+              child: Text(
+                'Dashboard',
+                style: theme.textTheme.headlineMedium?.copyWith(color: theme.colorScheme.primary),
+              ),
+            ),
           ],
         ),
       ),
