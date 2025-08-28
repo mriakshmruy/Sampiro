@@ -149,6 +149,12 @@ abstract class AppLocalizations {
   /// **'Cairo'**
   String get cairo;
 
+  /// No description provided for @dashboard.
+  ///
+  /// In en, this message translates to:
+  /// **'Dashboard'**
+  String get dashboard;
+
   /// No description provided for @goToHome.
   ///
   /// In en, this message translates to:

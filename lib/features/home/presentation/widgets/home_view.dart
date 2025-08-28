@@ -40,7 +40,7 @@ class HomeView extends StatelessWidget {
                 context.pushRoute(const DashboardRoute());
               },
               child: Text(
-                'Dashboard',
+                l10n.dashboard,
                 style: theme.textTheme.headlineMedium?.copyWith(color: theme.colorScheme.primary),
               ),
             ),

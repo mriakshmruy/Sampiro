@@ -39,6 +39,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get cairo => 'Cairo';
 
   @override
+  String get dashboard => 'Dashboard';
+
+  @override
   String get goToHome => 'Go to Home';
 
   @override
