@@ -44,7 +44,14 @@ class HomeView extends StatelessWidget {
               onTap: () {
                 if (!kReleaseMode) debugPrint('hello1');
               },
+<<<<<<< HEAD
               padding: const EdgeInsets.only(top: 20),
+=======
+              child: Text(
+                l10n.dashboard,
+                style: theme.textTheme.headlineMedium?.copyWith(color: theme.colorScheme.primary),
+              ),
+>>>>>>> main
             ),
           ),
           SliverToBoxAdapter(

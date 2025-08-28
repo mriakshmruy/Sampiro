@@ -155,6 +155,12 @@ abstract class AppLocalizations {
   /// **'Sts. Peter and Paul Parish'**
   String get stsPeterAndPaulParish;
 
+  /// No description provided for @dashboard.
+  ///
+  /// In en, this message translates to:
+  /// **'Dashboard'**
+  String get dashboard;
+
   /// No description provided for @goToHome.
   ///
   /// In en, this message translates to:
