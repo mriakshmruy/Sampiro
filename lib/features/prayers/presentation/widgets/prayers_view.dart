@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:sampiro/core/resources/assets.gen.dart';
 import 'package:sampiro/core/widgets/sampiro_list_tile.dart';

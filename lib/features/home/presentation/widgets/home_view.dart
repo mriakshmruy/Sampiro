@@ -41,9 +41,7 @@ class HomeView extends StatelessWidget {
             child: ImageCard(
               image: Assets.images.headerMamaMary.image(),
               title: l10n.testimonials,
-              onTap: () {
-                if (!kReleaseMode) debugPrint('hello1');
-              },
+              onTap: () {},
               padding: const EdgeInsets.only(top: 20),
             ),
           ),
