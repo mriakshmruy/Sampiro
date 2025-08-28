@@ -179,6 +179,12 @@ abstract class AppLocalizations {
   /// **'Videos'**
   String get videos;
 
+  /// No description provided for @baptismalCertificate.
+  ///
+  /// In en, this message translates to:
+  /// **'Baptismal Certificate'**
+  String get baptismalCertificate;
+
   /// No description provided for @menu.
   ///
   /// In en, this message translates to:

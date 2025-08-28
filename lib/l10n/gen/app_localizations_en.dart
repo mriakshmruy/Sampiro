@@ -54,5 +54,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get videos => 'Videos';
 
   @override
+  String get baptismalCertificate => 'Baptismal Certificate';
+
+  @override
   String get menu => 'Menu';
 }
