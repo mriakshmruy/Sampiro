@@ -42,6 +42,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get stsPeterAndPaulParish => 'Sts. Peter and Paul Parish';
 
   @override
+  String get dashboard => 'Dashboard';
+
+  @override
   String get goToHome => 'Go to Home';
 
   @override
