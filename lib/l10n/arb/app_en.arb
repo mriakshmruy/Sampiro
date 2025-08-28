@@ -1,10 +1,16 @@
 {
   "@@locale": "en",
+  "services": "Services",
+  "updates": "Updates",
+  "more": "More",
   "home": "Home",
   "goToPrayers": "Go to prayers",
   "prayers": "Prayers",
   "name": "Name",
   "name2Tw": "Name2",
   "cairo": "Cairo",
-  "goToHome": "Go to Home"
+  "dashboard": "Dashboard",
+  "goToHome": "Go to Home",
+  "menu": "Menu"
+
 }

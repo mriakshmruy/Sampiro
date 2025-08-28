@@ -10,56 +10,14 @@
       "type": "dart",
       "program": "lib/main_development.dart",
       "args": [
-        "-d",
-        "chrome",
-        "--web-hostname",
-        "localhost",
-        "--web-port",
-        "55483"
-      ]
-    },
-
-    {
-      "name": "Launch web staging",
-      "request": "launch",
-      "type": "dart",
-      "program": "lib/main_staging.dart",
-      "args": [
-        "-d",
-        "chrome",
-        "--web-hostname",
-        "localhost",
-        "--web-port",
-        "55486"
-      ]
-    },
-
-    {
-      "name": "Launch web production",
-      "request": "launch",
-      "type": "dart",
-      "program": "lib/main_production.dart",
-      "args": [
-        "-d",
-        "chrome",
-        "--web-hostname",
-        "localhost",
-        "--web-port",
-        "55485"
-      ]
-    },
-
-    {
-      // For unit and widget tests only
-      "name": "",
-      "request": "launch",
-      "type": "dart",
-      "codeLens": {
-        "title": "Coverage",
-        "for": ["run-test", "run-test-file"],
-        "path": "test"
-      },
-      "args": ["--coverage"]
+   "-d",
+    "chrome",
+    "--web-hostname",
+    "localhost",
+    "--web-port",
+    "55483",
+    "--no-web-experimental-hot-reload"
+      ],
     }
   ]
 }

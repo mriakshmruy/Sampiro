@@ -12,6 +12,15 @@ class AppLocalizationsEn extends AppLocalizations {
   AppLocalizationsEn([String locale = 'en']) : super(locale);
 
   @override
+  String get services => 'Services';
+
+  @override
+  String get updates => 'Updates';
+
+  @override
+  String get more => 'More';
+
+  @override
   String get home => 'Home';
 
   @override
@@ -30,5 +39,11 @@ class AppLocalizationsEn extends AppLocalizations {
   String get cairo => 'Cairo';
 
   @override
+  String get dashboard => 'Dashboard';
+
+  @override
   String get goToHome => 'Go to Home';
+
+  @override
+  String get menu => 'Menu';
 }
