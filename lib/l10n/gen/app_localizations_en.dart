@@ -69,5 +69,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get parishOffice => 'Parish Office';
 
   @override
+  String get parishServices => 'Parish Services';
+
+  @override
   String get menu => 'Menu';
 }

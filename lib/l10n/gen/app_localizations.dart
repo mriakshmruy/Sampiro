@@ -209,6 +209,12 @@ abstract class AppLocalizations {
   /// **'Parish Office'**
   String get parishOffice;
 
+  /// No description provided for @parishServices.
+  ///
+  /// In en, this message translates to:
+  /// **'Parish Services'**
+  String get parishServices;
+
   /// No description provided for @menu.
   ///
   /// In en, this message translates to:
