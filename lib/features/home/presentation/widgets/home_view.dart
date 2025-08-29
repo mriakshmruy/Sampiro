@@ -39,7 +39,7 @@ class HomeView extends StatelessWidget {
           ),
           SliverToBoxAdapter(
             child: ImageCard(
-              image: Assets.images.headerMamaMary.image(),
+              imagePath: Assets.images.headerMamaMary.path,
               title: l10n.testimonials,
               onTap: () {},
               padding: const EdgeInsets.only(top: 20),
@@ -47,7 +47,7 @@ class HomeView extends StatelessWidget {
           ),
           SliverToBoxAdapter(
             child: ImageCard(
-              image: Assets.images.mamaMaryAddTestimonial.image(),
+              imagePath: Assets.images.mamaMaryAddTestimonial.path,
               title: l10n.dailyReflection,
               onTap: () {
                 if (!kReleaseMode) debugPrint('hello2');
@@ -57,7 +57,7 @@ class HomeView extends StatelessWidget {
           ),
           SliverToBoxAdapter(
             child: ImageCard(
-              image: Assets.images.videoHeader.image(),
+              imagePath: Assets.images.videoHeader.path,
               title: l10n.videos,
               onTap: () {},
               padding: const EdgeInsets.only(top: 20, bottom: 20),

@@ -1,4 +1,5 @@
 import 'dart:ui';
+
 import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:package_info_plus/package_info_plus.dart';
@@ -28,7 +29,8 @@ class _App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => AppBloc(packageInfo: getIt<PackageInfo>()),
+      create: (context) =>
+          AppBloc(packageInfo: getIt<PackageInfo>())..add(const AppVersionFetched()), // Cascade Operator
       child: MaterialApp.router(
         scrollBehavior: const MaterialScrollBehavior().copyWith(
           dragDevices: {PointerDeviceKind.mouse},
