@@ -1,5 +1,7 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:sampiro/core/resources/assets.gen.dart';
+import 'package:sampiro/core/routes/app_router.dart';
 import 'package:sampiro/core/widgets/sampiro_list_tile.dart';
 import 'package:sampiro/features/prayers/data/models/prayers_model.dart';
 import 'package:sampiro/l10n/l10n.dart';
@@ -70,10 +72,15 @@ class _PrayersViewState extends State<PrayersView> {
             ),
             itemBuilder: (context, index) {
               return SampiroListTile(
-                image: Image.asset(
-                  PrayerTileModel.prayerList[index].imagePath,
-                  fit: BoxFit.cover,
-                ),
+                image: Image.asset(PrayerTileModel.prayerList[index].imagePath, fit: BoxFit.cover),
+                onTap: () {
+                  print('Tapped on ${PrayerTileModel.prayerList[index].title}');
+                  context.router.push(
+                    PrayersInformationRoute(
+                      prayer: PrayerTileModel.prayerList[index],
+                    ),
+                  );
+                },
 
                 title: PrayerTileModel.prayerList[index].title,
               );
