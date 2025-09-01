@@ -52,6 +52,7 @@ class AppRouter extends RootStackRouter {
 
       initial: true,
     ),
+
     AutoRoute(
       path: '/prayers-info',
       page: PrayersInformationRoute.page,

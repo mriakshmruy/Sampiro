@@ -66,6 +66,7 @@ class _ServicesViewState extends State<ServicesView> {
               return SampiroListTile(
                 image: Image.asset(ServicesTileModel.serviceList[index].imagePath),
                 title: ServicesTileModel.serviceList[index].title,
+                onTap: () {},
               );
             },
             itemCount: ServicesTileModel.serviceList.length,
