@@ -1,19 +1,30 @@
 import 'package:bloc/bloc.dart';
+import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 
 part 'app_bloc.freezed.dart';
 part 'app_event.dart';
 part 'app_state.dart';
 
 class AppBloc extends Bloc<AppEvent, AppState> {
-  AppBloc() : super(const AppState()) {
-    on<AppStarted>(_onAppStarted);
+  AppBloc({required PackageInfo packageInfo}) : _packageInfo = packageInfo, super(const AppState()) {
+    on<AppVersionFetched>(_onAppVersionFetched);
   }
 
-  void _onAppStarted(
-    AppStarted event,
+  final PackageInfo _packageInfo;
+
+  void _onAppVersionFetched(
+    AppVersionFetched event,
     Emitter<AppState> emit,
   ) {
-    // TODO: implement event handler
+    final version = _packageInfo.version;
+
+    emit(
+      state.copyWith(
+        version: version,
+        buildNumber: _packageInfo.buildNumber,
+      ),
+    );
   }
 }

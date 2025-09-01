@@ -3,7 +3,7 @@ description: "A new Flutter project."
 
 publish_to: "none"
 
-version: 1.0.0+1
+version: 1.0.2+1
 
 environment:
   sdk: ^3.9.0
@@ -51,6 +51,7 @@ dev_dependencies:
   freezed: ^3.1.0
   injectable_generator: ^2.7.0
   json_serializable: ^6.9.5
+  mocktail: ^1.0.4
   retrofit_generator: ^9.7.0
   very_good_analysis: ^9.0.0
 

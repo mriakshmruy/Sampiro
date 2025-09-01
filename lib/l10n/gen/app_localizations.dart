@@ -185,6 +185,36 @@ abstract class AppLocalizations {
   /// **'Videos'**
   String get videos;
 
+  /// No description provided for @baptismalCertificate.
+  ///
+  /// In en, this message translates to:
+  /// **'Baptismal Certificate'**
+  String get baptismalCertificate;
+
+  /// No description provided for @parishSchedule.
+  ///
+  /// In en, this message translates to:
+  /// **'Parish Schedule'**
+  String get parishSchedule;
+
+  /// No description provided for @sampiro.
+  ///
+  /// In en, this message translates to:
+  /// **'Sampiro'**
+  String get sampiro;
+
+  /// No description provided for @parishOffice.
+  ///
+  /// In en, this message translates to:
+  /// **'Parish Office'**
+  String get parishOffice;
+
+  /// No description provided for @parishServices.
+  ///
+  /// In en, this message translates to:
+  /// **'Parish Services'**
+  String get parishServices;
+
   /// No description provided for @menu.
   ///
   /// In en, this message translates to:

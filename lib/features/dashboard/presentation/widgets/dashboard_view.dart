@@ -32,7 +32,7 @@ class DashboardView extends StatelessWidget {
         items: [
           BottomNavigationBarItem(label: l10n.home, icon: const Icon(Icons.house)),
           BottomNavigationBarItem(label: l10n.updates, icon: const Icon(Icons.newspaper)),
-          BottomNavigationBarItem(label: l10n.services, icon: const Icon(Icons.build)),
+          BottomNavigationBarItem(label: l10n.services, icon: const Icon(Icons.home_repair_service_outlined)),
           BottomNavigationBarItem(label: l10n.prayers, icon: const Icon(Icons.handshake)),
 
           BottomNavigationBarItem(label: l10n.more, icon: const Icon(Icons.menu)),
