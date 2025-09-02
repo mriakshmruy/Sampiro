@@ -64,6 +64,7 @@ class _PrayersViewState extends State<PrayersView> {
                     ),
             ),
           ),
+
           SliverGrid.builder(
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,

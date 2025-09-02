@@ -9,6 +9,7 @@ import 'package:sampiro/features/more/presentation/pages/more_page.dart';
 import 'package:sampiro/features/prayers/data/models/prayers_model.dart';
 import 'package:sampiro/features/prayers/presentation/pages/prayers_information_page.dart';
 import 'package:sampiro/features/prayers/presentation/pages/prayers_page.dart';
+import 'package:sampiro/features/services/presentation/pages/baptismal_certificate_page.dart';
 import 'package:sampiro/features/services/presentation/pages/services_page.dart';
 import 'package:sampiro/features/updates/presentation/pages/updates_page.dart';
 
@@ -56,6 +57,11 @@ class AppRouter extends RootStackRouter {
     AutoRoute(
       path: '/prayers-info',
       page: PrayersInformationRoute.page,
+    ),
+
+    AutoRoute(
+      path: '/baptismal-cert',
+      page: BaptismalCertificateRoute.page,
     ),
   ];
 }

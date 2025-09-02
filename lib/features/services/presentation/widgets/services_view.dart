@@ -1,5 +1,7 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:sampiro/core/resources/assets.gen.dart';
+import 'package:sampiro/core/routes/app_router.dart';
 import 'package:sampiro/core/widgets/sampiro_list_tile.dart';
 import 'package:sampiro/features/services/data/models/services_model.dart';
 import 'package:sampiro/l10n/l10n.dart';
@@ -66,7 +68,11 @@ class _ServicesViewState extends State<ServicesView> {
               return SampiroListTile(
                 image: Image.asset(ServicesTileModel.serviceList[index].imagePath),
                 title: ServicesTileModel.serviceList[index].title,
-                onTap: () {},
+                onTap: () {
+                  if (ServicesTileModel.serviceList[index].title == l10n.baptismalCertificate) {
+                    context.router.push(const BaptismalCertificateRoute());
+                  }
+                },
               );
             },
             itemCount: ServicesTileModel.serviceList.length,
