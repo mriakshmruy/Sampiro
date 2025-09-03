@@ -2,8 +2,10 @@ import 'dart:async';
 import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_web_plugins/flutter_web_plugins.dart';
+import 'package:sampiro/core/firebase_options/firebase_options_dev.dart';
 import 'package:sampiro/dependency_injection.dart';
 
 class AppBlocObserver extends BlocObserver {
@@ -36,7 +38,7 @@ Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
       WidgetsFlutterBinding.ensureInitialized();
       usePathUrlStrategy();
       await configureDependencies();
-
+      await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
       runApp(await builder());
     },
     (error, stackTrace) {
