@@ -63,4 +63,16 @@ abstract class ServicesState with _$ServicesState {
   bool get isEmailAddressValid {
     return emailAddress.contains('@');
   }
+
+  bool get isFormValid {
+    return isNameValid &&
+        isFieldDateValid &&
+        isFieldDateOfBirthValid &&
+        isNameOfFatherValid &&
+        isNameOfMotherValid &&
+        isPurposeValid &&
+        isDateOfBaptismValid &&
+        isMobileNoValid &&
+        isEmailAddressValid;
+  }
 }

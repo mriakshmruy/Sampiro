@@ -14,4 +14,6 @@ abstract class ServicesEvent with _$ServicesEvent {
   const factory ServicesEvent.dateOfBaptismChanged(String dateOfBaptism) = ServicesDateOfBaptismChanged;
   const factory ServicesEvent.mobileNoChanged(String mobileNo) = ServicesMobileNoChanged;
   const factory ServicesEvent.emailAddressChanged(String emailAddress) = ServicesEmailAddressChanged;
+
+  const factory ServicesEvent.submitted() = ServicesSubmitted;
 }

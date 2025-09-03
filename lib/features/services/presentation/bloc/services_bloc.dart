@@ -5,6 +5,8 @@ part 'services_bloc.freezed.dart';
 part 'services_event.dart';
 part 'services_state.dart';
 
+const String firebaseCollectionName = 'parishOfferedServices';
+
 class ServicesBloc extends Bloc<ServicesEvent, ServicesState> {
   ServicesBloc() : super(const ServicesState()) {
     on<ServicesStarted>(_onServicesStarted);
@@ -19,6 +21,7 @@ class ServicesBloc extends Bloc<ServicesEvent, ServicesState> {
     on<ServicesDateOfBaptismChanged>(_onServicesDateOfBaptismChanged);
     on<ServicesMobileNoChanged>(_onServicesMobileNoChanged);
     on<ServicesEmailAddressChanged>(_onServicesEmailAddressChanged);
+    on<ServicesSubmitted>(_onServicesSubmitted);
   }
 
   void _onServicesStarted(
@@ -37,69 +40,94 @@ class ServicesBloc extends Bloc<ServicesEvent, ServicesState> {
     ServicesFieldDateChanged event,
     Emitter<ServicesState> emit,
   ) {
-    emit(state.copyWith(fieldDate: event.fieldDate));
+    emit(state.copyWith(fieldDate: event.fieldDate.trim()));
   }
 
   void _onServicesFieldDateOfBirthChanged(
     ServicesFieldDateOfBirthChanged event,
     Emitter<ServicesState> emit,
   ) {
-    emit(state.copyWith(fieldDateOfBirth: event.fieldDateOfBirth));
+    emit(state.copyWith(fieldDateOfBirth: event.fieldDateOfBirth.trim()));
   }
 
   void _onServicesPlaceOfBirthChanged(
     ServicesPlaceOfBirthChanged event,
     Emitter<ServicesState> emit,
   ) {
-    emit(state.copyWith(placeOfBirth: event.placeOfBirth));
+    emit(state.copyWith(placeOfBirth: event.placeOfBirth.trim()));
   }
 
   void _onServicesNameOfFatherChanged(
     ServicesNameOfFatherChanged event,
     Emitter<ServicesState> emit,
   ) {
-    emit(state.copyWith(nameOfFather: event.nameOfFather));
+    emit(state.copyWith(nameOfFather: event.nameOfFather.trim()));
   }
 
   void _onServicesNameOfMotherChanged(
     ServicesNameOfMotherChanged event,
     Emitter<ServicesState> emit,
   ) {
-    emit(state.copyWith(nameOfMother: event.nameOfMother));
+    emit(state.copyWith(nameOfMother: event.nameOfMother.trim()));
   }
 
   void _onServicesPurposeChanged(
     ServicesPurposeChanged event,
     Emitter<ServicesState> emit,
   ) {
-    emit(state.copyWith(purpose: event.purpose));
+    emit(state.copyWith(purpose: event.purpose.trim()));
   }
 
   void _onServicesDateOfBaptismChanged(
     ServicesDateOfBaptismChanged event,
     Emitter<ServicesState> emit,
   ) {
-    emit(state.copyWith(dateOfBaptism: event.dateOfBaptism));
+    emit(state.copyWith(dateOfBaptism: event.dateOfBaptism.trim()));
   }
 
   void _onServicesMobileNoChanged(
     ServicesMobileNoChanged event,
     Emitter<ServicesState> emit,
   ) {
-    emit(state.copyWith(mobileNo: event.mobileNo));
+    emit(state.copyWith(mobileNo: event.mobileNo.trim()));
   }
 
   void _onServicesEmailAddressChanged(
     ServicesEmailAddressChanged event,
     Emitter<ServicesState> emit,
   ) {
-    emit(state.copyWith(emailAddress: event.emailAddress));
+    emit(state.copyWith(emailAddress: event.emailAddress.trim()));
   }
 
   void _onServicesRemarksChanged(
     ServicesRemarksChanged event,
     Emitter<ServicesState> emit,
   ) {
-    emit(state.copyWith(remarks: event.remarks));
+    emit(state.copyWith(remarks: event.remarks.trim()));
+  }
+
+  Future<void> _onServicesSubmitted(
+    ServicesSubmitted event,
+    Emitter<ServicesState> emit,
+  ) async {
+    emit(state.copyWith(status: ServicesStatus.loading));
+
+    await Future<void>.delayed(const Duration(seconds: 3));
+    emit(state.copyWith(status: ServicesStatus.successful));
+
+    // if (!state.isNameValid ||
+    //     !state.isFieldDateValid ||
+    //     !state.isFieldDateOfBirthValid ||
+    //     !state.isRemarksValid ||
+    //     !state.isPlaceOfBirthValid ||
+    //     !state.isNameOfFatherValid ||
+    //     !state.isNameOfMotherValid ||
+    //     !state.isPurposeValid ||
+    //     !state.isDateOfBaptismValid ||
+    //     !state.isMobileNoValid ||
+    //     !state.isEmailAddressValid) {
+    //   emit(state.copyWith(status: ServicesStatus.failed));
+    //   return;
+    // }
   }
 }
