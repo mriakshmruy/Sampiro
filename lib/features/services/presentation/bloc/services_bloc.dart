@@ -1,5 +1,7 @@
 import 'package:bloc/bloc.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:sampiro/features/services/data/models/parish_offered_service.dart';
 
 part 'services_bloc.freezed.dart';
 part 'services_event.dart';
@@ -112,22 +114,22 @@ class ServicesBloc extends Bloc<ServicesEvent, ServicesState> {
   ) async {
     emit(state.copyWith(status: ServicesStatus.loading));
 
+    final baptismalModel = ParishOfferedService(
+      createdAt: FieldValue.serverTimestamp(),
+      selectedParishService: 'baptism',
+      name: state.fieldName,
+      dateOfBaptism: state.fieldDate,
+      dateOfBirth: state.fieldDateOfBirth,
+      remarks: state.remarks,
+      placeOfBirth: state.placeOfBirth,
+      nameOfFather: state.nameOfFather,
+      nameOfMother: state.nameOfMother,
+      purpose: state.purpose,
+      contactNumber: state.mobileNo,
+      emailAddress: state.emailAddress,
+    );
+
     await Future<void>.delayed(const Duration(seconds: 3));
     emit(state.copyWith(status: ServicesStatus.successful));
-
-    // if (!state.isNameValid ||
-    //     !state.isFieldDateValid ||
-    //     !state.isFieldDateOfBirthValid ||
-    //     !state.isRemarksValid ||
-    //     !state.isPlaceOfBirthValid ||
-    //     !state.isNameOfFatherValid ||
-    //     !state.isNameOfMotherValid ||
-    //     !state.isPurposeValid ||
-    //     !state.isDateOfBaptismValid ||
-    //     !state.isMobileNoValid ||
-    //     !state.isEmailAddressValid) {
-    //   emit(state.copyWith(status: ServicesStatus.failed));
-    //   return;
-    // }
   }
 }

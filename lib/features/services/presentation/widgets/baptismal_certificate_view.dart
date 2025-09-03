@@ -162,23 +162,7 @@ class BaptismalCertificateView extends StatelessWidget {
                     );
                   },
                 ),
-                BlocBuilder<ServicesBloc, ServicesState>(
-                  buildWhen: (previous, current) => previous.dateOfBaptism != current.dateOfBaptism,
-                  builder: (context, state) {
-                    return SampiroTextField(
-                      label: l10n.dateOfBaptism,
-                      keyboardType: TextInputType.number,
-                      hintText: l10n.mmddyyyy,
-                      isValid: state.isDateOfBaptismValid,
-                      onChanged: (dateOfBaptism) {
-                        bloc.add(ServicesEvent.dateOfBaptismChanged(dateOfBaptism));
-                      },
-                      inputFormatters: [
-                        monthDateYearFormatter,
-                      ],
-                    );
-                  },
-                ),
+
                 BlocBuilder<ServicesBloc, ServicesState>(
                   buildWhen: (previous, current) => previous.mobileNo != current.mobileNo,
                   builder: (context, state) {
