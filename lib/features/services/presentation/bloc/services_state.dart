@@ -31,4 +31,36 @@ abstract class ServicesState with _$ServicesState {
   bool get isFieldDateOfBirthValid {
     return fieldDateOfBirth.length == 10;
   }
+
+  bool get isRemarksValid {
+    return remarks.length > 3;
+  }
+
+  bool get isPlaceOfBirthValid {
+    return placeOfBirth.length > 3;
+  }
+
+  bool get isNameOfFatherValid {
+    return nameOfFather.length > 3;
+  }
+
+  bool get isNameOfMotherValid {
+    return nameOfMother.length > 3;
+  }
+
+  bool get isPurposeValid {
+    return purpose.length > 3;
+  }
+
+  bool get isDateOfBaptismValid {
+    return dateOfBaptism.length == 10;
+  }
+
+  bool get isMobileNoValid {
+    return mobileNo.length == 11;
+  }
+
+  bool get isEmailAddressValid {
+    return emailAddress.contains('@');
+  }
 }

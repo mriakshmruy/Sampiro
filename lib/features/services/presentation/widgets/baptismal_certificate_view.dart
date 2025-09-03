@@ -93,40 +93,112 @@ class BaptismalCertificateView extends StatelessWidget {
               );
             },
           ),
-          SampiroTextField(
-            label: l10n.dateRemarks,
-            hintText: l10n.remarks,
+          BlocBuilder<ServicesBloc, ServicesState>(
+            buildWhen: (previous, current) => previous.remarks != current.remarks,
+            builder: (context, state) {
+              return SampiroTextField(
+                label: l10n.dateRemarks,
+                hintText: l10n.remarks,
+                isValid: state.isRemarksValid,
+                onChanged: (remarks) {
+                  bloc.add(ServicesEvent.remarks(remarks));
+                },
+              );
+            },
           ),
           BlocBuilder<ServicesBloc, ServicesState>(
             buildWhen: (previous, current) => previous.placeOfBirth != current.placeOfBirth,
             builder: (context, state) {
               return SampiroTextField(
                 label: l10n.placeOfBirth,
+                isValid: state.isPlaceOfBirthValid,
+                onChanged: (placeOfBirth) {
+                  bloc.add(ServicesEvent.placeOfBirthChanged(placeOfBirth));
+                },
               );
             },
           ),
-          SampiroTextField(
-            label: l10n.nameOfFather,
+          BlocBuilder<ServicesBloc, ServicesState>(
+            buildWhen: (previous, current) => previous.nameOfFather != current.nameOfFather,
+            builder: (context, state) {
+              return SampiroTextField(
+                label: l10n.nameOfFather,
+                isValid: state.isNameOfFatherValid,
+                onChanged: (nameOfFather) {
+                  bloc.add(ServicesEvent.nameOfFatherChanged(nameOfFather));
+                },
+              );
+            },
           ),
-          SampiroTextField(
-            label: l10n.nameOfMother,
+          BlocBuilder<ServicesBloc, ServicesState>(
+            buildWhen: (previous, current) => previous.nameOfMother != current.nameOfMother,
+            builder: (context, state) {
+              return SampiroTextField(
+                label: l10n.nameOfMother,
+                isValid: state.isNameOfMotherValid,
+                onChanged: (nameOfMother) {
+                  bloc.add(ServicesEvent.nameOfMotherChanged(nameOfMother));
+                },
+              );
+            },
           ),
-          SampiroTextField(
-            label: l10n.purpose,
+          BlocBuilder<ServicesBloc, ServicesState>(
+            buildWhen: (previous, current) => previous.purpose != current.purpose,
+            builder: (context, state) {
+              return SampiroTextField(
+                label: l10n.purpose,
+                isValid: state.isPurposeValid,
+                onChanged: (purpose) {
+                  bloc.add(ServicesEvent.purposeChanged(purpose));
+                },
+              );
+            },
           ),
-          SampiroTextField(
-            label: l10n.dateOfBaptism,
+          BlocBuilder<ServicesBloc, ServicesState>(
+            buildWhen: (previous, current) => previous.dateOfBaptism != current.dateOfBaptism,
+            builder: (context, state) {
+              return SampiroTextField(
+                label: l10n.dateOfBaptism,
+                keyboardType: TextInputType.number,
+                hintText: l10n.mmddyyyy,
+                isValid: state.isDateOfBaptismValid,
+                onChanged: (dateOfBaptism) {
+                  bloc.add(ServicesEvent.dateOfBaptismChanged(dateOfBaptism));
+                },
+                inputFormatters: [
+                  monthDateYearFormatter,
+                ],
+              );
+            },
           ),
-          SampiroTextField(
-            label: l10n.mobileNo,
-            keyboardType: TextInputType.number,
-            inputFormatters: [
-              FilteringTextInputFormatter.digitsOnly,
-              LengthLimitingTextInputFormatter(11),
-            ],
+          BlocBuilder<ServicesBloc, ServicesState>(
+            buildWhen: (previous, current) => previous.mobileNo != current.mobileNo,
+            builder: (context, state) {
+              return SampiroTextField(
+                label: l10n.mobileNo,
+                keyboardType: TextInputType.number,
+                isValid: state.isMobileNoValid,
+                onChanged: (mobileNo) {
+                  bloc.add(ServicesEvent.mobileNoChanged(mobileNo));
+                },
+                inputFormatters: [
+                  FilteringTextInputFormatter.digitsOnly,
+                  LengthLimitingTextInputFormatter(11),
+                ],
+              );
+            },
           ),
-          SampiroTextField(
-            label: l10n.emailAddress,
+          BlocBuilder<ServicesBloc, ServicesState>(
+            buildWhen: (previous, current) => previous.emailAddress != current.emailAddress,
+            builder: (context, state) {
+              return SampiroTextField(
+                label: l10n.emailAddress,
+                isValid: state.isEmailAddressValid,
+                onChanged: (emailAddress) {
+                  bloc.add(ServicesEvent.emailAddressChanged(emailAddress));
+                },
+              );
+            },
           ),
           const Padding(padding: EdgeInsetsGeometry.symmetric(vertical: 16)),
           ElevatedButton(
