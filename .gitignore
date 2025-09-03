@@ -44,6 +44,9 @@ app.*.map.json
 /android/app/profile
 /android/app/release
 
+# All Firebase option files
+/firebase_options/firebase_options_*.dart
+
 # Generated files
 **.freezed.dart
 **.g.dart

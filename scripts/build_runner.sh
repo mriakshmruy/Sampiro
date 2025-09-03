@@ -1,1 +1,1 @@
-dart run build_runner build --delete-conflicting-output
+dart run build_runner build --delete-conflicting-outputs
