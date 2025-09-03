@@ -52,10 +52,6 @@ abstract class ServicesState with _$ServicesState {
     return purpose.length > 3;
   }
 
-  bool get isDateOfBaptismValid {
-    return dateOfBaptism.length == 10;
-  }
-
   bool get isMobileNoValid {
     return mobileNo.length == 11;
   }
@@ -68,10 +64,10 @@ abstract class ServicesState with _$ServicesState {
     return isNameValid &&
         isFieldDateValid &&
         isFieldDateOfBirthValid &&
+        isRemarksValid &&
         isNameOfFatherValid &&
         isNameOfMotherValid &&
         isPurposeValid &&
-        isDateOfBaptismValid &&
         isMobileNoValid &&
         isEmailAddressValid;
   }

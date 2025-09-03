@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:sampiro/features/services/data/models/parish_offered_service.dart';
 
@@ -128,6 +129,7 @@ class ServicesBloc extends Bloc<ServicesEvent, ServicesState> {
       contactNumber: state.mobileNo,
       emailAddress: state.emailAddress,
     );
+    if (!kReleaseMode) debugPrint('--x $baptismalModel');
 
     await Future<void>.delayed(const Duration(seconds: 3));
     emit(state.copyWith(status: ServicesStatus.successful));
