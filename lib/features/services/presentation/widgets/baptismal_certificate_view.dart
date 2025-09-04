@@ -1,8 +1,10 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:sampiro/core/routes/app_router.dart';
 import 'package:sampiro/core/utils/input_formatter.dart';
+import 'package:sampiro/core/widgets/sampiro_drop_down.dart';
 import 'package:sampiro/core/widgets/sampiro_page_loader.dart';
 import 'package:sampiro/core/widgets/sampiro_text_field.dart';
 import 'package:sampiro/features/dashboard/presentation/bloc/bloc.dart';
@@ -64,6 +66,17 @@ class BaptismalCertificateView extends StatelessWidget {
                   ),
                   const Divider(),
                   Text(l10n.top),
+
+                  SampiroDropDown(
+                    dropDownMenuItem: const [
+                      DropdownMenuItem<String>(value: 'Addiction ', child: Text('Addiction')),
+                      DropdownMenuItem<String>(value: 'Career ', child: Text('Career')),
+                    ],
+
+                    onChanged: (counselingType) {
+                      if (!kReleaseMode) debugPrint('counseling : $counselingType');
+                    },
+                  ),
 
                   BlocBuilder<ServicesBloc, ServicesState>(
                     buildWhen: (previous, current) => previous.fieldName != current.fieldName,
