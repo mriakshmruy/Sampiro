@@ -137,11 +137,11 @@ abstract class AppLocalizations {
   /// **'Name'**
   String get name;
 
-  /// No description provided for @name2Tw.
+  /// No description provided for @name1.
   ///
   /// In en, this message translates to:
-  /// **'Name2'**
-  String get name2Tw;
+  /// **'Name:*'**
+  String get name1;
 
   /// No description provided for @cairo.
   ///
@@ -184,6 +184,120 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Videos'**
   String get videos;
+
+  /// No description provided for @baptismalCertificate.
+  ///
+  /// In en, this message translates to:
+  /// **'Baptismal Certificate'**
+  String get baptismalCertificate;
+
+  /// No description provided for @baptismalCertificateRequest.
+  ///
+  /// In en, this message translates to:
+  /// **'Baptismal Certificate Request'**
+  String get baptismalCertificateRequest;
+
+  /// No description provided for @parishSchedule.
+  ///
+  /// In en, this message translates to:
+  /// **'Parish Schedule'**
+  String get parishSchedule;
+
+  /// No description provided for @sampiro.
+  ///
+  /// In en, this message translates to:
+  /// **'Sampiro'**
+  String get sampiro;
+
+  /// No description provided for @parishOffice.
+  ///
+  /// In en, this message translates to:
+  /// **'Parish Office'**
+  String get parishOffice;
+
+  /// No description provided for @parishServices.
+  ///
+  /// In en, this message translates to:
+  /// **'Parish Services'**
+  String get parishServices;
+
+  /// No description provided for @dateOfBirth.
+  ///
+  /// In en, this message translates to:
+  /// **'Date of Birth: (mm/dd/yyyy)'**
+  String get dateOfBirth;
+
+  /// No description provided for @dateRemarks.
+  ///
+  /// In en, this message translates to:
+  /// **'Date Remarks'**
+  String get dateRemarks;
+
+  /// No description provided for @placeOfBirth.
+  ///
+  /// In en, this message translates to:
+  /// **'Place of Birth:*'**
+  String get placeOfBirth;
+
+  /// No description provided for @nameOfFather.
+  ///
+  /// In en, this message translates to:
+  /// **'Name of Father:*'**
+  String get nameOfFather;
+
+  /// No description provided for @nameOfMother.
+  ///
+  /// In en, this message translates to:
+  /// **'Name of Mother:*'**
+  String get nameOfMother;
+
+  /// No description provided for @purpose.
+  ///
+  /// In en, this message translates to:
+  /// **'Purpose:*'**
+  String get purpose;
+
+  /// No description provided for @mobileNo.
+  ///
+  /// In en, this message translates to:
+  /// **'Mobile No.:*'**
+  String get mobileNo;
+
+  /// No description provided for @emailAddress.
+  ///
+  /// In en, this message translates to:
+  /// **'Email Address: (Optional)'**
+  String get emailAddress;
+
+  /// No description provided for @dateOfBaptism.
+  ///
+  /// In en, this message translates to:
+  /// **'Date of Baptism: (mm/dd/yyyy)'**
+  String get dateOfBaptism;
+
+  /// No description provided for @top.
+  ///
+  /// In en, this message translates to:
+  /// **'Please ensure that all the provided information is accurate to assist the parish office in locating your record accordingly.'**
+  String get top;
+
+  /// No description provided for @remarks.
+  ///
+  /// In en, this message translates to:
+  /// **'If you are unsure about the date, please add a remark here.'**
+  String get remarks;
+
+  /// No description provided for @mmddyyyy.
+  ///
+  /// In en, this message translates to:
+  /// **'mm/dd/yyyy'**
+  String get mmddyyyy;
+
+  /// No description provided for @submit.
+  ///
+  /// In en, this message translates to:
+  /// **'Submit'**
+  String get submit;
 
   /// No description provided for @menu.
   ///

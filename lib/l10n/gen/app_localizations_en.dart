@@ -33,7 +33,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get name => 'Name';
 
   @override
-  String get name2Tw => 'Name2';
+  String get name1 => 'Name:*';
 
   @override
   String get cairo => 'Cairo';
@@ -55,6 +55,63 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get videos => 'Videos';
+
+  @override
+  String get baptismalCertificate => 'Baptismal Certificate';
+
+  @override
+  String get baptismalCertificateRequest => 'Baptismal Certificate Request';
+
+  @override
+  String get parishSchedule => 'Parish Schedule';
+
+  @override
+  String get sampiro => 'Sampiro';
+
+  @override
+  String get parishOffice => 'Parish Office';
+
+  @override
+  String get parishServices => 'Parish Services';
+
+  @override
+  String get dateOfBirth => 'Date of Birth: (mm/dd/yyyy)';
+
+  @override
+  String get dateRemarks => 'Date Remarks';
+
+  @override
+  String get placeOfBirth => 'Place of Birth:*';
+
+  @override
+  String get nameOfFather => 'Name of Father:*';
+
+  @override
+  String get nameOfMother => 'Name of Mother:*';
+
+  @override
+  String get purpose => 'Purpose:*';
+
+  @override
+  String get mobileNo => 'Mobile No.:*';
+
+  @override
+  String get emailAddress => 'Email Address: (Optional)';
+
+  @override
+  String get dateOfBaptism => 'Date of Baptism: (mm/dd/yyyy)';
+
+  @override
+  String get top => 'Please ensure that all the provided information is accurate to assist the parish office in locating your record accordingly.';
+
+  @override
+  String get remarks => 'If you are unsure about the date, please add a remark here.';
+
+  @override
+  String get mmddyyyy => 'mm/dd/yyyy';
+
+  @override
+  String get submit => 'Submit';
 
   @override
   String get menu => 'Menu';

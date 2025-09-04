@@ -88,6 +88,22 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.0.0"
+  base58check:
+    dependency: transitive
+    description:
+      name: base58check
+      sha256: "6c300dfc33e598d2fe26319e13f6243fea81eaf8204cb4c6b69ef20a625319a5"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.0"
+  bech32:
+    dependency: transitive
+    description:
+      name: bech32
+      sha256: "156cbace936f7720c79a79d16a03efad343b1ef17106716e04b8b8e39f99f7f7"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.2.2"
   bloc:
     dependency: "direct main"
     description:
@@ -506,6 +522,14 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_multi_formatter:
+    dependency: "direct main"
+    description:
+      name: flutter_multi_formatter
+      sha256: "29d9b3d30a985f5a9c3dd52b4e25e64b9a20ebdcf4d9fed0c71e653406598604"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.13.10"
   flutter_native_splash:
     dependency: "direct dev"
     description:
@@ -514,6 +538,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.4.6"
+  flutter_spinkit:
+    dependency: "direct main"
+    description:
+      name: flutter_spinkit
+      sha256: "77850df57c00dc218bfe96071d576a8babec24cf58b2ed121c83cca4a2fdce7f"
+      url: "https://pub.dev"
+    source: hosted
+    version: "5.2.2"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -789,7 +821,7 @@ packages:
     source: hosted
     version: "2.0.0"
   mocktail:
-    dependency: transitive
+    dependency: "direct dev"
     description:
       name: mocktail
       sha256: "890df3f9688106f25755f26b1c60589a92b3ab91a22b8b224947ad041bf172d8"
