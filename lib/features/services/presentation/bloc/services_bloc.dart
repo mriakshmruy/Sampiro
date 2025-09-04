@@ -3,6 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:sampiro/features/services/data/models/parish_offered_service.dart';
+import 'package:sampiro/features/services/domain/repositories/iservices_repository.dart';
 
 part 'services_bloc.freezed.dart';
 part 'services_event.dart';
@@ -11,7 +12,10 @@ part 'services_state.dart';
 const String firebaseCollectionName = 'parishOfferedServices';
 
 class ServicesBloc extends Bloc<ServicesEvent, ServicesState> {
-  ServicesBloc() : super(const ServicesState()) {
+  ServicesBloc({required IServicesRepository servicesRepository})
+    : _servicesRepository = servicesRepository,
+
+      super(const ServicesState()) {
     on<ServicesStarted>(_onServicesStarted);
     on<ServicesFieldNameChanged>(_onServicesFieldNameChanged);
     on<ServicesFieldDateChanged>(_onServicesFieldDateChanged);
@@ -26,6 +30,9 @@ class ServicesBloc extends Bloc<ServicesEvent, ServicesState> {
     on<ServicesEmailAddressChanged>(_onServicesEmailAddressChanged);
     on<ServicesSubmitted>(_onServicesSubmitted);
   }
+
+  // dependency/private property
+  final IServicesRepository _servicesRepository;
 
   void _onServicesStarted(
     ServicesStarted event,
@@ -131,7 +138,15 @@ class ServicesBloc extends Bloc<ServicesEvent, ServicesState> {
     );
     if (!kReleaseMode) debugPrint('--x $baptismalModel');
 
-    await Future<void>.delayed(const Duration(seconds: 3));
-    emit(state.copyWith(status: ServicesStatus.successful));
+    final inputEither = await _servicesRepository.requestAService(baptismalModel);
+
+    inputEither.fold(
+      (left) {
+        emit(state.copyWith(status: ServicesStatus.failed));
+      },
+      (right) {
+        emit(state.copyWith(status: ServicesStatus.successful));
+      },
+    );
   }
 }

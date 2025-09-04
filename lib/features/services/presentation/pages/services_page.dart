@@ -1,6 +1,5 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:sampiro/features/services/presentation/bloc/bloc.dart';
 import 'package:sampiro/features/services/presentation/widgets/services_view.dart';
 
 @RoutePage()
@@ -9,9 +8,6 @@ class ServicesPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (_) => ServicesBloc(),
-      child: const ServicesView(),
-    );
+    return const ServicesView();
   }
 }
