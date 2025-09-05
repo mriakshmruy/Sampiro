@@ -17,6 +17,8 @@ abstract class ServicesState with _$ServicesState {
     @Default('') String dateOfBaptism,
     @Default('') String mobileNo,
     @Default('') String emailAddress,
+    @Default('') String docRefId,
+    @Default('') String errorMessage,
   }) = _ServicesState;
   const ServicesState._();
 
