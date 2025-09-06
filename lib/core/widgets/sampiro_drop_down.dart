@@ -81,7 +81,7 @@ class SampiroDropDown<T> extends StatelessWidget {
               borderSide: BorderSide(color: theme.colorScheme.shadow),
             ),
           ),
-          value: initialValue,
+          initialValue: initialValue,
           items: dropDownMenuItem,
           onChanged: readOnly ? null : onChanged,
         ),

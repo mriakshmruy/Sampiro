@@ -305,6 +305,42 @@ abstract class AppLocalizations {
   /// **'Counseling'**
   String get counseling;
 
+  /// No description provided for @counselingRequest.
+  ///
+  /// In en, this message translates to:
+  /// **'Counseling Request'**
+  String get counselingRequest;
+
+  /// No description provided for @address.
+  ///
+  /// In en, this message translates to:
+  /// **'Address:*'**
+  String get address;
+
+  /// No description provided for @typeOfCounseling.
+  ///
+  /// In en, this message translates to:
+  /// **'Type of Counseling:*'**
+  String get typeOfCounseling;
+
+  /// No description provided for @preferredCounselingDate.
+  ///
+  /// In en, this message translates to:
+  /// **'Preferred Counseling Date:*'**
+  String get preferredCounselingDate;
+
+  /// No description provided for @preferredCounselingTime.
+  ///
+  /// In en, this message translates to:
+  /// **'Preferred Counseling Time:*'**
+  String get preferredCounselingTime;
+
+  /// No description provided for @topC.
+  ///
+  /// In en, this message translates to:
+  /// **'Note: Request must be made ahead of time to allow the parish office to plan accordingly'**
+  String get topC;
+
   /// No description provided for @menu.
   ///
   /// In en, this message translates to:

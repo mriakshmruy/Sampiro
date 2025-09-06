@@ -117,5 +117,23 @@ class AppLocalizationsEn extends AppLocalizations {
   String get counseling => 'Counseling';
 
   @override
+  String get counselingRequest => 'Counseling Request';
+
+  @override
+  String get address => 'Address:*';
+
+  @override
+  String get typeOfCounseling => 'Type of Counseling:*';
+
+  @override
+  String get preferredCounselingDate => 'Preferred Counseling Date:*';
+
+  @override
+  String get preferredCounselingTime => 'Preferred Counseling Time:*';
+
+  @override
+  String get topC => 'Note: Request must be made ahead of time to allow the parish office to plan accordingly';
+
+  @override
   String get menu => 'Menu';
 }

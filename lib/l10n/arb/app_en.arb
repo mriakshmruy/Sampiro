@@ -35,7 +35,14 @@
   "mmddyyyy": "mm/dd/yyyy",
   "submit": "Submit",
   "counseling": "Counseling",
+  "counselingRequest": "Counseling Request",
+  "address": "Address:*",
+  "typeOfCounseling": "Type of Counseling:*",
+  "preferredCounselingDate": "Preferred Counseling Date:*",
+  "preferredCounselingTime": "Preferred Counseling Time:*",
+  "topC": "Note: Request must be made ahead of time to allow the parish office to plan accordingly",
   "menu": "Menu"
+  
 
 }
 

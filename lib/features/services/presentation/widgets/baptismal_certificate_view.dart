@@ -57,13 +57,11 @@ class BaptismalCertificateView extends StatelessWidget {
                   style: theme.textTheme.bodyMedium?.copyWith(color: theme.colorScheme.surface),
                 ),
                 centerTitle: true,
-                leading: AppBar(
-                  leading: IconButton(
-                    icon: const Icon(Icons.arrow_back_ios_outlined),
-                    onPressed: () {
-                      context.router.push(const ServicesRoute());
-                    },
-                  ),
+                leading: IconButton(
+                  icon: const Icon(Icons.arrow_back_ios_outlined),
+                  onPressed: () {
+                    context.router.push(const ServicesRoute());
+                  },
                 ),
               ),
               body: ListView(
