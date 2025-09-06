@@ -1,14 +1,13 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:sampiro/core/routes/app_router.dart';
 import 'package:sampiro/core/utils/input_formatter.dart';
-import 'package:sampiro/core/widgets/sampiro_drop_down.dart';
 import 'package:sampiro/core/widgets/sampiro_page_loader.dart';
 import 'package:sampiro/core/widgets/sampiro_text_field.dart';
 import 'package:sampiro/features/dashboard/presentation/bloc/bloc.dart';
 import 'package:sampiro/features/services/presentation/bloc/services_bloc.dart';
+import 'package:sampiro/features/services/presentation/widgets/request_dialog.dart';
 import 'package:sampiro/l10n/l10n.dart';
 
 class BaptismalCertificateView extends StatelessWidget {
@@ -20,16 +19,30 @@ class BaptismalCertificateView extends StatelessWidget {
     final l10n = context.l10n;
     final theme = Theme.of(context);
     return BlocListener<ServicesBloc, ServicesState>(
-      listenWhen: (previous, current) => previous.status != current.status,
+      listenWhen: (previous, current) =>
+          previous.status != current.status ||
+          previous.docRefId != current.docRefId ||
+          previous.errorMessage != current.errorMessage,
       listener: (context, state) {
-        if (state.status == ServicesStatus.successful) {
-          // TODO(Kashmir): create new state. return ref id
-          // TODO(Kashmir): create new screen that accepts ref id
+        if (state.status == ServicesStatus.successful && state.docRefId.isNotEmpty) {
+          showDialog<void>(
+            barrierDismissible: false,
+            context: context,
+            builder: (context) {
+              return RequestDialog(
+                docRefId: state.docRefId,
+                onPressed: () {
+                  context.router.popUntilRoot();
+                },
+              );
+            },
+          );
         }
-        if (state.status == ServicesStatus.failed) {
-          // TODO(Kashmir): snackbar to show error
+        if (state.status == ServicesStatus.failed && state.errorMessage.isNotEmpty) {
+          ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(state.errorMessage)));
         }
       },
+
       child: BlocSelector<ServicesBloc, ServicesState, ServicesStatus>(
         selector: (state) {
           return state.status;
@@ -67,22 +80,12 @@ class BaptismalCertificateView extends StatelessWidget {
                   const Divider(),
                   Text(l10n.top),
 
-                  SampiroDropDown(
-                    dropDownMenuItem: const [
-                      DropdownMenuItem<String>(value: 'Addiction ', child: Text('Addiction')),
-                      DropdownMenuItem<String>(value: 'Career ', child: Text('Career')),
-                    ],
-
-                    onChanged: (counselingType) {
-                      if (!kReleaseMode) debugPrint('counseling : $counselingType');
-                    },
-                  ),
-
                   BlocBuilder<ServicesBloc, ServicesState>(
                     buildWhen: (previous, current) => previous.fieldName != current.fieldName,
                     builder: (context, state) {
                       return SampiroTextField(
                         isValid: state.isNameValid,
+                        icon: const Icon(Icons.verified_user),
                         label: l10n.name1,
                         textCapitalization: TextCapitalization.words,
                         onChanged: (fieldName) {

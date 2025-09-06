@@ -136,16 +136,25 @@ class ServicesBloc extends Bloc<ServicesEvent, ServicesState> {
       contactNumber: state.mobileNo,
       emailAddress: state.emailAddress,
     );
-    if (!kReleaseMode) debugPrint('--x $baptismalModel');
 
     final inputEither = await _servicesRepository.requestAService(baptismalModel);
 
     inputEither.fold(
       (left) {
-        emit(state.copyWith(status: ServicesStatus.failed));
+        emit(
+          state.copyWith(
+            status: ServicesStatus.failed,
+            errorMessage: left.message,
+          ),
+        );
       },
-      (right) {
-        emit(state.copyWith(status: ServicesStatus.successful));
+      (docRefId) {
+        emit(
+          state.copyWith(
+            status: ServicesStatus.successful,
+            docRefId: docRefId,
+          ),
+        );
       },
     );
   }

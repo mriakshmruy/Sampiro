@@ -25,6 +25,7 @@ class SampiroTextField extends StatelessWidget {
     this.hintText,
     this.isValid = false,
     this.validator,
+    this.icon,
     super.key,
   });
 
@@ -49,6 +50,8 @@ class SampiroTextField extends StatelessWidget {
   final String? hintText;
   final bool isValid;
 
+  final Widget? icon;
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -63,12 +66,14 @@ class SampiroTextField extends StatelessWidget {
               children: [
                 AutoSizeText(
                   label!,
-                  style: theme.textTheme.headlineSmall
-                      ?.copyWith(fontWeight: SampiroFontWeight.semiBold, color: theme.colorScheme.tertiary),
+                  style: theme.textTheme.headlineSmall?.copyWith(
+                    fontWeight: SampiroFontWeight.semiBold,
+                    color: theme.colorScheme.tertiary,
+                  ),
                   maxLines: 1,
                 ),
                 const SizedBox(width: 2),
-                if (isValid) const Icon(Icons.check, size: 18),
+                if (isValid) icon ?? const Icon(Icons.check, size: 18),
               ],
             ),
           ),

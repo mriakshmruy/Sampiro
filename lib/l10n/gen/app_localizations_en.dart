@@ -114,5 +114,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get submit => 'Submit';
 
   @override
+  String get counseling => 'Counseling';
+
+  @override
   String get menu => 'Menu';
 }

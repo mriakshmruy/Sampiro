@@ -299,6 +299,12 @@ abstract class AppLocalizations {
   /// **'Submit'**
   String get submit;
 
+  /// No description provided for @counseling.
+  ///
+  /// In en, this message translates to:
+  /// **'Counseling'**
+  String get counseling;
+
   /// No description provided for @menu.
   ///
   /// In en, this message translates to:
