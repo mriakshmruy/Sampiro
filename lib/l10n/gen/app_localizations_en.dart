@@ -123,6 +123,27 @@ class AppLocalizationsEn extends AppLocalizations {
   String get address => 'Address:*';
 
   @override
+  String get addiction => 'Addiction';
+
+  @override
+  String get career => 'Career';
+
+  @override
+  String get crisis => 'Crisis';
+
+  @override
+  String get grief => 'Grief';
+
+  @override
+  String get marriageAndFamily => 'Marriage and Family';
+
+  @override
+  String get mentalHealth => 'Mental Health';
+
+  @override
+  String get trauma => 'Trauma';
+
+  @override
   String get typeOfCounseling => 'Type of Counseling:*';
 
   @override

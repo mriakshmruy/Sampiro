@@ -14,6 +14,12 @@ abstract class ServicesEvent with _$ServicesEvent {
   const factory ServicesEvent.dateOfBaptismChanged(String dateOfBaptism) = ServicesDateOfBaptismChanged;
   const factory ServicesEvent.mobileNoChanged(String mobileNo) = ServicesMobileNoChanged;
   const factory ServicesEvent.emailAddressChanged(String emailAddress) = ServicesEmailAddressChanged;
+  const factory ServicesEvent.addressChanged(String address) = ServicesAddressChanged;
+  const factory ServicesEvent.typeOfCounselingChanged(String typeOfCounseling) = ServicesTypeOfCounselingChanged;
+  const factory ServicesEvent.preferredCounselingDateChanged(String preferredCounselingDate) =
+      ServicesPreferredCounselingDateChanged;
+  const factory ServicesEvent.preferredCounselingTimeChanged(String preferredCounselingTime) =
+      ServicesPreferredCounselingTimeChanged;
 
   const factory ServicesEvent.submitted() = ServicesSubmitted;
 }

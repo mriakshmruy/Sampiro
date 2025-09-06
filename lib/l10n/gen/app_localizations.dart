@@ -317,6 +317,48 @@ abstract class AppLocalizations {
   /// **'Address:*'**
   String get address;
 
+  /// No description provided for @addiction.
+  ///
+  /// In en, this message translates to:
+  /// **'Addiction'**
+  String get addiction;
+
+  /// No description provided for @career.
+  ///
+  /// In en, this message translates to:
+  /// **'Career'**
+  String get career;
+
+  /// No description provided for @crisis.
+  ///
+  /// In en, this message translates to:
+  /// **'Crisis'**
+  String get crisis;
+
+  /// No description provided for @grief.
+  ///
+  /// In en, this message translates to:
+  /// **'Grief'**
+  String get grief;
+
+  /// No description provided for @marriageAndFamily.
+  ///
+  /// In en, this message translates to:
+  /// **'Marriage and Family'**
+  String get marriageAndFamily;
+
+  /// No description provided for @mentalHealth.
+  ///
+  /// In en, this message translates to:
+  /// **'Mental Health'**
+  String get mentalHealth;
+
+  /// No description provided for @trauma.
+  ///
+  /// In en, this message translates to:
+  /// **'Trauma'**
+  String get trauma;
+
   /// No description provided for @typeOfCounseling.
   ///
   /// In en, this message translates to:

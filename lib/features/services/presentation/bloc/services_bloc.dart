@@ -28,6 +28,10 @@ class ServicesBloc extends Bloc<ServicesEvent, ServicesState> {
     on<ServicesDateOfBaptismChanged>(_onServicesDateOfBaptismChanged);
     on<ServicesMobileNoChanged>(_onServicesMobileNoChanged);
     on<ServicesEmailAddressChanged>(_onServicesEmailAddressChanged);
+    on<ServicesAddressChanged>(_onServicesAddressChanged);
+    on<ServicesTypeOfCounselingChanged>(_onServicesTypeOfCounselingChanged);
+    on<ServicesPreferredCounselingDateChanged>(_onServicesPreferredCounselingDateChanged);
+    on<ServicesPreferredCounselingTimeChanged>(_onServicesPreferredCounselingTimeChanged);
     on<ServicesSubmitted>(_onServicesSubmitted);
   }
 
@@ -38,6 +42,34 @@ class ServicesBloc extends Bloc<ServicesEvent, ServicesState> {
     ServicesStarted event,
     Emitter<ServicesState> emit,
   ) {}
+
+  void _onServicesAddressChanged(
+    ServicesAddressChanged event,
+    Emitter<ServicesState> emit,
+  ) {
+    emit(state.copyWith(fieldName: event.address.trim()));
+  }
+
+  void _onServicesTypeOfCounselingChanged(
+    ServicesTypeOfCounselingChanged event,
+    Emitter<ServicesState> emit,
+  ) {
+    emit(state.copyWith(fieldName: event.typeOfCounseling.trim()));
+  }
+
+  void _onServicesPreferredCounselingDateChanged(
+    ServicesPreferredCounselingDateChanged event,
+    Emitter<ServicesState> emit,
+  ) {
+    emit(state.copyWith(fieldName: event.preferredCounselingDate.trim()));
+  }
+
+  void _onServicesPreferredCounselingTimeChanged(
+    ServicesPreferredCounselingTimeChanged event,
+    Emitter<ServicesState> emit,
+  ) {
+    emit(state.copyWith(fieldName: event.preferredCounselingTime.trim()));
+  }
 
   void _onServicesFieldNameChanged(
     ServicesFieldNameChanged event,

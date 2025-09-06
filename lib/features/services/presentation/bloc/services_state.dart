@@ -19,6 +19,10 @@ abstract class ServicesState with _$ServicesState {
     @Default('') String emailAddress,
     @Default('') String docRefId,
     @Default('') String errorMessage,
+    @Default('') String address,
+    @Default('') String typeOfCounseling,
+    @Default('') String preferredCounselingDate,
+    @Default('') String preferredCounselingTime,
   }) = _ServicesState;
   const ServicesState._();
 
@@ -26,12 +30,28 @@ abstract class ServicesState with _$ServicesState {
     return fieldName.length > 3;
   }
 
-  bool get isFieldDateValid {
-    return fieldDate.length == 10;
+  bool get isAddressValid {
+    return address.length > 3;
+  }
+
+  bool get isTypeOfCounselingValid {
+    return typeOfCounseling.length > 3;
   }
 
   bool get isFieldDateOfBirthValid {
     return fieldDateOfBirth.length == 10;
+  }
+
+  bool get isFieldDateValid {
+    return fieldDate.length == 10;
+  }
+
+  bool get isPreferredCounselingDateValid {
+    return preferredCounselingDate.length == 10;
+  }
+
+  bool get isPreferredCounselingTimeValid {
+    return preferredCounselingTime.length == 4;
   }
 
   bool get isRemarksValid {
