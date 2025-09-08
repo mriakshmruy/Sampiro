@@ -99,9 +99,10 @@ class BaptismalCertificateView extends StatelessWidget {
                         isValid: state.isFieldDateValid,
                         label: l10n.dateOfBaptism,
                         keyboardType: TextInputType.number,
+
                         hintText: l10n.mmddyyyy,
                         onChanged: (fieldDate) {
-                          bloc.add(ServicesEvent.fieldDateChanged(fieldDate));
+                          bloc.add(ServicesFieldDateChanged(fieldDate));
                         },
                         inputFormatters: [
                           monthDateYearFormatter,
@@ -118,7 +119,7 @@ class BaptismalCertificateView extends StatelessWidget {
                         keyboardType: TextInputType.number,
                         hintText: l10n.mmddyyyy,
                         onChanged: (fieldDateOfBirth) {
-                          bloc.add(ServicesEvent.fieldDateOfBirthChanged(fieldDateOfBirth));
+                          bloc.add(ServicesFieldDateOfBirthChanged(fieldDateOfBirth));
                         },
                         inputFormatters: [
                           monthDateYearFormatter,
@@ -134,7 +135,7 @@ class BaptismalCertificateView extends StatelessWidget {
                         hintText: l10n.remarks,
                         isValid: state.isRemarksValid,
                         onChanged: (remarks) {
-                          bloc.add(ServicesEvent.remarks(remarks));
+                          bloc.add(ServicesRemarksChanged(remarks));
                         },
                       );
                     },
@@ -146,7 +147,7 @@ class BaptismalCertificateView extends StatelessWidget {
                         label: l10n.placeOfBirth,
                         isValid: state.isPlaceOfBirthValid,
                         onChanged: (placeOfBirth) {
-                          bloc.add(ServicesEvent.placeOfBirthChanged(placeOfBirth));
+                          bloc.add(ServicesPlaceOfBirthChanged(placeOfBirth));
                         },
                       );
                     },
@@ -158,7 +159,7 @@ class BaptismalCertificateView extends StatelessWidget {
                         label: l10n.nameOfFather,
                         isValid: state.isNameOfFatherValid,
                         onChanged: (nameOfFather) {
-                          bloc.add(ServicesEvent.nameOfFatherChanged(nameOfFather));
+                          bloc.add(ServicesNameOfFatherChanged(nameOfFather));
                         },
                       );
                     },
@@ -170,7 +171,7 @@ class BaptismalCertificateView extends StatelessWidget {
                         label: l10n.nameOfMother,
                         isValid: state.isNameOfMotherValid,
                         onChanged: (nameOfMother) {
-                          bloc.add(ServicesEvent.nameOfMotherChanged(nameOfMother));
+                          bloc.add(ServicesNameOfMotherChanged(nameOfMother));
                         },
                       );
                     },
@@ -179,10 +180,12 @@ class BaptismalCertificateView extends StatelessWidget {
                     buildWhen: (previous, current) => previous.purpose != current.purpose,
                     builder: (context, state) {
                       return SampiroTextField(
+                        autofocus: true,
+
                         label: l10n.purpose,
                         isValid: state.isPurposeValid,
                         onChanged: (purpose) {
-                          bloc.add(ServicesEvent.purposeChanged(purpose));
+                          bloc.add(ServicesPurposeChanged(purpose));
                         },
                       );
                     },
@@ -196,7 +199,7 @@ class BaptismalCertificateView extends StatelessWidget {
                         keyboardType: TextInputType.number,
                         isValid: state.isMobileNoValid,
                         onChanged: (mobileNo) {
-                          bloc.add(ServicesEvent.mobileNoChanged(mobileNo));
+                          bloc.add(ServicesMobileNoChanged(mobileNo));
                         },
                         inputFormatters: [
                           FilteringTextInputFormatter.digitsOnly,
@@ -212,7 +215,7 @@ class BaptismalCertificateView extends StatelessWidget {
                         label: l10n.emailAddress,
                         isValid: state.isEmailAddressValid,
                         onChanged: (emailAddress) {
-                          bloc.add(ServicesEvent.emailAddressChanged(emailAddress));
+                          bloc.add(ServicesEmailAddressChanged(emailAddress));
                         },
                       );
                     },
@@ -225,7 +228,7 @@ class BaptismalCertificateView extends StatelessWidget {
                         onPressed: state.isFormValid
                             // TODO(Kashmir): this is ternary operator
                             ? () {
-                                bloc.add(const ServicesSubmitted());
+                                bloc.add(const ServicesSubmitted('baptism'));
                               }
                             : null,
 

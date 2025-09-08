@@ -18,8 +18,8 @@ abstract class ServicesEvent with _$ServicesEvent {
   const factory ServicesEvent.typeOfCounselingChanged(String typeOfCounseling) = ServicesTypeOfCounselingChanged;
   const factory ServicesEvent.preferredCounselingDateChanged(String preferredCounselingDate) =
       ServicesPreferredCounselingDateChanged;
-  const factory ServicesEvent.preferredCounselingTimeChanged(String preferredCounselingTime) =
+  const factory ServicesEvent.preferredCounselingTimeChanged(TimeOfDay preferredCounselingTime) =
       ServicesPreferredCounselingTimeChanged;
 
-  const factory ServicesEvent.submitted() = ServicesSubmitted;
+  const factory ServicesEvent.submitted(String selectedServices) = ServicesSubmitted;
 }

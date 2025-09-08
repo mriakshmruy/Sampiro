@@ -22,9 +22,18 @@ abstract class ServicesState with _$ServicesState {
     @Default('') String address,
     @Default('') String typeOfCounseling,
     @Default('') String preferredCounselingDate,
-    @Default('') String preferredCounselingTime,
+
+    TimeOfDay? preferredCounselingTime,
   }) = _ServicesState;
   const ServicesState._();
+
+  String get formattedTime {
+    if (preferredCounselingTime == null) return '';
+    final hour = preferredCounselingTime!.hourOfPeriod == 0 ? 12 : preferredCounselingTime!.hourOfPeriod;
+    final period = preferredCounselingTime!.period == DayPeriod.am ? 'AM' : 'PM';
+    final minute = preferredCounselingTime!.minute.toString().padLeft(2, '0');
+    return '$hour:$minute $period';
+  }
 
   bool get isNameValid {
     return fieldName.length > 3;
@@ -51,7 +60,7 @@ abstract class ServicesState with _$ServicesState {
   }
 
   bool get isPreferredCounselingTimeValid {
-    return preferredCounselingTime.length == 4;
+    return preferredCounselingTime != null;
   }
 
   bool get isRemarksValid {
@@ -92,5 +101,14 @@ abstract class ServicesState with _$ServicesState {
         isPurposeValid &&
         isMobileNoValid &&
         isEmailAddressValid;
+  }
+
+  bool get isRequestValid {
+    return isNameValid &&
+        isMobileNoValid &&
+        isAddressValid &&
+        isPreferredCounselingDateValid &&
+        isPreferredCounselingTimeValid &&
+        isTypeOfCounselingValid;
   }
 }

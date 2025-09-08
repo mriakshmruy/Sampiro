@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:sampiro/features/services/data/models/parish_offered_service.dart';
 import 'package:sampiro/features/services/domain/repositories/iservices_repository.dart';
@@ -47,28 +48,28 @@ class ServicesBloc extends Bloc<ServicesEvent, ServicesState> {
     ServicesAddressChanged event,
     Emitter<ServicesState> emit,
   ) {
-    emit(state.copyWith(fieldName: event.address.trim()));
+    emit(state.copyWith(address: event.address.trim()));
   }
 
   void _onServicesTypeOfCounselingChanged(
     ServicesTypeOfCounselingChanged event,
     Emitter<ServicesState> emit,
   ) {
-    emit(state.copyWith(fieldName: event.typeOfCounseling.trim()));
+    emit(state.copyWith(typeOfCounseling: event.typeOfCounseling.trim()));
   }
 
   void _onServicesPreferredCounselingDateChanged(
     ServicesPreferredCounselingDateChanged event,
     Emitter<ServicesState> emit,
   ) {
-    emit(state.copyWith(fieldName: event.preferredCounselingDate.trim()));
+    emit(state.copyWith(preferredCounselingDate: event.preferredCounselingDate.trim()));
   }
 
   void _onServicesPreferredCounselingTimeChanged(
     ServicesPreferredCounselingTimeChanged event,
     Emitter<ServicesState> emit,
   ) {
-    emit(state.copyWith(fieldName: event.preferredCounselingTime.trim()));
+    emit(state.copyWith(preferredCounselingTime: event.preferredCounselingTime));
   }
 
   void _onServicesFieldNameChanged(
@@ -156,7 +157,7 @@ class ServicesBloc extends Bloc<ServicesEvent, ServicesState> {
 
     final baptismalModel = ParishOfferedService(
       createdAt: FieldValue.serverTimestamp(),
-      selectedParishService: 'baptism',
+      selectedParishService: event.selectedServices,
       name: state.fieldName,
       dateOfBaptism: state.fieldDate,
       dateOfBirth: state.fieldDateOfBirth,
@@ -167,6 +168,10 @@ class ServicesBloc extends Bloc<ServicesEvent, ServicesState> {
       purpose: state.purpose,
       contactNumber: state.mobileNo,
       emailAddress: state.emailAddress,
+      presentAddress: state.address,
+      counselingType: state.typeOfCounseling,
+      dateOfCounselling: state.preferredCounselingDate,
+      time: state.formattedTime,
     );
 
     final inputEither = await _servicesRepository.requestAService(baptismalModel);
