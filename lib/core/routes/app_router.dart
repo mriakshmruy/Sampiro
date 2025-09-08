@@ -9,6 +9,7 @@ import 'package:sampiro/features/more/presentation/pages/more_page.dart';
 import 'package:sampiro/features/prayers/data/models/prayers_model.dart';
 import 'package:sampiro/features/prayers/presentation/pages/prayers_information_page.dart';
 import 'package:sampiro/features/prayers/presentation/pages/prayers_page.dart';
+import 'package:sampiro/features/services/presentation/pages/anointing_sick_page.dart';
 import 'package:sampiro/features/services/presentation/pages/baptismal_certificate_page.dart';
 import 'package:sampiro/features/services/presentation/pages/counseling_page.dart';
 import 'package:sampiro/features/services/presentation/pages/services_page.dart';
@@ -68,6 +69,11 @@ class AppRouter extends RootStackRouter {
     AutoRoute(
       path: '/counseling',
       page: CounselingRoute.page,
+    ),
+
+    AutoRoute(
+      page: AnointingSickRoute.page,
+      path: '/anointing-sick',
     ),
   ];
 }

@@ -359,6 +359,90 @@ abstract class AppLocalizations {
   /// **'Trauma'**
   String get trauma;
 
+  /// No description provided for @anointingOfTheSickRequest.
+  ///
+  /// In en, this message translates to:
+  /// **'Anointing of the Sick Request'**
+  String get anointingOfTheSickRequest;
+
+  /// No description provided for @anointingOfTheSick.
+  ///
+  /// In en, this message translates to:
+  /// **'Anointing of the Sick'**
+  String get anointingOfTheSick;
+
+  /// No description provided for @nameOfTheSickPerson.
+  ///
+  /// In en, this message translates to:
+  /// **'Name of the sick person:*'**
+  String get nameOfTheSickPerson;
+
+  /// No description provided for @barangay.
+  ///
+  /// In en, this message translates to:
+  /// **'Barangay:*'**
+  String get barangay;
+
+  /// No description provided for @age.
+  ///
+  /// In en, this message translates to:
+  /// **'Age:*'**
+  String get age;
+
+  /// No description provided for @sickness.
+  ///
+  /// In en, this message translates to:
+  /// **'Sickness'**
+  String get sickness;
+
+  /// No description provided for @relationshipWithTheSick.
+  ///
+  /// In en, this message translates to:
+  /// **'Relationship with the sick'**
+  String get relationshipWithTheSick;
+
+  /// No description provided for @olympia.
+  ///
+  /// In en, this message translates to:
+  /// **'Olympia'**
+  String get olympia;
+
+  /// No description provided for @poblacion.
+  ///
+  /// In en, this message translates to:
+  /// **'Poblacion'**
+  String get poblacion;
+
+  /// No description provided for @valenzuela.
+  ///
+  /// In en, this message translates to:
+  /// **'Valenzuela'**
+  String get valenzuela;
+
+  /// No description provided for @nameOfRequestingPerson.
+  ///
+  /// In en, this message translates to:
+  /// **'Name of Requesting Person'**
+  String get nameOfRequestingPerson;
+
+  /// No description provided for @contactNumberOfRequestingPerson.
+  ///
+  /// In en, this message translates to:
+  /// **'Contact Number of Requesting Person'**
+  String get contactNumberOfRequestingPerson;
+
+  /// No description provided for @dateOfAnointing.
+  ///
+  /// In en, this message translates to:
+  /// **'Date of Anointing:* (mm/dd/yyyy)'**
+  String get dateOfAnointing;
+
+  /// No description provided for @timeOfAnointing.
+  ///
+  /// In en, this message translates to:
+  /// **'Time of Anointing'**
+  String get timeOfAnointing;
+
   /// No description provided for @typeOfCounseling.
   ///
   /// In en, this message translates to:

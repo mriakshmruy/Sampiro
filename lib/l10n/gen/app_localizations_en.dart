@@ -144,6 +144,48 @@ class AppLocalizationsEn extends AppLocalizations {
   String get trauma => 'Trauma';
 
   @override
+  String get anointingOfTheSickRequest => 'Anointing of the Sick Request';
+
+  @override
+  String get anointingOfTheSick => 'Anointing of the Sick';
+
+  @override
+  String get nameOfTheSickPerson => 'Name of the sick person:*';
+
+  @override
+  String get barangay => 'Barangay:*';
+
+  @override
+  String get age => 'Age:*';
+
+  @override
+  String get sickness => 'Sickness';
+
+  @override
+  String get relationshipWithTheSick => 'Relationship with the sick';
+
+  @override
+  String get olympia => 'Olympia';
+
+  @override
+  String get poblacion => 'Poblacion';
+
+  @override
+  String get valenzuela => 'Valenzuela';
+
+  @override
+  String get nameOfRequestingPerson => 'Name of Requesting Person';
+
+  @override
+  String get contactNumberOfRequestingPerson => 'Contact Number of Requesting Person';
+
+  @override
+  String get dateOfAnointing => 'Date of Anointing:* (mm/dd/yyyy)';
+
+  @override
+  String get timeOfAnointing => 'Time of Anointing';
+
+  @override
   String get typeOfCounseling => 'Type of Counseling:*';
 
   @override
