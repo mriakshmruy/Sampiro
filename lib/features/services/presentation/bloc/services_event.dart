@@ -20,6 +20,17 @@ abstract class ServicesEvent with _$ServicesEvent {
       ServicesPreferredCounselingDateChanged;
   const factory ServicesEvent.preferredCounselingTimeChanged(TimeOfDay preferredCounselingTime) =
       ServicesPreferredCounselingTimeChanged;
+  const factory ServicesEvent.nameOfTheSickPersonChanged(String nameOfTheSickPeron) = ServicesNameOfTheSickPeronChanged;
+  const factory ServicesEvent.ageChanged(String age) = ServicesAgeChanged;
+  const factory ServicesEvent.barangayChanged(String barangay) = ServicesBarangayChanged;
+  const factory ServicesEvent.sicknessChanged(String sickness) = ServicesSicknessChanged;
+  const factory ServicesEvent.nameOfRequestingPersonChanged(String nameOfRequestingPerson) =
+      ServicesNameOfRequestingPersonChanged;
+  const factory ServicesEvent.relationshipWithSick(String relationshipWithSick) = ServicesRelationshipWithSickChanged;
+  const factory ServicesEvent.contactNumberOfRequestingPersonChanged(String contactNumberOfRequestingPerson) =
+      ServicesContactNumberOfRequestingPersonChanged;
+  const factory ServicesEvent.dateOfAnointingChanged(String dateOfAnointing) = ServicesDateOfAnointingChanged;
+  const factory ServicesEvent.timeOfAnointingChanged(TimeOfDay timeOfAnointing) = ServicesTimeOfAnointingChanged;
 
   const factory ServicesEvent.submitted(String selectedServices) = ServicesSubmitted;
 }

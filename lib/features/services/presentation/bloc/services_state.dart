@@ -20,10 +20,18 @@ abstract class ServicesState with _$ServicesState {
     @Default('') String docRefId,
     @Default('') String errorMessage,
     @Default('') String address,
+    @Default('') String nameOfSickPerson,
+    @Default('') String age,
+    @Default('') String barangay,
+    @Default('') String sickness,
+    @Default('') String nameOfRequestingPerson,
+    @Default('') String relationshipWithSick,
+    @Default('') String contactNumberOfRequestingPerson,
+    @Default('') String dateOfAnointing,
     @Default('') String typeOfCounseling,
     @Default('') String preferredCounselingDate,
-
     TimeOfDay? preferredCounselingTime,
+    TimeOfDay? timeOfAnointing,
   }) = _ServicesState;
   const ServicesState._();
 
@@ -33,6 +41,50 @@ abstract class ServicesState with _$ServicesState {
     final period = preferredCounselingTime!.period == DayPeriod.am ? 'AM' : 'PM';
     final minute = preferredCounselingTime!.minute.toString().padLeft(2, '0');
     return '$hour:$minute $period';
+  }
+
+  String get formattedTimeAnointing {
+    if (timeOfAnointing == null) return '';
+    final hour = timeOfAnointing!.hourOfPeriod == 0 ? 12 : timeOfAnointing!.hourOfPeriod;
+    final period = timeOfAnointing!.period == DayPeriod.am ? 'AM' : 'PM';
+    final minute = timeOfAnointing!.minute.toString().padLeft(2, '0');
+    return '$hour:$minute $period';
+  }
+
+  bool get isNameOfSickPersonValid {
+    return nameOfSickPerson.length > 3;
+  }
+
+  bool get isTimeOfAnointing {
+    return timeOfAnointing != null;
+  }
+
+  bool get isDateOfAnointingValid {
+    return dateOfAnointing.length == 10;
+  }
+
+  bool get isContactNumberOfRequestingPersonValid {
+    return contactNumberOfRequestingPerson.length == 11;
+  }
+
+  bool get isRelationshipWithSickValid {
+    return relationshipWithSick.length > 3;
+  }
+
+  bool get isNameOfRequestingPersonValid {
+    return nameOfRequestingPerson.length > 3;
+  }
+
+  bool get isSicknessValid {
+    return sickness.length > 3;
+  }
+
+  bool get isBarangayValid {
+    return barangay.length > 3;
+  }
+
+  bool get isAgeValid {
+    return age.isNotEmpty;
   }
 
   bool get isNameValid {
@@ -110,5 +162,18 @@ abstract class ServicesState with _$ServicesState {
         isPreferredCounselingDateValid &&
         isPreferredCounselingTimeValid &&
         isTypeOfCounselingValid;
+  }
+
+  bool get isRequestFormValid {
+    return isNameOfSickPersonValid &&
+        isBarangayValid &&
+        isAddressValid &&
+        isAgeValid &&
+        isSicknessValid &&
+        isNameOfRequestingPersonValid &&
+        isRelationshipWithSickValid &&
+        isContactNumberOfRequestingPersonValid &&
+        isDateOfAnointingValid &&
+        isTimeOfAnointing;
   }
 }
