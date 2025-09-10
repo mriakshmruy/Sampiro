@@ -188,7 +188,7 @@ class AnointingOfTheSickView extends StatelessWidget {
                         prefixText: '09',
                         label: l10n.contactNumberOfRequestingPerson,
                         isValid: state.isContactNumberOfRequestingPersonValid,
-                        inputFormatters: [FilteringTextInputFormatter.digitsOnly, LengthLimitingTextInputFormatter(11)],
+                        inputFormatters: [FilteringTextInputFormatter.digitsOnly, LengthLimitingTextInputFormatter(9)],
                         onChanged: (contactNumberOfRequestingPerson) =>
                             bloc.add(ServicesContactNumberOfRequestingPersonChanged(contactNumberOfRequestingPerson)),
                       );

@@ -180,8 +180,6 @@ class BaptismalCertificateView extends StatelessWidget {
                     buildWhen: (previous, current) => previous.purpose != current.purpose,
                     builder: (context, state) {
                       return SampiroTextField(
-                        autofocus: true,
-
                         label: l10n.purpose,
                         isValid: state.isPurposeValid,
                         onChanged: (purpose) {
@@ -196,6 +194,7 @@ class BaptismalCertificateView extends StatelessWidget {
                     builder: (context, state) {
                       return SampiroTextField(
                         label: l10n.mobileNo,
+                        prefixText: '09',
                         keyboardType: TextInputType.number,
                         isValid: state.isMobileNoValid,
                         onChanged: (mobileNo) {
@@ -203,7 +202,7 @@ class BaptismalCertificateView extends StatelessWidget {
                         },
                         inputFormatters: [
                           FilteringTextInputFormatter.digitsOnly,
-                          LengthLimitingTextInputFormatter(11),
+                          LengthLimitingTextInputFormatter(9),
                         ],
                       );
                     },

@@ -64,7 +64,7 @@ abstract class ServicesState with _$ServicesState {
   }
 
   bool get isContactNumberOfRequestingPersonValid {
-    return contactNumberOfRequestingPerson.length == 11;
+    return contactNumberOfRequestingPerson.length == 9;
   }
 
   bool get isRelationshipWithSickValid {
@@ -136,7 +136,7 @@ abstract class ServicesState with _$ServicesState {
   }
 
   bool get isMobileNoValid {
-    return mobileNo.length == 11;
+    return mobileNo.length == 9;
   }
 
   bool get isEmailAddressValid {

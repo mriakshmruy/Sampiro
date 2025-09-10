@@ -97,9 +97,10 @@ class CounselingView extends StatelessWidget {
                       return SampiroTextField(
                         label: l10n.mobileNo,
                         keyboardType: TextInputType.number,
+                        prefixText: '09',
                         isValid: state.isMobileNoValid,
                         onChanged: (mobileNo) => bloc.add(ServicesMobileNoChanged(mobileNo)),
-                        inputFormatters: [FilteringTextInputFormatter.digitsOnly, LengthLimitingTextInputFormatter(11)],
+                        inputFormatters: [FilteringTextInputFormatter.digitsOnly, LengthLimitingTextInputFormatter(9)],
                       );
                     },
                   ),
