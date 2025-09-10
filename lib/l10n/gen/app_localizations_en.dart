@@ -199,4 +199,37 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get menu => 'Menu';
+
+  @override
+  String get scheduleABlessing => 'Schedule a Blessing';
+
+  @override
+  String get property => 'Property:*';
+
+  @override
+  String get businessStore => 'Business/Store';
+
+  @override
+  String get houseCondo => 'House/Condo';
+
+  @override
+  String get office => 'Office';
+
+  @override
+  String get others => 'Others';
+
+  @override
+  String get reason => 'Reason:*';
+
+  @override
+  String get religion => 'Religion';
+
+  @override
+  String get timeOfBlessing => 'Time of Blessing:*';
+
+  @override
+  String get dateOfBlessing => 'Date of Blessing:*';
+
+  @override
+  String get scheduleABlessingRequest => 'Schedule a Blessing Request';
 }
