@@ -72,7 +72,7 @@
   "reason": "Reason:*",
   "religion": "Religion",
   "timeOfBlessing": "Time of Blessing:*",
-  "dateOfBlessing": "Date of Blessing:*",
+  "dateOfBlessing": "Date of Blessing:* (mm/dd/yyyy)",
  "scheduleABlessingRequest": "Schedule a Blessing Request"
   
 

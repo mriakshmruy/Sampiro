@@ -80,20 +80,19 @@ class AnointingOfTheSickView extends StatelessWidget {
                   Text(l10n.topC),
 
                   BlocBuilder<ServicesBloc, ServicesState>(
-                    buildWhen: (previous, current) =>
-                        previous.isNameOfSickPersonValid != current.isNameOfSickPersonValid,
+                    buildWhen: (previous, current) => previous.nameOfSickThePerson != current.nameOfSickThePerson,
                     builder: (context, state) {
                       return SampiroTextField(
                         isValid: state.isNameOfSickPersonValid,
                         label: l10n.nameOfTheSickPerson,
                         onChanged: (nameOfTheSickPerson) =>
-                            bloc.add(ServicesNameOfTheSickPeronChanged(nameOfTheSickPerson)),
+                            bloc.add(ServicesNameOfTheSickPersonChanged(nameOfTheSickPerson)),
                       );
                     },
                   ),
 
                   BlocBuilder<ServicesBloc, ServicesState>(
-                    buildWhen: (previous, current) => previous.isBarangayValid != current.isBarangayValid,
+                    buildWhen: (previous, current) => previous.barangay != current.barangay,
                     builder: (context, state) {
                       return SampiroDropDown(
                         label: l10n.barangay,
@@ -121,7 +120,7 @@ class AnointingOfTheSickView extends StatelessWidget {
                   ),
 
                   BlocBuilder<ServicesBloc, ServicesState>(
-                    buildWhen: (previous, current) => previous.isAddressValid != current.isAddressValid,
+                    buildWhen: (previous, current) => previous.address != current.address,
                     builder: (context, state) {
                       return SampiroTextField(
                         label: l10n.address,
@@ -132,7 +131,7 @@ class AnointingOfTheSickView extends StatelessWidget {
                   ),
 
                   BlocBuilder<ServicesBloc, ServicesState>(
-                    buildWhen: (previous, current) => previous.isAgeValid != current.isAgeValid,
+                    buildWhen: (previous, current) => previous.age != current.age,
                     builder: (context, state) {
                       return SampiroTextField(
                         keyboardType: TextInputType.number,
@@ -145,7 +144,7 @@ class AnointingOfTheSickView extends StatelessWidget {
                   ),
 
                   BlocBuilder<ServicesBloc, ServicesState>(
-                    buildWhen: (previous, current) => previous.isSicknessValid != current.isSicknessValid,
+                    buildWhen: (previous, current) => previous.sickness != current.sickness,
                     builder: (context, state) {
                       return SampiroTextField(
                         label: l10n.sickness,
@@ -156,8 +155,7 @@ class AnointingOfTheSickView extends StatelessWidget {
                   ),
 
                   BlocBuilder<ServicesBloc, ServicesState>(
-                    buildWhen: (previous, current) =>
-                        previous.isNameOfRequestingPersonValid != current.isNameOfRequestingPersonValid,
+                    buildWhen: (previous, current) => previous.nameOfRequestingPerson != current.nameOfRequestingPerson,
                     builder: (context, state) {
                       return SampiroTextField(
                         label: l10n.nameOfRequestingPerson,
@@ -181,14 +179,13 @@ class AnointingOfTheSickView extends StatelessWidget {
 
                   BlocBuilder<ServicesBloc, ServicesState>(
                     buildWhen: (previous, current) =>
-                        previous.isContactNumberOfRequestingPersonValid !=
-                        current.isContactNumberOfRequestingPersonValid,
+                        previous.contactNumberOfRequestingPerson != current.contactNumberOfRequestingPerson,
                     builder: (context, state) {
                       return SampiroTextField(
                         prefixText: '09',
                         label: l10n.contactNumberOfRequestingPerson,
                         isValid: state.isContactNumberOfRequestingPersonValid,
-                        inputFormatters: [FilteringTextInputFormatter.digitsOnly, LengthLimitingTextInputFormatter(9)],
+                        inputFormatters: [mobileNoFormatter],
                         onChanged: (contactNumberOfRequestingPerson) =>
                             bloc.add(ServicesContactNumberOfRequestingPersonChanged(contactNumberOfRequestingPerson)),
                       );
@@ -196,7 +193,7 @@ class AnointingOfTheSickView extends StatelessWidget {
                   ),
 
                   BlocBuilder<ServicesBloc, ServicesState>(
-                    buildWhen: (previous, current) => previous.isDateOfAnointingValid != current.isDateOfAnointingValid,
+                    buildWhen: (previous, current) => previous.dateOfAnointing != current.dateOfAnointing,
                     builder: (context, state) {
                       return SampiroTextField(
                         label: l10n.dateOfAnointing,

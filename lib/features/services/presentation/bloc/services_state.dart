@@ -20,7 +20,7 @@ abstract class ServicesState with _$ServicesState {
     @Default('') String docRefId,
     @Default('') String errorMessage,
     @Default('') String address,
-    @Default('') String nameOfSickPerson,
+    @Default('') String nameOfSickThePerson,
     @Default('') String age,
     @Default('') String barangay,
     @Default('') String sickness,
@@ -32,6 +32,11 @@ abstract class ServicesState with _$ServicesState {
     @Default('') String preferredCounselingDate,
     TimeOfDay? preferredCounselingTime,
     TimeOfDay? timeOfAnointing,
+    @Default('') String property,
+    @Default('') String dateOfBlessing,
+    TimeOfDay? timeOfBlessing,
+    @Default('') String religion,
+    @Default('') String reason,
   }) = _ServicesState;
   const ServicesState._();
 
@@ -51,8 +56,36 @@ abstract class ServicesState with _$ServicesState {
     return '$hour:$minute $period';
   }
 
+  String get formattedTimeOfBlessing {
+    if (timeOfBlessing == null) return '';
+    final hour = timeOfBlessing!.hourOfPeriod == 0 ? 12 : timeOfBlessing!.hourOfPeriod;
+    final period = timeOfBlessing!.period == DayPeriod.am ? 'AM' : 'PM';
+    final minute = timeOfBlessing!.minute.toString().padLeft(2, '0');
+    return '$hour:$minute $period';
+  }
+
+  bool get isReasonValid {
+    return reason.length > 3;
+  }
+
+  bool get isReligionValid {
+    return religion.length > 3;
+  }
+
+  bool get isTimeOfBlessingValid {
+    return timeOfBlessing != null;
+  }
+
+  bool get isPropertyValid {
+    return property.isNotEmpty;
+  }
+
+  bool get isDateOfBlessingValid {
+    return dateOfBlessing.length == 10;
+  }
+
   bool get isNameOfSickPersonValid {
-    return nameOfSickPerson.length > 3;
+    return nameOfSickThePerson.length > 3;
   }
 
   bool get isTimeOfAnointing {
@@ -80,7 +113,7 @@ abstract class ServicesState with _$ServicesState {
   }
 
   bool get isBarangayValid {
-    return barangay.length > 3;
+    return barangay.isNotEmpty;
   }
 
   bool get isAgeValid {
@@ -96,7 +129,7 @@ abstract class ServicesState with _$ServicesState {
   }
 
   bool get isTypeOfCounselingValid {
-    return typeOfCounseling.length > 3;
+    return typeOfCounseling.isNotEmpty;
   }
 
   bool get isFieldDateOfBirthValid {
@@ -175,5 +208,17 @@ abstract class ServicesState with _$ServicesState {
         isContactNumberOfRequestingPersonValid &&
         isDateOfAnointingValid &&
         isTimeOfAnointing;
+  }
+
+  bool get isRequestScheduleValid {
+    return isPropertyValid &&
+        isNameValid &&
+        isBarangayValid &&
+        isAddressValid &&
+        isMobileNoValid &&
+        isDateOfBlessingValid &&
+        isTimeOfBlessingValid &&
+        isReligionValid &&
+        isReasonValid;
   }
 }

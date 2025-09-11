@@ -228,7 +228,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get timeOfBlessing => 'Time of Blessing:*';
 
   @override
-  String get dateOfBlessing => 'Date of Blessing:*';
+  String get dateOfBlessing => 'Date of Blessing:* (mm/dd/yyyy)';
 
   @override
   String get scheduleABlessingRequest => 'Schedule a Blessing Request';

@@ -1,6 +1,5 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:sampiro/app/bloc/bloc.dart';
 import 'package:sampiro/core/routes/app_router.dart';
 import 'package:sampiro/core/utils/input_formatter.dart';
@@ -80,7 +79,7 @@ class CounselingView extends StatelessWidget {
                   Text(l10n.topC),
 
                   BlocBuilder<ServicesBloc, ServicesState>(
-                    buildWhen: (previous, current) => previous.isNameValid != current.isNameValid,
+                    buildWhen: (previous, current) => previous.fieldName != current.fieldName,
                     builder: (context, state) {
                       return SampiroTextField(
                         isValid: state.isNameValid,
@@ -96,11 +95,10 @@ class CounselingView extends StatelessWidget {
                     builder: (context, state) {
                       return SampiroTextField(
                         label: l10n.mobileNo,
-                        keyboardType: TextInputType.number,
                         prefixText: '09',
                         isValid: state.isMobileNoValid,
                         onChanged: (mobileNo) => bloc.add(ServicesMobileNoChanged(mobileNo)),
-                        inputFormatters: [FilteringTextInputFormatter.digitsOnly, LengthLimitingTextInputFormatter(9)],
+                        inputFormatters: [mobileNoFormatter],
                       );
                     },
                   ),

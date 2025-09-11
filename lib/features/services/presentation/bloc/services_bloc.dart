@@ -34,7 +34,7 @@ class ServicesBloc extends Bloc<ServicesEvent, ServicesState> {
     on<ServicesPreferredCounselingDateChanged>(_onServicesPreferredCounselingDateChanged);
     on<ServicesPreferredCounselingTimeChanged>(_onServicesPreferredCounselingTimeChanged);
     on<ServicesSubmitted>(_onServicesSubmitted);
-    on<ServicesNameOfTheSickPeronChanged>(_onServicesNameOfTheSickPeronChanged);
+    on<ServicesNameOfTheSickPersonChanged>(_onServicesNameOfTheSickPersonChanged);
     on<ServicesAgeChanged>(_onServicesAgeChanged);
     on<ServicesBarangayChanged>(_onServicesBarangayChanged);
     on<ServicesSicknessChanged>(_onServicesSicknessChanged);
@@ -43,16 +43,56 @@ class ServicesBloc extends Bloc<ServicesEvent, ServicesState> {
     on<ServicesContactNumberOfRequestingPersonChanged>(_onServicesContactNumberOfRequestingPersonChanged);
     on<ServicesDateOfAnointingChanged>(_onServicesDateOfAnointingChanged);
     on<ServicesTimeOfAnointingChanged>(_onServicesTimeOfAnointingChanged);
+    on<ServicesPropertyChanged>(_onServicesPropertyChanged);
+    on<ServicesDateOfBlessingChanged>(_onServicesDateOfBlessingChanged);
+    on<ServicesTimeOfBlessingChanged>(_onServicesTimeOfBlessingChanged);
+    on<ServicesReligionChanged>(_onServicesReligionChanged);
+    on<ServicesReasonChanged>(_onServicesReasonChanged);
   }
 
   // dependency/private property
   final IServicesRepository _servicesRepository;
 
-  void _onServicesNameOfTheSickPeronChanged(
-    ServicesNameOfTheSickPeronChanged event,
+  void _onServicesPropertyChanged(
+    ServicesPropertyChanged event,
     Emitter<ServicesState> emit,
   ) {
-    emit(state.copyWith(nameOfSickPerson: event.nameOfTheSickPeron.trim()));
+    emit(state.copyWith(property: event.property.trim()));
+  }
+
+  void _onServicesDateOfBlessingChanged(
+    ServicesDateOfBlessingChanged event,
+    Emitter<ServicesState> emit,
+  ) {
+    emit(state.copyWith(dateOfBlessing: event.dateOfBlessing.trim()));
+  }
+
+  void _onServicesTimeOfBlessingChanged(
+    ServicesTimeOfBlessingChanged event,
+    Emitter<ServicesState> emit,
+  ) {
+    emit(state.copyWith(timeOfBlessing: event.timeOfBlessing));
+  }
+
+  void _onServicesReligionChanged(
+    ServicesReligionChanged event,
+    Emitter<ServicesState> emit,
+  ) {
+    emit(state.copyWith(religion: event.religion.trim()));
+  }
+
+  void _onServicesReasonChanged(
+    ServicesReasonChanged event,
+    Emitter<ServicesState> emit,
+  ) {
+    emit(state.copyWith(reason: event.reason.trim()));
+  }
+
+  void _onServicesNameOfTheSickPersonChanged(
+    ServicesNameOfTheSickPersonChanged event,
+    Emitter<ServicesState> emit,
+  ) {
+    emit(state.copyWith(nameOfSickThePerson: event.nameOfTheSickPerson.trim()));
   }
 
   void _onServicesTimeOfAnointingChanged(

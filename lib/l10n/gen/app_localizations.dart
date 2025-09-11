@@ -530,7 +530,7 @@ abstract class AppLocalizations {
   /// No description provided for @dateOfBlessing.
   ///
   /// In en, this message translates to:
-  /// **'Date of Blessing:*'**
+  /// **'Date of Blessing:* (mm/dd/yyyy)'**
   String get dateOfBlessing;
 
   /// No description provided for @scheduleABlessingRequest.
