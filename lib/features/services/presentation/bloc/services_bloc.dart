@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:sampiro/features/services/data/models/parish_offered_service.dart';
 import 'package:sampiro/features/services/domain/repositories/iservices_repository.dart';
@@ -28,16 +29,120 @@ class ServicesBloc extends Bloc<ServicesEvent, ServicesState> {
     on<ServicesDateOfBaptismChanged>(_onServicesDateOfBaptismChanged);
     on<ServicesMobileNoChanged>(_onServicesMobileNoChanged);
     on<ServicesEmailAddressChanged>(_onServicesEmailAddressChanged);
+    on<ServicesAddressChanged>(_onServicesAddressChanged);
+    on<ServicesTypeOfCounselingChanged>(_onServicesTypeOfCounselingChanged);
+    on<ServicesPreferredCounselingDateChanged>(_onServicesPreferredCounselingDateChanged);
+    on<ServicesPreferredCounselingTimeChanged>(_onServicesPreferredCounselingTimeChanged);
     on<ServicesSubmitted>(_onServicesSubmitted);
+    on<ServicesNameOfTheSickPeronChanged>(_onServicesNameOfTheSickPeronChanged);
+    on<ServicesAgeChanged>(_onServicesAgeChanged);
+    on<ServicesBarangayChanged>(_onServicesBarangayChanged);
+    on<ServicesSicknessChanged>(_onServicesSicknessChanged);
+    on<ServicesNameOfRequestingPersonChanged>(_onServicesNameOfRequestingPersonChanged);
+    on<ServicesRelationshipWithSickChanged>(_onServicesRelationshipWithSickChanged);
+    on<ServicesContactNumberOfRequestingPersonChanged>(_onServicesContactNumberOfRequestingPersonChanged);
+    on<ServicesDateOfAnointingChanged>(_onServicesDateOfAnointingChanged);
+    on<ServicesTimeOfAnointingChanged>(_onServicesTimeOfAnointingChanged);
   }
 
   // dependency/private property
   final IServicesRepository _servicesRepository;
 
+  void _onServicesNameOfTheSickPeronChanged(
+    ServicesNameOfTheSickPeronChanged event,
+    Emitter<ServicesState> emit,
+  ) {
+    emit(state.copyWith(nameOfSickPerson: event.nameOfTheSickPeron.trim()));
+  }
+
+  void _onServicesTimeOfAnointingChanged(
+    ServicesTimeOfAnointingChanged event,
+    Emitter<ServicesState> emit,
+  ) {
+    emit(state.copyWith(timeOfAnointing: event.timeOfAnointing));
+  }
+
+  void _onServicesDateOfAnointingChanged(
+    ServicesDateOfAnointingChanged event,
+    Emitter<ServicesState> emit,
+  ) {
+    emit(state.copyWith(dateOfAnointing: event.dateOfAnointing.trim()));
+  }
+
+  void _onServicesContactNumberOfRequestingPersonChanged(
+    ServicesContactNumberOfRequestingPersonChanged event,
+    Emitter<ServicesState> emit,
+  ) {
+    emit(state.copyWith(contactNumberOfRequestingPerson: event.contactNumberOfRequestingPerson.trim()));
+  }
+
+  void _onServicesRelationshipWithSickChanged(
+    ServicesRelationshipWithSickChanged event,
+    Emitter<ServicesState> emit,
+  ) {
+    emit(state.copyWith(relationshipWithSick: event.relationshipWithSick.trim()));
+  }
+
+  void _onServicesNameOfRequestingPersonChanged(
+    ServicesNameOfRequestingPersonChanged event,
+    Emitter<ServicesState> emit,
+  ) {
+    emit(state.copyWith(nameOfRequestingPerson: event.nameOfRequestingPerson.trim()));
+  }
+
+  void _onServicesSicknessChanged(
+    ServicesSicknessChanged event,
+    Emitter<ServicesState> emit,
+  ) {
+    emit(state.copyWith(sickness: event.sickness.trim()));
+  }
+
+  void _onServicesBarangayChanged(
+    ServicesBarangayChanged event,
+    Emitter<ServicesState> emit,
+  ) {
+    emit(state.copyWith(barangay: event.barangay.trim()));
+  }
+
+  void _onServicesAgeChanged(
+    ServicesAgeChanged event,
+    Emitter<ServicesState> emit,
+  ) {
+    emit(state.copyWith(age: event.age.trim()));
+  }
+
   void _onServicesStarted(
     ServicesStarted event,
     Emitter<ServicesState> emit,
   ) {}
+
+  void _onServicesAddressChanged(
+    ServicesAddressChanged event,
+    Emitter<ServicesState> emit,
+  ) {
+    emit(state.copyWith(address: event.address.trim()));
+  }
+
+  void _onServicesTypeOfCounselingChanged(
+    ServicesTypeOfCounselingChanged event,
+    Emitter<ServicesState> emit,
+  ) {
+    emit(state.copyWith(typeOfCounseling: event.typeOfCounseling.trim()));
+  }
+
+  void _onServicesPreferredCounselingDateChanged(
+    ServicesPreferredCounselingDateChanged event,
+    Emitter<ServicesState> emit,
+  ) {
+    emit(state.copyWith(preferredCounselingDate: event.preferredCounselingDate.trim()));
+  }
+
+  void _onServicesPreferredCounselingTimeChanged(
+    ServicesPreferredCounselingTimeChanged event,
+    Emitter<ServicesState> emit,
+  ) {
+    emit(state.copyWith(preferredCounselingTime: event.preferredCounselingTime));
+  }
 
   void _onServicesFieldNameChanged(
     ServicesFieldNameChanged event,
@@ -124,7 +229,7 @@ class ServicesBloc extends Bloc<ServicesEvent, ServicesState> {
 
     final baptismalModel = ParishOfferedService(
       createdAt: FieldValue.serverTimestamp(),
-      selectedParishService: 'baptism',
+      selectedParishService: event.selectedServices,
       name: state.fieldName,
       dateOfBaptism: state.fieldDate,
       dateOfBirth: state.fieldDateOfBirth,
@@ -135,17 +240,30 @@ class ServicesBloc extends Bloc<ServicesEvent, ServicesState> {
       purpose: state.purpose,
       contactNumber: state.mobileNo,
       emailAddress: state.emailAddress,
+      presentAddress: state.address,
+      counselingType: state.typeOfCounseling,
+      dateOfCounselling: state.preferredCounselingDate,
+      time: state.formattedTime,
     );
-    if (!kReleaseMode) debugPrint('--x $baptismalModel');
 
     final inputEither = await _servicesRepository.requestAService(baptismalModel);
 
     inputEither.fold(
       (left) {
-        emit(state.copyWith(status: ServicesStatus.failed));
+        emit(
+          state.copyWith(
+            status: ServicesStatus.failed,
+            errorMessage: left.message,
+          ),
+        );
       },
-      (right) {
-        emit(state.copyWith(status: ServicesStatus.successful));
+      (docRefId) {
+        emit(
+          state.copyWith(
+            status: ServicesStatus.successful,
+            docRefId: docRefId,
+          ),
+        );
       },
     );
   }

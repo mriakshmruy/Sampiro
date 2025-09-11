@@ -43,6 +43,7 @@ abstract class ParishOfferedService with _$ParishOfferedService {
     @Default('') String dateOfCounselling,
     @Default('pending') String status,
     @Default('') String updatedBy,
+
     // Remarks of the user for unsure/estimates dates for baptismal / birthday and etc.
     @Default('') String senderDatesRemarks,
   }) = _ParishOfferedService;

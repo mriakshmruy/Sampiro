@@ -1,14 +1,13 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:sampiro/core/routes/app_router.dart';
 import 'package:sampiro/core/utils/input_formatter.dart';
-import 'package:sampiro/core/widgets/sampiro_drop_down.dart';
 import 'package:sampiro/core/widgets/sampiro_page_loader.dart';
 import 'package:sampiro/core/widgets/sampiro_text_field.dart';
 import 'package:sampiro/features/dashboard/presentation/bloc/bloc.dart';
 import 'package:sampiro/features/services/presentation/bloc/services_bloc.dart';
+import 'package:sampiro/features/services/presentation/widgets/request_dialog.dart';
 import 'package:sampiro/l10n/l10n.dart';
 
 class BaptismalCertificateView extends StatelessWidget {
@@ -20,16 +19,30 @@ class BaptismalCertificateView extends StatelessWidget {
     final l10n = context.l10n;
     final theme = Theme.of(context);
     return BlocListener<ServicesBloc, ServicesState>(
-      listenWhen: (previous, current) => previous.status != current.status,
+      listenWhen: (previous, current) =>
+          previous.status != current.status ||
+          previous.docRefId != current.docRefId ||
+          previous.errorMessage != current.errorMessage,
       listener: (context, state) {
-        if (state.status == ServicesStatus.successful) {
-          // TODO(Kashmir): create new state. return ref id
-          // TODO(Kashmir): create new screen that accepts ref id
+        if (state.status == ServicesStatus.successful && state.docRefId.isNotEmpty) {
+          showDialog<void>(
+            barrierDismissible: false,
+            context: context,
+            builder: (context) {
+              return RequestDialog(
+                docRefId: state.docRefId,
+                onPressed: () {
+                  context.router.popUntilRoot();
+                },
+              );
+            },
+          );
         }
-        if (state.status == ServicesStatus.failed) {
-          // TODO(Kashmir): snackbar to show error
+        if (state.status == ServicesStatus.failed && state.errorMessage.isNotEmpty) {
+          ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(state.errorMessage)));
         }
       },
+
       child: BlocSelector<ServicesBloc, ServicesState, ServicesStatus>(
         selector: (state) {
           return state.status;
@@ -44,13 +57,11 @@ class BaptismalCertificateView extends StatelessWidget {
                   style: theme.textTheme.bodyMedium?.copyWith(color: theme.colorScheme.surface),
                 ),
                 centerTitle: true,
-                leading: AppBar(
-                  leading: IconButton(
-                    icon: const Icon(Icons.arrow_back_ios_outlined),
-                    onPressed: () {
-                      context.router.push(const ServicesRoute());
-                    },
-                  ),
+                leading: IconButton(
+                  icon: const Icon(Icons.arrow_back_ios_outlined),
+                  onPressed: () {
+                    context.router.push(const ServicesRoute());
+                  },
                 ),
               ),
               body: ListView(
@@ -67,22 +78,12 @@ class BaptismalCertificateView extends StatelessWidget {
                   const Divider(),
                   Text(l10n.top),
 
-                  SampiroDropDown(
-                    dropDownMenuItem: const [
-                      DropdownMenuItem<String>(value: 'Addiction ', child: Text('Addiction')),
-                      DropdownMenuItem<String>(value: 'Career ', child: Text('Career')),
-                    ],
-
-                    onChanged: (counselingType) {
-                      if (!kReleaseMode) debugPrint('counseling : $counselingType');
-                    },
-                  ),
-
                   BlocBuilder<ServicesBloc, ServicesState>(
                     buildWhen: (previous, current) => previous.fieldName != current.fieldName,
                     builder: (context, state) {
                       return SampiroTextField(
                         isValid: state.isNameValid,
+                        icon: const Icon(Icons.verified_user),
                         label: l10n.name1,
                         textCapitalization: TextCapitalization.words,
                         onChanged: (fieldName) {
@@ -98,9 +99,10 @@ class BaptismalCertificateView extends StatelessWidget {
                         isValid: state.isFieldDateValid,
                         label: l10n.dateOfBaptism,
                         keyboardType: TextInputType.number,
+
                         hintText: l10n.mmddyyyy,
                         onChanged: (fieldDate) {
-                          bloc.add(ServicesEvent.fieldDateChanged(fieldDate));
+                          bloc.add(ServicesFieldDateChanged(fieldDate));
                         },
                         inputFormatters: [
                           monthDateYearFormatter,
@@ -117,7 +119,7 @@ class BaptismalCertificateView extends StatelessWidget {
                         keyboardType: TextInputType.number,
                         hintText: l10n.mmddyyyy,
                         onChanged: (fieldDateOfBirth) {
-                          bloc.add(ServicesEvent.fieldDateOfBirthChanged(fieldDateOfBirth));
+                          bloc.add(ServicesFieldDateOfBirthChanged(fieldDateOfBirth));
                         },
                         inputFormatters: [
                           monthDateYearFormatter,
@@ -133,7 +135,7 @@ class BaptismalCertificateView extends StatelessWidget {
                         hintText: l10n.remarks,
                         isValid: state.isRemarksValid,
                         onChanged: (remarks) {
-                          bloc.add(ServicesEvent.remarks(remarks));
+                          bloc.add(ServicesRemarksChanged(remarks));
                         },
                       );
                     },
@@ -145,7 +147,7 @@ class BaptismalCertificateView extends StatelessWidget {
                         label: l10n.placeOfBirth,
                         isValid: state.isPlaceOfBirthValid,
                         onChanged: (placeOfBirth) {
-                          bloc.add(ServicesEvent.placeOfBirthChanged(placeOfBirth));
+                          bloc.add(ServicesPlaceOfBirthChanged(placeOfBirth));
                         },
                       );
                     },
@@ -157,7 +159,7 @@ class BaptismalCertificateView extends StatelessWidget {
                         label: l10n.nameOfFather,
                         isValid: state.isNameOfFatherValid,
                         onChanged: (nameOfFather) {
-                          bloc.add(ServicesEvent.nameOfFatherChanged(nameOfFather));
+                          bloc.add(ServicesNameOfFatherChanged(nameOfFather));
                         },
                       );
                     },
@@ -169,7 +171,7 @@ class BaptismalCertificateView extends StatelessWidget {
                         label: l10n.nameOfMother,
                         isValid: state.isNameOfMotherValid,
                         onChanged: (nameOfMother) {
-                          bloc.add(ServicesEvent.nameOfMotherChanged(nameOfMother));
+                          bloc.add(ServicesNameOfMotherChanged(nameOfMother));
                         },
                       );
                     },
@@ -178,10 +180,12 @@ class BaptismalCertificateView extends StatelessWidget {
                     buildWhen: (previous, current) => previous.purpose != current.purpose,
                     builder: (context, state) {
                       return SampiroTextField(
+                        autofocus: true,
+
                         label: l10n.purpose,
                         isValid: state.isPurposeValid,
                         onChanged: (purpose) {
-                          bloc.add(ServicesEvent.purposeChanged(purpose));
+                          bloc.add(ServicesPurposeChanged(purpose));
                         },
                       );
                     },
@@ -195,7 +199,7 @@ class BaptismalCertificateView extends StatelessWidget {
                         keyboardType: TextInputType.number,
                         isValid: state.isMobileNoValid,
                         onChanged: (mobileNo) {
-                          bloc.add(ServicesEvent.mobileNoChanged(mobileNo));
+                          bloc.add(ServicesMobileNoChanged(mobileNo));
                         },
                         inputFormatters: [
                           FilteringTextInputFormatter.digitsOnly,
@@ -211,7 +215,7 @@ class BaptismalCertificateView extends StatelessWidget {
                         label: l10n.emailAddress,
                         isValid: state.isEmailAddressValid,
                         onChanged: (emailAddress) {
-                          bloc.add(ServicesEvent.emailAddressChanged(emailAddress));
+                          bloc.add(ServicesEmailAddressChanged(emailAddress));
                         },
                       );
                     },
@@ -224,7 +228,7 @@ class BaptismalCertificateView extends StatelessWidget {
                         onPressed: state.isFormValid
                             // TODO(Kashmir): this is ternary operator
                             ? () {
-                                bloc.add(const ServicesSubmitted());
+                                bloc.add(const ServicesSubmitted('baptism'));
                               }
                             : null,
 
