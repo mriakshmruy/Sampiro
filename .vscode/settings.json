@@ -27,5 +27,9 @@
   "editor.codeActionsOnSave": {
     "source.fixAll": "explicit"
   },
-  "cSpell.words": ["sampiro"]
+  "cSpell.words": [
+    "barangay",
+    "poblacion",
+    "sampiro"
+  ]
 }

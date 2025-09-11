@@ -221,6 +221,12 @@ abstract class AppLocalizations {
   /// **'Parish Services'**
   String get parishServices;
 
+  /// No description provided for @parishUpdates.
+  ///
+  /// In en, this message translates to:
+  /// **'Parish Updates'**
+  String get parishUpdates;
+
   /// No description provided for @dateOfBirth.
   ///
   /// In en, this message translates to:

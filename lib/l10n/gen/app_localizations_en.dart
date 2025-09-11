@@ -75,6 +75,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get parishServices => 'Parish Services';
 
   @override
+  String get parishUpdates => 'Parish Updates';
+
+  @override
   String get dateOfBirth => 'Date of Birth: (mm/dd/yyyy)';
 
   @override
