@@ -1,6 +1,5 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:sampiro/core/routes/app_router.dart';
 import 'package:sampiro/core/utils/input_formatter.dart';
 import 'package:sampiro/core/widgets/sampiro_page_loader.dart';
@@ -57,13 +56,11 @@ class BaptismalCertificateView extends StatelessWidget {
                   style: theme.textTheme.bodyMedium?.copyWith(color: theme.colorScheme.surface),
                 ),
                 centerTitle: true,
-                leading: AppBar(
-                  leading: IconButton(
-                    icon: const Icon(Icons.arrow_back_ios_outlined),
-                    onPressed: () {
-                      context.router.push(const ServicesRoute());
-                    },
-                  ),
+                leading: IconButton(
+                  icon: const Icon(Icons.arrow_back_ios_outlined),
+                  onPressed: () {
+                    context.router.push(const ServicesRoute());
+                  },
                 ),
               ),
               body: ListView(
@@ -101,9 +98,10 @@ class BaptismalCertificateView extends StatelessWidget {
                         isValid: state.isFieldDateValid,
                         label: l10n.dateOfBaptism,
                         keyboardType: TextInputType.number,
+
                         hintText: l10n.mmddyyyy,
                         onChanged: (fieldDate) {
-                          bloc.add(ServicesEvent.fieldDateChanged(fieldDate));
+                          bloc.add(ServicesFieldDateChanged(fieldDate));
                         },
                         inputFormatters: [
                           monthDateYearFormatter,
@@ -120,7 +118,7 @@ class BaptismalCertificateView extends StatelessWidget {
                         keyboardType: TextInputType.number,
                         hintText: l10n.mmddyyyy,
                         onChanged: (fieldDateOfBirth) {
-                          bloc.add(ServicesEvent.fieldDateOfBirthChanged(fieldDateOfBirth));
+                          bloc.add(ServicesFieldDateOfBirthChanged(fieldDateOfBirth));
                         },
                         inputFormatters: [
                           monthDateYearFormatter,
@@ -136,7 +134,7 @@ class BaptismalCertificateView extends StatelessWidget {
                         hintText: l10n.remarks,
                         isValid: state.isRemarksValid,
                         onChanged: (remarks) {
-                          bloc.add(ServicesEvent.remarks(remarks));
+                          bloc.add(ServicesRemarksChanged(remarks));
                         },
                       );
                     },
@@ -148,7 +146,7 @@ class BaptismalCertificateView extends StatelessWidget {
                         label: l10n.placeOfBirth,
                         isValid: state.isPlaceOfBirthValid,
                         onChanged: (placeOfBirth) {
-                          bloc.add(ServicesEvent.placeOfBirthChanged(placeOfBirth));
+                          bloc.add(ServicesPlaceOfBirthChanged(placeOfBirth));
                         },
                       );
                     },
@@ -160,7 +158,7 @@ class BaptismalCertificateView extends StatelessWidget {
                         label: l10n.nameOfFather,
                         isValid: state.isNameOfFatherValid,
                         onChanged: (nameOfFather) {
-                          bloc.add(ServicesEvent.nameOfFatherChanged(nameOfFather));
+                          bloc.add(ServicesNameOfFatherChanged(nameOfFather));
                         },
                       );
                     },
@@ -172,7 +170,7 @@ class BaptismalCertificateView extends StatelessWidget {
                         label: l10n.nameOfMother,
                         isValid: state.isNameOfMotherValid,
                         onChanged: (nameOfMother) {
-                          bloc.add(ServicesEvent.nameOfMotherChanged(nameOfMother));
+                          bloc.add(ServicesNameOfMotherChanged(nameOfMother));
                         },
                       );
                     },
@@ -184,7 +182,7 @@ class BaptismalCertificateView extends StatelessWidget {
                         label: l10n.purpose,
                         isValid: state.isPurposeValid,
                         onChanged: (purpose) {
-                          bloc.add(ServicesEvent.purposeChanged(purpose));
+                          bloc.add(ServicesPurposeChanged(purpose));
                         },
                       );
                     },
@@ -195,14 +193,14 @@ class BaptismalCertificateView extends StatelessWidget {
                     builder: (context, state) {
                       return SampiroTextField(
                         label: l10n.mobileNo,
+                        prefixText: '09',
                         keyboardType: TextInputType.number,
                         isValid: state.isMobileNoValid,
                         onChanged: (mobileNo) {
-                          bloc.add(ServicesEvent.mobileNoChanged(mobileNo));
+                          bloc.add(ServicesMobileNoChanged(mobileNo));
                         },
                         inputFormatters: [
-                          FilteringTextInputFormatter.digitsOnly,
-                          LengthLimitingTextInputFormatter(11),
+                          mobileNoFormatter,
                         ],
                       );
                     },
@@ -214,7 +212,7 @@ class BaptismalCertificateView extends StatelessWidget {
                         label: l10n.emailAddress,
                         isValid: state.isEmailAddressValid,
                         onChanged: (emailAddress) {
-                          bloc.add(ServicesEvent.emailAddressChanged(emailAddress));
+                          bloc.add(ServicesEmailAddressChanged(emailAddress));
                         },
                       );
                     },
@@ -227,7 +225,7 @@ class BaptismalCertificateView extends StatelessWidget {
                         onPressed: state.isFormValid
                             // TODO(Kashmir): this is ternary operator
                             ? () {
-                                bloc.add(const ServicesSubmitted());
+                                bloc.add(const ServicesSubmitted('baptism'));
                               }
                             : null,
 

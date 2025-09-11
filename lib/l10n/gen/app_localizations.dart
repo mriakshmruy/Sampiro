@@ -305,11 +305,239 @@ abstract class AppLocalizations {
   /// **'Counseling'**
   String get counseling;
 
+  /// No description provided for @counselingRequest.
+  ///
+  /// In en, this message translates to:
+  /// **'Counseling Request'**
+  String get counselingRequest;
+
+  /// No description provided for @address.
+  ///
+  /// In en, this message translates to:
+  /// **'Address:*'**
+  String get address;
+
+  /// No description provided for @addiction.
+  ///
+  /// In en, this message translates to:
+  /// **'Addiction'**
+  String get addiction;
+
+  /// No description provided for @career.
+  ///
+  /// In en, this message translates to:
+  /// **'Career'**
+  String get career;
+
+  /// No description provided for @crisis.
+  ///
+  /// In en, this message translates to:
+  /// **'Crisis'**
+  String get crisis;
+
+  /// No description provided for @grief.
+  ///
+  /// In en, this message translates to:
+  /// **'Grief'**
+  String get grief;
+
+  /// No description provided for @marriageAndFamily.
+  ///
+  /// In en, this message translates to:
+  /// **'Marriage and Family'**
+  String get marriageAndFamily;
+
+  /// No description provided for @mentalHealth.
+  ///
+  /// In en, this message translates to:
+  /// **'Mental Health'**
+  String get mentalHealth;
+
+  /// No description provided for @trauma.
+  ///
+  /// In en, this message translates to:
+  /// **'Trauma'**
+  String get trauma;
+
+  /// No description provided for @anointingOfTheSickRequest.
+  ///
+  /// In en, this message translates to:
+  /// **'Anointing of the Sick Request'**
+  String get anointingOfTheSickRequest;
+
+  /// No description provided for @anointingOfTheSick.
+  ///
+  /// In en, this message translates to:
+  /// **'Anointing of the Sick'**
+  String get anointingOfTheSick;
+
+  /// No description provided for @nameOfTheSickPerson.
+  ///
+  /// In en, this message translates to:
+  /// **'Name of the sick person:*'**
+  String get nameOfTheSickPerson;
+
+  /// No description provided for @barangay.
+  ///
+  /// In en, this message translates to:
+  /// **'Barangay:*'**
+  String get barangay;
+
+  /// No description provided for @age.
+  ///
+  /// In en, this message translates to:
+  /// **'Age:*'**
+  String get age;
+
+  /// No description provided for @sickness.
+  ///
+  /// In en, this message translates to:
+  /// **'Sickness'**
+  String get sickness;
+
+  /// No description provided for @relationshipWithTheSick.
+  ///
+  /// In en, this message translates to:
+  /// **'Relationship with the sick'**
+  String get relationshipWithTheSick;
+
+  /// No description provided for @olympia.
+  ///
+  /// In en, this message translates to:
+  /// **'Olympia'**
+  String get olympia;
+
+  /// No description provided for @poblacion.
+  ///
+  /// In en, this message translates to:
+  /// **'Poblacion'**
+  String get poblacion;
+
+  /// No description provided for @valenzuela.
+  ///
+  /// In en, this message translates to:
+  /// **'Valenzuela'**
+  String get valenzuela;
+
+  /// No description provided for @nameOfRequestingPerson.
+  ///
+  /// In en, this message translates to:
+  /// **'Name of Requesting Person'**
+  String get nameOfRequestingPerson;
+
+  /// No description provided for @contactNumberOfRequestingPerson.
+  ///
+  /// In en, this message translates to:
+  /// **'Contact Number of Requesting Person'**
+  String get contactNumberOfRequestingPerson;
+
+  /// No description provided for @dateOfAnointing.
+  ///
+  /// In en, this message translates to:
+  /// **'Date of Anointing:* (mm/dd/yyyy)'**
+  String get dateOfAnointing;
+
+  /// No description provided for @timeOfAnointing.
+  ///
+  /// In en, this message translates to:
+  /// **'Time of Anointing'**
+  String get timeOfAnointing;
+
+  /// No description provided for @typeOfCounseling.
+  ///
+  /// In en, this message translates to:
+  /// **'Type of Counseling:*'**
+  String get typeOfCounseling;
+
+  /// No description provided for @preferredCounselingDate.
+  ///
+  /// In en, this message translates to:
+  /// **'Preferred Counseling Date:*'**
+  String get preferredCounselingDate;
+
+  /// No description provided for @preferredCounselingTime.
+  ///
+  /// In en, this message translates to:
+  /// **'Preferred Counseling Time:*'**
+  String get preferredCounselingTime;
+
+  /// No description provided for @topC.
+  ///
+  /// In en, this message translates to:
+  /// **'Note: Request must be made ahead of time to allow the parish office to plan accordingly'**
+  String get topC;
+
   /// No description provided for @menu.
   ///
   /// In en, this message translates to:
   /// **'Menu'**
   String get menu;
+
+  /// No description provided for @scheduleABlessing.
+  ///
+  /// In en, this message translates to:
+  /// **'Schedule a Blessing'**
+  String get scheduleABlessing;
+
+  /// No description provided for @property.
+  ///
+  /// In en, this message translates to:
+  /// **'Property:*'**
+  String get property;
+
+  /// No description provided for @businessStore.
+  ///
+  /// In en, this message translates to:
+  /// **'Business/Store'**
+  String get businessStore;
+
+  /// No description provided for @houseCondo.
+  ///
+  /// In en, this message translates to:
+  /// **'House/Condo'**
+  String get houseCondo;
+
+  /// No description provided for @office.
+  ///
+  /// In en, this message translates to:
+  /// **'Office'**
+  String get office;
+
+  /// No description provided for @others.
+  ///
+  /// In en, this message translates to:
+  /// **'Others'**
+  String get others;
+
+  /// No description provided for @reason.
+  ///
+  /// In en, this message translates to:
+  /// **'Reason:*'**
+  String get reason;
+
+  /// No description provided for @religion.
+  ///
+  /// In en, this message translates to:
+  /// **'Religion'**
+  String get religion;
+
+  /// No description provided for @timeOfBlessing.
+  ///
+  /// In en, this message translates to:
+  /// **'Time of Blessing:*'**
+  String get timeOfBlessing;
+
+  /// No description provided for @dateOfBlessing.
+  ///
+  /// In en, this message translates to:
+  /// **'Date of Blessing:* (mm/dd/yyyy)'**
+  String get dateOfBlessing;
+
+  /// No description provided for @scheduleABlessingRequest.
+  ///
+  /// In en, this message translates to:
+  /// **'Schedule a Blessing Request'**
+  String get scheduleABlessingRequest;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

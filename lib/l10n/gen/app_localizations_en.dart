@@ -117,5 +117,119 @@ class AppLocalizationsEn extends AppLocalizations {
   String get counseling => 'Counseling';
 
   @override
+  String get counselingRequest => 'Counseling Request';
+
+  @override
+  String get address => 'Address:*';
+
+  @override
+  String get addiction => 'Addiction';
+
+  @override
+  String get career => 'Career';
+
+  @override
+  String get crisis => 'Crisis';
+
+  @override
+  String get grief => 'Grief';
+
+  @override
+  String get marriageAndFamily => 'Marriage and Family';
+
+  @override
+  String get mentalHealth => 'Mental Health';
+
+  @override
+  String get trauma => 'Trauma';
+
+  @override
+  String get anointingOfTheSickRequest => 'Anointing of the Sick Request';
+
+  @override
+  String get anointingOfTheSick => 'Anointing of the Sick';
+
+  @override
+  String get nameOfTheSickPerson => 'Name of the sick person:*';
+
+  @override
+  String get barangay => 'Barangay:*';
+
+  @override
+  String get age => 'Age:*';
+
+  @override
+  String get sickness => 'Sickness';
+
+  @override
+  String get relationshipWithTheSick => 'Relationship with the sick';
+
+  @override
+  String get olympia => 'Olympia';
+
+  @override
+  String get poblacion => 'Poblacion';
+
+  @override
+  String get valenzuela => 'Valenzuela';
+
+  @override
+  String get nameOfRequestingPerson => 'Name of Requesting Person';
+
+  @override
+  String get contactNumberOfRequestingPerson => 'Contact Number of Requesting Person';
+
+  @override
+  String get dateOfAnointing => 'Date of Anointing:* (mm/dd/yyyy)';
+
+  @override
+  String get timeOfAnointing => 'Time of Anointing';
+
+  @override
+  String get typeOfCounseling => 'Type of Counseling:*';
+
+  @override
+  String get preferredCounselingDate => 'Preferred Counseling Date:*';
+
+  @override
+  String get preferredCounselingTime => 'Preferred Counseling Time:*';
+
+  @override
+  String get topC => 'Note: Request must be made ahead of time to allow the parish office to plan accordingly';
+
+  @override
   String get menu => 'Menu';
+
+  @override
+  String get scheduleABlessing => 'Schedule a Blessing';
+
+  @override
+  String get property => 'Property:*';
+
+  @override
+  String get businessStore => 'Business/Store';
+
+  @override
+  String get houseCondo => 'House/Condo';
+
+  @override
+  String get office => 'Office';
+
+  @override
+  String get others => 'Others';
+
+  @override
+  String get reason => 'Reason:*';
+
+  @override
+  String get religion => 'Religion';
+
+  @override
+  String get timeOfBlessing => 'Time of Blessing:*';
+
+  @override
+  String get dateOfBlessing => 'Date of Blessing:* (mm/dd/yyyy)';
+
+  @override
+  String get scheduleABlessingRequest => 'Schedule a Blessing Request';
 }

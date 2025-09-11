@@ -14,6 +14,29 @@ abstract class ServicesEvent with _$ServicesEvent {
   const factory ServicesEvent.dateOfBaptismChanged(String dateOfBaptism) = ServicesDateOfBaptismChanged;
   const factory ServicesEvent.mobileNoChanged(String mobileNo) = ServicesMobileNoChanged;
   const factory ServicesEvent.emailAddressChanged(String emailAddress) = ServicesEmailAddressChanged;
+  const factory ServicesEvent.addressChanged(String address) = ServicesAddressChanged;
+  const factory ServicesEvent.typeOfCounselingChanged(String typeOfCounseling) = ServicesTypeOfCounselingChanged;
+  const factory ServicesEvent.preferredCounselingDateChanged(String preferredCounselingDate) =
+      ServicesPreferredCounselingDateChanged;
+  const factory ServicesEvent.preferredCounselingTimeChanged(TimeOfDay preferredCounselingTime) =
+      ServicesPreferredCounselingTimeChanged;
+  const factory ServicesEvent.nameOfTheSickPersonChanged(String nameOfTheSickPerson) =
+      ServicesNameOfTheSickPersonChanged;
+  const factory ServicesEvent.ageChanged(String age) = ServicesAgeChanged;
+  const factory ServicesEvent.barangayChanged(String barangay) = ServicesBarangayChanged;
+  const factory ServicesEvent.sicknessChanged(String sickness) = ServicesSicknessChanged;
+  const factory ServicesEvent.nameOfRequestingPersonChanged(String nameOfRequestingPerson) =
+      ServicesNameOfRequestingPersonChanged;
+  const factory ServicesEvent.relationshipWithSick(String relationshipWithSick) = ServicesRelationshipWithSickChanged;
+  const factory ServicesEvent.contactNumberOfRequestingPersonChanged(String contactNumberOfRequestingPerson) =
+      ServicesContactNumberOfRequestingPersonChanged;
+  const factory ServicesEvent.dateOfAnointingChanged(String dateOfAnointing) = ServicesDateOfAnointingChanged;
+  const factory ServicesEvent.timeOfAnointingChanged(TimeOfDay timeOfAnointing) = ServicesTimeOfAnointingChanged;
+  const factory ServicesEvent.propertyChanged(String property) = ServicesPropertyChanged;
+  const factory ServicesEvent.dateOfBlessingChanged(String dateOfBlessing) = ServicesDateOfBlessingChanged;
+  const factory ServicesEvent.timeOfBlessingChanged(TimeOfDay timeOfBlessing) = ServicesTimeOfBlessingChanged;
+  const factory ServicesEvent.religionChanged(String religion) = ServicesReligionChanged;
+  const factory ServicesEvent.reasonChanged(String reason) = ServicesReasonChanged;
 
-  const factory ServicesEvent.submitted() = ServicesSubmitted;
+  const factory ServicesEvent.submitted(String selectedServices) = ServicesSubmitted;
 }

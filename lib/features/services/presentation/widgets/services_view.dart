@@ -75,6 +75,12 @@ class _ServicesViewState extends State<ServicesView> {
                   if (ServicesTileModel.serviceList[index].title == l10n.counseling) {
                     context.router.push(const CounselingRoute());
                   }
+                  if (ServicesTileModel.serviceList[index].title == l10n.anointingOfTheSick) {
+                    context.router.push(const AnointingSickRoute());
+                  }
+                  if (ServicesTileModel.serviceList[index].title == l10n.scheduleABlessing) {
+                    context.router.push(const ScheduleABlessingRoute());
+                  }
                 },
               );
             },
