@@ -17,7 +17,6 @@ class ServicesBloc extends Bloc<ServicesEvent, ServicesState> {
     : _servicesRepository = servicesRepository,
 
       super(const ServicesState()) {
-    on<ServicesStarted>(_onServicesStarted);
     on<ServicesFieldNameChanged>(_onServicesFieldNameChanged);
     on<ServicesFieldDateChanged>(_onServicesFieldDateChanged);
     on<ServicesFieldDateOfBirthChanged>(_onServicesFieldDateOfBirthChanged);
@@ -150,11 +149,6 @@ class ServicesBloc extends Bloc<ServicesEvent, ServicesState> {
   ) {
     emit(state.copyWith(age: event.age.trim()));
   }
-
-  void _onServicesStarted(
-    ServicesStarted event,
-    Emitter<ServicesState> emit,
-  ) {}
 
   void _onServicesAddressChanged(
     ServicesAddressChanged event,
