@@ -472,6 +472,72 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Menu'**
   String get menu;
+
+  /// No description provided for @scheduleABlessing.
+  ///
+  /// In en, this message translates to:
+  /// **'Schedule a Blessing'**
+  String get scheduleABlessing;
+
+  /// No description provided for @property.
+  ///
+  /// In en, this message translates to:
+  /// **'Property:*'**
+  String get property;
+
+  /// No description provided for @businessStore.
+  ///
+  /// In en, this message translates to:
+  /// **'Business/Store'**
+  String get businessStore;
+
+  /// No description provided for @houseCondo.
+  ///
+  /// In en, this message translates to:
+  /// **'House/Condo'**
+  String get houseCondo;
+
+  /// No description provided for @office.
+  ///
+  /// In en, this message translates to:
+  /// **'Office'**
+  String get office;
+
+  /// No description provided for @others.
+  ///
+  /// In en, this message translates to:
+  /// **'Others'**
+  String get others;
+
+  /// No description provided for @reason.
+  ///
+  /// In en, this message translates to:
+  /// **'Reason:*'**
+  String get reason;
+
+  /// No description provided for @religion.
+  ///
+  /// In en, this message translates to:
+  /// **'Religion'**
+  String get religion;
+
+  /// No description provided for @timeOfBlessing.
+  ///
+  /// In en, this message translates to:
+  /// **'Time of Blessing:*'**
+  String get timeOfBlessing;
+
+  /// No description provided for @dateOfBlessing.
+  ///
+  /// In en, this message translates to:
+  /// **'Date of Blessing:* (mm/dd/yyyy)'**
+  String get dateOfBlessing;
+
+  /// No description provided for @scheduleABlessingRequest.
+  ///
+  /// In en, this message translates to:
+  /// **'Schedule a Blessing Request'**
+  String get scheduleABlessingRequest;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

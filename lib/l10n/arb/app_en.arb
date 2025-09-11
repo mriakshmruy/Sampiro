@@ -62,7 +62,18 @@
   "preferredCounselingDate": "Preferred Counseling Date:*",
   "preferredCounselingTime": "Preferred Counseling Time:*",
   "topC": "Note: Request must be made ahead of time to allow the parish office to plan accordingly",
-  "menu": "Menu"
+  "menu": "Menu",
+  "scheduleABlessing": "Schedule a Blessing",
+  "property": "Property:*",
+  "businessStore": "Business/Store",
+  "houseCondo": "House/Condo",
+  "office": "Office",
+  "others": "Others",
+  "reason": "Reason:*",
+  "religion": "Religion",
+  "timeOfBlessing": "Time of Blessing:*",
+  "dateOfBlessing": "Date of Blessing:* (mm/dd/yyyy)",
+ "scheduleABlessingRequest": "Schedule a Blessing Request"
   
 
 }

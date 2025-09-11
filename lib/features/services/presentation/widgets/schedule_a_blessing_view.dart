@@ -11,14 +11,15 @@ import 'package:sampiro/features/services/presentation/bloc/services_bloc.dart';
 import 'package:sampiro/features/services/presentation/widgets/request_dialog.dart';
 import 'package:sampiro/l10n/l10n.dart';
 
-class CounselingView extends StatelessWidget {
-  const CounselingView({super.key});
+class ScheduleABlessingView extends StatelessWidget {
+  const ScheduleABlessingView({super.key});
 
   @override
   Widget build(BuildContext context) {
     final bloc = context.read<ServicesBloc>();
     final l10n = context.l10n;
     final theme = Theme.of(context);
+
     return BlocListener<ServicesBloc, ServicesState>(
       listener: (context, state) {
         if (state.status == ServicesStatus.successful && state.docRefId.isNotEmpty) {
@@ -54,20 +55,21 @@ class CounselingView extends StatelessWidget {
                   l10n.parishServices,
                   style: theme.textTheme.bodyMedium?.copyWith(color: theme.colorScheme.surface),
                 ),
-                centerTitle: true,
                 leading: IconButton(
                   onPressed: () {
                     context.router.push(const ServicesRoute());
                   },
                   icon: const Icon(Icons.arrow_back_ios_new_outlined),
                 ),
+                centerTitle: true,
               ),
+
               body: ListView(
                 children: [
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 8),
                     child: Text(
-                      l10n.counselingRequest,
+                      l10n.scheduleABlessingRequest,
                       style: theme.textTheme.bodyMedium?.copyWith(
                         color: theme.colorScheme.primary,
                         fontWeight: FontWeight.bold,
@@ -79,29 +81,56 @@ class CounselingView extends StatelessWidget {
                   Text(l10n.topC),
 
                   BlocBuilder<ServicesBloc, ServicesState>(
-                    buildWhen: (previous, current) => previous.fieldName != current.fieldName,
+                    buildWhen: (previous, current) => previous.property != current.property,
                     builder: (context, state) {
-                      return SampiroTextField(
-                        isValid: state.isNameValid,
-                        label: l10n.name1,
-                        textCapitalization: TextCapitalization.words,
-                        onChanged: (name) => bloc.add(ServicesFieldNameChanged(name)),
+                      return SampiroDropDown(
+                        isValid: state.isPropertyValid,
+                        label: l10n.property,
+                        dropDownMenuItem: [
+                          DropdownMenuItem<String>(value: l10n.businessStore, child: Text(l10n.businessStore)),
+                          DropdownMenuItem<String>(value: l10n.houseCondo, child: Text(l10n.houseCondo)),
+                          DropdownMenuItem<String>(value: l10n.office, child: Text(l10n.office)),
+                          DropdownMenuItem<String>(value: l10n.others, child: Text(l10n.others)),
+                        ],
+
+                        onChanged: (property) {
+                          if (property == null) return;
+                          bloc.add(ServicesPropertyChanged(property));
+                        },
                       );
                     },
                   ),
 
                   BlocBuilder<ServicesBloc, ServicesState>(
-                    buildWhen: (previous, current) => previous.mobileNo != current.mobileNo,
+                    buildWhen: (previous, current) => previous.fieldName != current.fieldName,
                     builder: (context, state) {
                       return SampiroTextField(
-                        label: l10n.mobileNo,
-                        prefixText: '09',
-                        isValid: state.isMobileNoValid,
-                        onChanged: (mobileNo) => bloc.add(ServicesMobileNoChanged(mobileNo)),
-                        inputFormatters: [mobileNoFormatter],
+                        label: l10n.name1,
+                        isValid: state.isNameValid,
+                        onChanged: (fieldName) => bloc.add(ServicesFieldNameChanged(fieldName)),
                       );
                     },
                   ),
+
+                  BlocBuilder<ServicesBloc, ServicesState>(
+                    buildWhen: (previous, current) => previous.barangay != current.barangay,
+                    builder: (context, state) {
+                      return SampiroDropDown(
+                        label: l10n.barangay,
+                        isValid: state.isBarangayValid,
+                        dropDownMenuItem: [
+                          DropdownMenuItem<String>(value: l10n.olympia, child: Text(l10n.olympia)),
+                          DropdownMenuItem<String>(value: l10n.poblacion, child: Text(l10n.poblacion)),
+                          DropdownMenuItem<String>(value: l10n.valenzuela, child: Text(l10n.valenzuela)),
+                        ],
+                        onChanged: (barangay) {
+                          if (barangay == null) return;
+                          bloc.add(ServicesBarangayChanged(barangay));
+                        },
+                      );
+                    },
+                  ),
+
                   BlocBuilder<ServicesBloc, ServicesState>(
                     buildWhen: (previous, current) => previous.address != current.address,
                     builder: (context, state) {
@@ -112,91 +141,76 @@ class CounselingView extends StatelessWidget {
                       );
                     },
                   ),
-                  BlocBuilder<ServicesBloc, ServicesState>(
-                    buildWhen: (previous, current) => previous.typeOfCounseling != current.typeOfCounseling,
-                    builder: (context, state) {
-                      return SampiroDropDown(
-                        label: l10n.typeOfCounseling,
-                        isValid: state.isTypeOfCounselingValid,
 
-                        dropDownMenuItem: [
-                          DropdownMenuItem<String>(
-                            value: l10n.addiction,
-                            child: Text(l10n.addiction),
-                          ),
-                          DropdownMenuItem<String>(
-                            value: l10n.career,
-                            child: Text(l10n.career),
-                          ),
-                          DropdownMenuItem<String>(
-                            value: l10n.crisis,
-                            child: Text(l10n.crisis),
-                          ),
-                          DropdownMenuItem<String>(
-                            value: l10n.grief,
-                            child: Text(l10n.grief),
-                          ),
-                          DropdownMenuItem<String>(
-                            value: l10n.marriageAndFamily,
-                            child: Text(l10n.marriageAndFamily),
-                          ),
-                          DropdownMenuItem<String>(
-                            value: l10n.mentalHealth,
-                            child: Text(l10n.mentalHealth),
-                          ),
-                          DropdownMenuItem<String>(
-                            value: l10n.trauma,
-                            child: Text(l10n.trauma),
-                          ),
-                        ],
-                        onChanged: (value) {
-                          if (value == null) return;
-                          bloc.add(ServicesTypeOfCounselingChanged(value));
-                        },
-                      );
-                    },
-                  ),
                   BlocBuilder<ServicesBloc, ServicesState>(
-                    buildWhen: (previous, current) =>
-                        previous.preferredCounselingDate != current.preferredCounselingDate,
+                    buildWhen: (previous, current) => previous.mobileNo != current.mobileNo,
                     builder: (context, state) {
                       return SampiroTextField(
-                        label: l10n.preferredCounselingDate,
-                        isValid: state.isPreferredCounselingDateValid,
-                        keyboardType: TextInputType.number,
-                        hintText: l10n.mmddyyyy,
+                        label: l10n.mobileNo,
+                        isValid: state.isMobileNoValid,
+                        prefixText: '09',
+                        inputFormatters: [mobileNoFormatter],
+                        onChanged: (mobileNo) => bloc.add(ServicesMobileNoChanged(mobileNo)),
+                      );
+                    },
+                  ),
+
+                  BlocBuilder<ServicesBloc, ServicesState>(
+                    buildWhen: (previous, current) => previous.dateOfBlessing != current.dateOfBlessing,
+                    builder: (context, state) {
+                      return SampiroTextField(
+                        label: l10n.dateOfBlessing,
+                        isValid: state.isDateOfBlessingValid,
                         inputFormatters: [monthDateYearFormatter],
-                        onChanged: (preferredCounselingDate) =>
-                            bloc.add(ServicesPreferredCounselingDateChanged(preferredCounselingDate)),
+                        onChanged: (dateOfBlessing) => bloc.add(ServicesDateOfBlessingChanged(dateOfBlessing)),
                       );
                     },
                   ),
 
                   BlocBuilder<ServicesBloc, ServicesState>(
                     buildWhen: (previous, current) =>
-                        previous.preferredCounselingTime != current.preferredCounselingTime ||
-                        previous.formattedTime != current.formattedTime,
+                        previous.timeOfBlessing != current.timeOfBlessing ||
+                        previous.formattedTimeOfBlessing != current.formattedTimeOfBlessing,
                     builder: (context, state) {
                       return SampiroTimePicker(
-                        initialValue: state.formattedTime,
-                        label: l10n.preferredCounselingTime,
-                        isValid: state.isPreferredCounselingTimeValid,
-                        onTimeSelected: (value) {
-                          bloc.add(ServicesPreferredCounselingTimeChanged(value));
-                        },
+                        label: l10n.timeOfBlessing,
+                        isValid: state.isTimeOfBlessingValid,
+                        initialValue: state.formattedTimeOfBlessing,
+                        onTimeSelected: (timeOfBlessing) => bloc.add(ServicesTimeOfBlessingChanged(timeOfBlessing)),
                       );
                     },
                   ),
 
                   BlocBuilder<ServicesBloc, ServicesState>(
-                    buildWhen: (previous, current) => previous.isRequestValid != current.isRequestValid,
+                    buildWhen: (previous, current) => previous.religion != current.religion,
+                    builder: (context, state) {
+                      return SampiroTextField(
+                        label: l10n.religion,
+                        isValid: state.isReligionValid,
+                        onChanged: (religion) => bloc.add(ServicesReligionChanged(religion)),
+                      );
+                    },
+                  ),
+
+                  BlocBuilder<ServicesBloc, ServicesState>(
+                    buildWhen: (previous, current) => previous.reason != current.reason,
+                    builder: (context, state) {
+                      return SampiroTextField(
+                        label: l10n.reason,
+                        isValid: state.isReasonValid,
+                        onChanged: (reason) => bloc.add(ServicesReasonChanged(reason)),
+                      );
+                    },
+                  ),
+
+                  BlocBuilder<ServicesBloc, ServicesState>(
                     builder: (context, state) {
                       return Padding(
-                        padding: const EdgeInsetsGeometry.symmetric(vertical: 16),
+                        padding: const EdgeInsets.symmetric(vertical: 16),
                         child: ElevatedButton(
-                          onPressed: state.isRequestValid
+                          onPressed: state.isRequestScheduleValid
                               ? () {
-                                  bloc.add(const ServicesSubmitted('counseling'));
+                                  bloc.add(const ServicesSubmitted('schedule a blessing'));
                                 }
                               : null,
                           child: Text(l10n.submit),

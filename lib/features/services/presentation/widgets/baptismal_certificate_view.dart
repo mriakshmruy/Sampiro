@@ -1,6 +1,5 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:sampiro/core/routes/app_router.dart';
 import 'package:sampiro/core/utils/input_formatter.dart';
 import 'package:sampiro/core/widgets/sampiro_page_loader.dart';
@@ -180,8 +179,6 @@ class BaptismalCertificateView extends StatelessWidget {
                     buildWhen: (previous, current) => previous.purpose != current.purpose,
                     builder: (context, state) {
                       return SampiroTextField(
-                        autofocus: true,
-
                         label: l10n.purpose,
                         isValid: state.isPurposeValid,
                         onChanged: (purpose) {
@@ -196,14 +193,14 @@ class BaptismalCertificateView extends StatelessWidget {
                     builder: (context, state) {
                       return SampiroTextField(
                         label: l10n.mobileNo,
+                        prefixText: '09',
                         keyboardType: TextInputType.number,
                         isValid: state.isMobileNoValid,
                         onChanged: (mobileNo) {
                           bloc.add(ServicesMobileNoChanged(mobileNo));
                         },
                         inputFormatters: [
-                          FilteringTextInputFormatter.digitsOnly,
-                          LengthLimitingTextInputFormatter(11),
+                          mobileNoFormatter,
                         ],
                       );
                     },

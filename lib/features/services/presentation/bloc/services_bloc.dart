@@ -17,7 +17,6 @@ class ServicesBloc extends Bloc<ServicesEvent, ServicesState> {
     : _servicesRepository = servicesRepository,
 
       super(const ServicesState()) {
-    on<ServicesStarted>(_onServicesStarted);
     on<ServicesFieldNameChanged>(_onServicesFieldNameChanged);
     on<ServicesFieldDateChanged>(_onServicesFieldDateChanged);
     on<ServicesFieldDateOfBirthChanged>(_onServicesFieldDateOfBirthChanged);
@@ -34,7 +33,7 @@ class ServicesBloc extends Bloc<ServicesEvent, ServicesState> {
     on<ServicesPreferredCounselingDateChanged>(_onServicesPreferredCounselingDateChanged);
     on<ServicesPreferredCounselingTimeChanged>(_onServicesPreferredCounselingTimeChanged);
     on<ServicesSubmitted>(_onServicesSubmitted);
-    on<ServicesNameOfTheSickPeronChanged>(_onServicesNameOfTheSickPeronChanged);
+    on<ServicesNameOfTheSickPersonChanged>(_onServicesNameOfTheSickPersonChanged);
     on<ServicesAgeChanged>(_onServicesAgeChanged);
     on<ServicesBarangayChanged>(_onServicesBarangayChanged);
     on<ServicesSicknessChanged>(_onServicesSicknessChanged);
@@ -43,16 +42,56 @@ class ServicesBloc extends Bloc<ServicesEvent, ServicesState> {
     on<ServicesContactNumberOfRequestingPersonChanged>(_onServicesContactNumberOfRequestingPersonChanged);
     on<ServicesDateOfAnointingChanged>(_onServicesDateOfAnointingChanged);
     on<ServicesTimeOfAnointingChanged>(_onServicesTimeOfAnointingChanged);
+    on<ServicesPropertyChanged>(_onServicesPropertyChanged);
+    on<ServicesDateOfBlessingChanged>(_onServicesDateOfBlessingChanged);
+    on<ServicesTimeOfBlessingChanged>(_onServicesTimeOfBlessingChanged);
+    on<ServicesReligionChanged>(_onServicesReligionChanged);
+    on<ServicesReasonChanged>(_onServicesReasonChanged);
   }
 
   // dependency/private property
   final IServicesRepository _servicesRepository;
 
-  void _onServicesNameOfTheSickPeronChanged(
-    ServicesNameOfTheSickPeronChanged event,
+  void _onServicesPropertyChanged(
+    ServicesPropertyChanged event,
     Emitter<ServicesState> emit,
   ) {
-    emit(state.copyWith(nameOfSickPerson: event.nameOfTheSickPeron.trim()));
+    emit(state.copyWith(property: event.property.trim()));
+  }
+
+  void _onServicesDateOfBlessingChanged(
+    ServicesDateOfBlessingChanged event,
+    Emitter<ServicesState> emit,
+  ) {
+    emit(state.copyWith(dateOfBlessing: event.dateOfBlessing.trim()));
+  }
+
+  void _onServicesTimeOfBlessingChanged(
+    ServicesTimeOfBlessingChanged event,
+    Emitter<ServicesState> emit,
+  ) {
+    emit(state.copyWith(timeOfBlessing: event.timeOfBlessing));
+  }
+
+  void _onServicesReligionChanged(
+    ServicesReligionChanged event,
+    Emitter<ServicesState> emit,
+  ) {
+    emit(state.copyWith(religion: event.religion.trim()));
+  }
+
+  void _onServicesReasonChanged(
+    ServicesReasonChanged event,
+    Emitter<ServicesState> emit,
+  ) {
+    emit(state.copyWith(reason: event.reason.trim()));
+  }
+
+  void _onServicesNameOfTheSickPersonChanged(
+    ServicesNameOfTheSickPersonChanged event,
+    Emitter<ServicesState> emit,
+  ) {
+    emit(state.copyWith(nameOfSickThePerson: event.nameOfTheSickPerson.trim()));
   }
 
   void _onServicesTimeOfAnointingChanged(
@@ -110,11 +149,6 @@ class ServicesBloc extends Bloc<ServicesEvent, ServicesState> {
   ) {
     emit(state.copyWith(age: event.age.trim()));
   }
-
-  void _onServicesStarted(
-    ServicesStarted event,
-    Emitter<ServicesState> emit,
-  ) {}
 
   void _onServicesAddressChanged(
     ServicesAddressChanged event,
@@ -238,7 +272,7 @@ class ServicesBloc extends Bloc<ServicesEvent, ServicesState> {
       nameOfFather: state.nameOfFather,
       nameOfMother: state.nameOfMother,
       purpose: state.purpose,
-      contactNumber: state.mobileNo,
+      contactNumber: '09${state.mobileNo}',
       emailAddress: state.emailAddress,
       presentAddress: state.address,
       counselingType: state.typeOfCounseling,
