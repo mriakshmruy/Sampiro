@@ -1,5 +1,4 @@
 import 'package:app_ui/app_ui.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:sampiro/core/resources/assets.gen.dart';
 import 'package:sampiro/core/widgets/image_card.dart';
@@ -39,9 +38,7 @@ class HomeView extends StatelessWidget {
             child: ImageCard(
               imagePath: Assets.images.headerMamaMary.path,
               title: l10n.testimonials,
-              onTap: () {
-                if (!kReleaseMode) debugPrint('hello1');
-              },
+              onTap: () {},
 
               padding: const EdgeInsets.only(top: 20),
             ),
@@ -50,9 +47,7 @@ class HomeView extends StatelessWidget {
             child: ImageCard(
               imagePath: Assets.images.mamaMaryAddTestimonial.path,
               title: l10n.dailyReflection,
-              onTap: () {
-                if (!kReleaseMode) debugPrint('hello2');
-              },
+              onTap: () {},
               padding: const EdgeInsets.only(top: 20),
             ),
           ),
