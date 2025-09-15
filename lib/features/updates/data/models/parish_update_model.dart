@@ -36,8 +36,6 @@ abstract class ParishUpdateModel with _$ParishUpdateModel {
       return '';
     }
   }
-<<<<<<< HEAD
-=======
 
   String get formattedPostingDate {
     try {
@@ -52,5 +50,4 @@ abstract class ParishUpdateModel with _$ParishUpdateModel {
       return '';
     }
   }
->>>>>>> main
 }
