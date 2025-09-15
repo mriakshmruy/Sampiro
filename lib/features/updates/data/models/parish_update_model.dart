@@ -36,4 +36,21 @@ abstract class ParishUpdateModel with _$ParishUpdateModel {
       return '';
     }
   }
+<<<<<<< HEAD
+=======
+
+  String get formattedPostingDate {
+    try {
+      final timeStamp = postingDate as Timestamp;
+
+      final dateTime = timeStamp.toDate();
+
+      final formattedDate = DateFormat('MMM. dd, yyyy, hh:mm a').format(dateTime);
+
+      return formattedDate;
+    } catch (_) {
+      return '';
+    }
+  }
+>>>>>>> main
 }
