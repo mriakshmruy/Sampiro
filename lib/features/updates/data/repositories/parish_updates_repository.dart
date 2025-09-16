@@ -34,11 +34,9 @@ class ParishUpdatesRepository implements IParishUpdatesRepository {
         _lastDocumentSnapshot = querySnapshots.docs[querySnapshots.docs.length - 1];
       }
 
-      // TODO: To add back
       final parishUpdateList = querySnapshots.docs.map((doc) => ParishUpdateModel.fromJson(doc.data())).toList();
 
       return Right(parishUpdateList);
-      // return const Right(unit);
     } catch (e) {
       return Left(CustomFailure(message: e.toString()));
     }
@@ -63,14 +61,11 @@ class ParishUpdatesRepository implements IParishUpdatesRepository {
         _lastDocumentSnapshot = querySnapshots.docs[querySnapshots.docs.length - 1];
       }
 
-      // TODO: To add back
       final parishUpdateList = querySnapshots.docs
           .map((doc) => ParishUpdateModel.fromJson(doc.data()! as Map<String, dynamic>))
           .toList();
 
       return Right(parishUpdateList);
-
-      // return const Right(unit);
     } catch (e) {
       return Left(CustomFailure(message: e.toString()));
     }

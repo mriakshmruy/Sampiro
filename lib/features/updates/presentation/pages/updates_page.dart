@@ -1,5 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:sampiro/dependency_injection.dart';
+import 'package:sampiro/features/updates/domain/repositories/iparish_updates_repository.dart';
 import 'package:sampiro/features/updates/presentation/bloc/bloc.dart';
 import 'package:sampiro/features/updates/presentation/widgets/updates_view.dart';
 
@@ -10,7 +12,7 @@ class UpdatesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => UpdatesBloc(),
+      create: (_) => UpdatesBloc(parishUpdatesRepository: getIt<IParishUpdatesRepository>()),
       child: const UpdatesView(),
     );
   }

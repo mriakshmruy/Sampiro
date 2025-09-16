@@ -1,13 +1,25 @@
 import 'package:app_ui/app_ui.dart';
-import 'package:cached_network_image/cached_network_image.dart';
-import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:sampiro/app/bloc/bloc.dart';
 import 'package:sampiro/core/resources/assets.gen.dart';
+import 'package:sampiro/features/updates/presentation/bloc/updates_bloc.dart';
+import 'package:sampiro/features/updates/presentation/widgets/updates_list_tile.dart';
 import 'package:sampiro/l10n/l10n.dart';
-import 'package:shimmer_animation/shimmer_animation.dart';
 
-class UpdatesView extends StatelessWidget {
+class UpdatesView extends StatefulWidget {
   const UpdatesView({super.key});
+
+  @override
+  State<UpdatesView> createState() => _UpdatesViewState();
+}
+
+class _UpdatesViewState extends State<UpdatesView> {
+  @override
+  void initState() {
+    super.initState();
+    context.read<UpdatesBloc>().add(const UpdatesParishUpdateFetched());
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -34,40 +46,39 @@ class UpdatesView extends StatelessWidget {
             ),
           ),
 
-          SliverToBoxAdapter(
-            child: CarouselSlider(
-              options: CarouselOptions(height: 400),
-              items: [
-                CachedNetworkImage(
-                  imageUrl:
-                      'https://firebasestorage.googleapis.com/v0/b/sampiro-flutter-app-dev.firebasestorage.app/o/images%2F1730878712057_217724598.jpg?alt=media&token=e596c088-8f64-4eca-9cae-ac7e523df160',
-                  imageBuilder: (context, imageProvider) => Container(
-                    height: 400,
-                    decoration: BoxDecoration(
-                      image: DecorationImage(image: imageProvider, fit: BoxFit.cover),
-                    ),
-                  ),
-                  placeholder: (context, url) => Shimmer(
-                    child: Container(),
-                  ),
-                  errorWidget: (context, url, error) => const Icon(Icons.error),
-                ),
-                CachedNetworkImage(
-                  imageUrl:
-                      'https://firebasestorage.googleapis.com/v0/b/sampiro-flutter-app-dev.firebasestorage.app/o/images%2F1730876965474_790854975.jpg?alt=media&token=ac711a60-1c0e-45ae-a27e-3ce31995bb6b',
-                  imageBuilder: (context, imageProvider) => Container(
-                    height: 400,
-                    decoration: BoxDecoration(
-                      image: DecorationImage(image: imageProvider, fit: BoxFit.cover),
-                    ),
-                  ),
-                  placeholder: (context, url) => Shimmer(
-                    child: Container(),
-                  ),
-                  errorWidget: (context, url, error) => const Icon(Icons.error),
-                ),
-              ],
-            ),
+          BlocSelector<UpdatesBloc, UpdatesState, UpdatesStatus>(
+            selector: (state) {
+              return state.status;
+            },
+            builder: (context, status) {
+              if (status == UpdatesStatus.loading) {
+                return const SliverToBoxAdapter(child: Center(child: CircularProgressIndicator()));
+              }
+
+              return const SliverToBoxAdapter(child: SizedBox.shrink());
+            },
+          ),
+
+          BlocBuilder<UpdatesBloc, UpdatesState>(
+            buildWhen: (previous, current) =>
+                previous.status != current.status || previous.errorMessage != current.errorMessage,
+            builder: (context, state) {
+              if (state.status == UpdatesStatus.failed && state.errorMessage != null) {
+                return SliverToBoxAdapter(child: Center(child: Text('${state.errorMessage}')));
+              }
+              return SliverToBoxAdapter(child: Container());
+            },
+          ),
+
+          BlocBuilder<UpdatesBloc, UpdatesState>(
+            builder: (context, state) {
+              if (!kReleaseMode) debugPrint('--x ${state.updateList.length}');
+              return SliverList.builder(
+                itemCount: state.updateList.length,
+
+                itemBuilder: (context, index) => UpdatesListTile(parishUpdateModel: state.updateList[index]),
+              );
+            },
           ),
         ],
       ),
