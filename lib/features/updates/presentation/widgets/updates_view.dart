@@ -1,5 +1,4 @@
 import 'package:app_ui/app_ui.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:sampiro/app/bloc/bloc.dart';
 import 'package:sampiro/core/resources/assets.gen.dart';
@@ -15,10 +14,24 @@ class UpdatesView extends StatefulWidget {
 }
 
 class _UpdatesViewState extends State<UpdatesView> {
+  final ScrollController _scrollController = ScrollController();
   @override
   void initState() {
     super.initState();
     context.read<UpdatesBloc>().add(const UpdatesParishUpdateFetched());
+
+    _scrollController.addListener(() {
+      if (_scrollController.offset >= _scrollController.position.maxScrollExtent &&
+          !_scrollController.position.outOfRange) {
+        context.read<UpdatesBloc>().add(const UpdatesParishMoreUpdateFetched());
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
   }
 
   @override
@@ -27,6 +40,7 @@ class _UpdatesViewState extends State<UpdatesView> {
     final l10n = context.l10n;
     return Scaffold(
       body: CustomScrollView(
+        controller: _scrollController,
         slivers: [
           SliverAppBar(
             expandedHeight: 500,
@@ -37,6 +51,7 @@ class _UpdatesViewState extends State<UpdatesView> {
                 color: theme.colorScheme.primary,
                 child: Text(
                   l10n.parishUpdates,
+
                   style: theme.textTheme.bodyMedium?.copyWith(
                     color: theme.colorScheme.surface,
                     fontWeight: SampiroFontWeight.semiBold,
@@ -58,7 +73,6 @@ class _UpdatesViewState extends State<UpdatesView> {
               return const SliverToBoxAdapter(child: SizedBox.shrink());
             },
           ),
-
           BlocBuilder<UpdatesBloc, UpdatesState>(
             buildWhen: (previous, current) =>
                 previous.status != current.status || previous.errorMessage != current.errorMessage,
@@ -72,11 +86,18 @@ class _UpdatesViewState extends State<UpdatesView> {
 
           BlocBuilder<UpdatesBloc, UpdatesState>(
             builder: (context, state) {
-              if (!kReleaseMode) debugPrint('--x ${state.updateList.length}');
               return SliverList.builder(
-                itemCount: state.updateList.length,
+                itemCount: state.updateList.length + (state.hasNextPage ? 1 : 0),
+                itemBuilder: (context, index) {
+                  if (index == state.updateList.length) {
+                    return const Padding(
+                      padding: EdgeInsets.only(bottom: 30),
+                      child: Center(child: CircularProgressIndicator()),
+                    );
+                  }
 
-                itemBuilder: (context, index) => UpdatesListTile(parishUpdateModel: state.updateList[index]),
+                  return UpdatesListTile(parishUpdateModel: state.updateList[index]);
+                },
               );
             },
           ),
