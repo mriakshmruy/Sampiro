@@ -10,6 +10,7 @@ class UpdatesListTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Padding(
       padding: const EdgeInsets.all(8),
       child: Column(
@@ -17,13 +18,19 @@ class UpdatesListTile extends StatelessWidget {
         children: [
           if (parishUpdateModel.imageList.isNotEmpty)
             CarouselSlider(
-              options: CarouselOptions(height: 400),
+              options: CarouselOptions(height: 400, viewportFraction: 1),
               items: parishUpdateModel.imageList.map((e) => SampiroCachedWidget(imageUrl: e)).toList(),
             ),
 
-          Text(parishUpdateModel.title),
+          Text(
+            parishUpdateModel.title,
+            style: theme.textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.bold),
+          ),
+          const SizedBox(height: 10),
 
           Text(parishUpdateModel.content),
+
+          const SizedBox(height: 10),
 
           Text(parishUpdateModel.formattedPostingDate),
 
