@@ -22,7 +22,7 @@ class SampiroPageLoader extends StatelessWidget {
         if (isLoading)
           Container(
             alignment: Alignment.center,
-            color: theme.colorScheme.surface.withOpacity(.8),
+            color: theme.colorScheme.surface.withValues(alpha: .8),
             child: SizedBox(
               width: loaderSize,
               height: loaderSize,

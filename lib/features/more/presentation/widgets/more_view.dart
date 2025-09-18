@@ -1,9 +1,9 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:sampiro/app/bloc/app_bloc.dart';
 import 'package:sampiro/app/bloc/bloc.dart';
 import 'package:sampiro/core/resources/assets.gen.dart';
+import 'package:sampiro/core/routes/app_router.dart';
 import 'package:sampiro/core/widgets/image_card.dart';
-
 import 'package:sampiro/l10n/l10n.dart';
 
 class MoreView extends StatelessWidget {
@@ -22,6 +22,7 @@ class MoreView extends StatelessWidget {
             title: l10n.dailyReflection,
             padding: const EdgeInsets.only(top: 20),
             height: 500,
+            onTap: () => context.router.push(const ReflectionRoute()),
           ),
           ImageCard(
             imagePath: Assets.images.schedule.path,

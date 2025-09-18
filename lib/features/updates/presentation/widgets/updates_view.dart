@@ -88,6 +88,7 @@ class _UpdatesViewState extends State<UpdatesView> {
             builder: (context, state) {
               return SliverList.builder(
                 itemCount: state.updateList.length + (state.hasNextPage ? 1 : 0),
+
                 itemBuilder: (context, index) {
                   if (index == state.updateList.length) {
                     return const Padding(
