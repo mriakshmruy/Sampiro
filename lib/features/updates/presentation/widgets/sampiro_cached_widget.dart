@@ -12,7 +12,6 @@ class SampiroCachedWidget extends StatelessWidget {
     return CachedNetworkImage(
       imageUrl: imageUrl,
       imageBuilder: (context, imageProvider) => Container(
-        // height: 400,
         decoration: BoxDecoration(
           image: DecorationImage(image: imageProvider, fit: BoxFit.cover),
         ),

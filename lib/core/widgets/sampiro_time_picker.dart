@@ -50,7 +50,7 @@ class SampiroTimePicker extends StatelessWidget {
                             ? theme
                                   .colorScheme
                                   .primary // Background color for selected AM/PM
-                            : theme.colorScheme.shadow.withValues(),
+                            : theme.colorScheme.shadow.withValues(alpha: .8),
                       ),
                     ),
                     textButtonTheme: TextButtonThemeData(
