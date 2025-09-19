@@ -51,7 +51,6 @@ class _UpdatesViewState extends State<UpdatesView> {
                 color: theme.colorScheme.primary,
                 child: Text(
                   l10n.parishUpdates,
-
                   style: theme.textTheme.bodyMedium?.copyWith(
                     color: theme.colorScheme.surface,
                     fontWeight: SampiroFontWeight.semiBold,
@@ -60,7 +59,6 @@ class _UpdatesViewState extends State<UpdatesView> {
               ),
             ),
           ),
-
           BlocSelector<UpdatesBloc, UpdatesState, UpdatesStatus>(
             selector: (state) {
               return state.status;
@@ -83,12 +81,10 @@ class _UpdatesViewState extends State<UpdatesView> {
               return SliverToBoxAdapter(child: Container());
             },
           ),
-
           BlocBuilder<UpdatesBloc, UpdatesState>(
             builder: (context, state) {
               return SliverList.builder(
                 itemCount: state.updateList.length + (state.hasNextPage ? 1 : 0),
-
                 itemBuilder: (context, index) {
                   if (index == state.updateList.length) {
                     return const Padding(
