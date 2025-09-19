@@ -8,3 +8,7 @@ abstract class Failure {
 class CustomFailure extends Failure {
   const CustomFailure({super.message});
 }
+
+class KashFailure extends Failure {
+  const KashFailure({super.message});
+}

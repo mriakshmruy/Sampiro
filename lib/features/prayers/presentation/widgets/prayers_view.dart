@@ -75,7 +75,6 @@ class _PrayersViewState extends State<PrayersView> {
               return SampiroListTile(
                 image: Image.asset(PrayerTileModel.prayerList[index].imagePath, fit: BoxFit.cover),
                 onTap: () {
-                  print('Tapped on ${PrayerTileModel.prayerList[index].title}');
                   context.router.push(
                     PrayersInformationRoute(
                       prayer: PrayerTileModel.prayerList[index],
