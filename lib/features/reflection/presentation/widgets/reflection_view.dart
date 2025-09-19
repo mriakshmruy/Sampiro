@@ -48,7 +48,9 @@ class ReflectionView extends StatelessWidget {
                 color: theme.colorScheme.surface,
                 borderRadius: const BorderRadius.all(Radius.circular(16)),
               ),
-              child: BlocBuilder<ReflectionBloc, ReflectionState>(gi
+              child: BlocBuilder<ReflectionBloc, ReflectionState>(
+                buildWhen: (previous, current) =>
+                    previous.status != current.status || previous.reflection != current.reflection,
                 builder: (context, state) {
                   if (state.status == ReflectionStatus.loading) {
                     return const Center(child: CircularProgressIndicator());
@@ -57,11 +59,22 @@ class ReflectionView extends StatelessWidget {
                     return SingleChildScrollView(
                       child: Column(
                         children: [
-                          Text(
-                            today,
-                            textAlign: TextAlign.center,
+                          Padding(
+                            padding: const EdgeInsets.only(top: 10),
+                            child: Text(
+                              today,
+                              textAlign: TextAlign.center,
+                            ),
                           ),
-                          Text(state.reflection.reflection, style: theme.textTheme.bodyMedium),
+
+                          Padding(
+                            padding: const EdgeInsets.only(top: 20),
+                            child: Text(
+                              state.reflection.reflection,
+                              textAlign: TextAlign.right,
+                              style: theme.textTheme.bodyMedium,
+                            ),
+                          ),
                         ],
                       ),
                     );

@@ -47,8 +47,10 @@ class SampiroTimePicker extends StatelessWidget {
 
                       dayPeriodColor: WidgetStateColor.resolveWith(
                         (states) => states.contains(WidgetState.selected)
-                            ? theme.colorScheme.primary // Background color for selected AM/PM
-                            : theme.colorScheme.shadow.withOpacity(.6),
+                            ? theme
+                                  .colorScheme
+                                  .primary // Background color for selected AM/PM
+                            : theme.colorScheme.shadow.withValues(),
                       ),
                     ),
                     textButtonTheme: TextButtonThemeData(

@@ -15,8 +15,6 @@ abstract class RegisterAppModule {
   @lazySingleton
   FirebaseFirestore get firebaseFirestore => FirebaseFirestore.instance;
 
-// TODO(Norman): To explain this
-  @lazySingleton
   @preResolve
   Future<PackageInfo> get packageInfo => PackageInfo.fromPlatform();
 }

@@ -223,7 +223,6 @@ class BaptismalCertificateView extends StatelessWidget {
                     builder: (context, state) {
                       return ElevatedButton(
                         onPressed: state.isFormValid
-                            // TODO(Kashmir): this is ternary operator
                             ? () {
                                 bloc.add(const ServicesSubmitted('baptism'));
                               }
