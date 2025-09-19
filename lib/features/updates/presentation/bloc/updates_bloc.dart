@@ -37,7 +37,7 @@ class UpdatesBloc extends Bloc<UpdatesEvent, UpdatesState> {
       },
       (newUpdates) {
         final updatedList = [...state.updateList, ...newUpdates];
-        if (!kReleaseMode) debugPrint('--x new updates: ${updatedList.length}');
+
         emit(
           state.copyWith(
             updateList: updatedList,

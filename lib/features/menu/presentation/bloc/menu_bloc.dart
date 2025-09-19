@@ -6,12 +6,5 @@ part 'menu_event.dart';
 part 'menu_state.dart';
 
 class MenuBloc extends Bloc<MenuEvent, MenuState> {
-  MenuBloc() : super(const MenuState()) {
-    on<MenuStarted>(_onMenuStarted);
-  }
-
-  void _onMenuStarted(
-    MenuStarted event,
-    Emitter<MenuState> emit,
-  ) {}
+  MenuBloc() : super(const MenuState());
 }

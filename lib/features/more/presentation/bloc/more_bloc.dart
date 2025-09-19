@@ -6,12 +6,5 @@ part 'more_event.dart';
 part 'more_state.dart';
 
 class MoreBloc extends Bloc<MoreEvent, MoreState> {
-  MoreBloc() : super(const MoreState()) {
-    on<MoreStarted>(_onMoreStarted);
-  }
-
-  void _onMoreStarted(
-    MoreStarted event,
-    Emitter<MoreState> emit,
-  ) {}
+  MoreBloc() : super(const MoreState());
 }

@@ -17,7 +17,7 @@ class SampiroCachedWidget extends StatelessWidget {
         ),
       ),
       placeholder: (context, url) => Shimmer(
-        child: Container(),
+        child: const SizedBox.shrink(),
       ),
       errorWidget: (context, url, error) => const Icon(Icons.error),
     );
