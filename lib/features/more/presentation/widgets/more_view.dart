@@ -43,6 +43,7 @@ class MoreView extends StatelessWidget {
             imagePath: Assets.images.videoHeader.path,
             title: l10n.videos,
             padding: const EdgeInsets.only(top: 20),
+            onTap: () => context.router.push(const VideoRoute()),
           ),
 
           BlocBuilder<AppBloc, AppState>(

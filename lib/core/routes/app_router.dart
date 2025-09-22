@@ -16,6 +16,9 @@ import 'package:sampiro/features/services/presentation/pages/counseling_page.dar
 import 'package:sampiro/features/services/presentation/pages/schedule_a_blessing_page.dart';
 import 'package:sampiro/features/services/presentation/pages/services_page.dart';
 import 'package:sampiro/features/updates/presentation/pages/updates_page.dart';
+import 'package:sampiro/features/video/data/models/parish_video_model.dart';
+import 'package:sampiro/features/video/presentation/pages/play_video_page.dart';
+import 'package:sampiro/features/video/presentation/pages/video_page.dart';
 
 part 'app_router.gr.dart';
 
@@ -85,6 +88,14 @@ class AppRouter extends RootStackRouter {
     AutoRoute(
       page: ReflectionRoute.page,
       path: '/reflection',
+    ),
+    AutoRoute(
+      page: VideoRoute.page,
+      path: '/video',
+    ),
+    AutoRoute(
+      page: PlayVideoRoute.page,
+      path: '/play-video',
     ),
   ];
 }
