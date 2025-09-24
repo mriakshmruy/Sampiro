@@ -1,5 +1,6 @@
 import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:mocktail/mocktail.dart';
 import 'package:sampiro/features/updates/presentation/bloc/updates_bloc.dart';
 
 class MockUpdatesBloc extends MockBloc<UpdatesEvent, UpdatesState> implements UpdatesBloc {}
@@ -11,5 +12,7 @@ void main() {
     mockUpdatesBloc = MockUpdatesBloc();
   });
 
-  testWidgets('renders states from whenListen', callback);
+  testWidgets('renders states from whenListen', () async {
+    when(() => mockUpdatesBloc.state);
+  });
 }
