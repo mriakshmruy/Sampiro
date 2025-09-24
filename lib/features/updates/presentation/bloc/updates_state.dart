@@ -12,6 +12,8 @@ abstract class UpdatesState with _$UpdatesState {
 
     // For fetching of pagination
     @Default(true) bool hasNextPage,
+
+    /// status for pagination
     @Default(UpdatesStatus.none) UpdatesStatus updateParishStatus,
   }) = _UpdatesState;
   const UpdatesState._();

@@ -27,13 +27,13 @@ class UpdatesBloc extends Bloc<UpdatesEvent, UpdatesState> {
     // state.hasNextPage == false same with this ->  !state.hasNextPag = Negate
     if (state.updateParishStatus == UpdatesStatus.loading || !state.hasNextPage) return;
 
-    emit(state.copyWith(status: UpdatesStatus.loading, errorMessage: null));
+    emit(state.copyWith(updateParishStatus: UpdatesStatus.loading, errorMessage: null));
 
     final newUpdates = await _parishUpdatesRepository.fetchMoreParishUpdates(resultPerPage);
 
     newUpdates.fold(
       (left) {
-        emit(state.copyWith(status: UpdatesStatus.failed, errorMessage: left.message));
+        emit(state.copyWith(updateParishStatus: UpdatesStatus.failed, errorMessage: left.message));
       },
       (newUpdates) {
         final updatedList = [...state.updateList, ...newUpdates];

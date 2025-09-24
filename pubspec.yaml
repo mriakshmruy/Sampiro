@@ -41,6 +41,8 @@ dependencies:
   jiffy: ^6.4.3
   json_annotation: ^4.9.0
   logger: ^2.6.1
+  
+  mocktail: ^1.0.4
   package_info_plus: ^8.3.1
   retrofit: ^4.7.2
   shimmer_animation: ^2.2.2
@@ -60,7 +62,6 @@ dev_dependencies:
   freezed: ^3.1.0
   injectable_generator: ^2.7.0
   json_serializable: ^6.9.5
-  mocktail: ^1.0.4
   retrofit_generator: ^9.7.0
   very_good_analysis: ^9.0.0
 
