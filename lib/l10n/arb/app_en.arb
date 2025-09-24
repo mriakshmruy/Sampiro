@@ -70,6 +70,7 @@
   "houseCondo": "House/Condo",
   "office": "Office",
   "others": "Others",
+    "video": "Video",
   "reason": "Reason:*",
   "religion": "Religion",
   "timeOfBlessing": "Time of Blessing:*",

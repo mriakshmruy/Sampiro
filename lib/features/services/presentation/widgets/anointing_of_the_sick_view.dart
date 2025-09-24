@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:sampiro/app/bloc/bloc.dart';
 import 'package:sampiro/core/routes/app_router.dart';
 import 'package:sampiro/core/utils/input_formatter.dart';
+import 'package:sampiro/core/widgets/sampiro_app_bar.dart';
 import 'package:sampiro/core/widgets/sampiro_drop_down.dart';
 import 'package:sampiro/core/widgets/sampiro_page_loader.dart';
 import 'package:sampiro/core/widgets/sampiro_text_field.dart';
@@ -50,12 +51,9 @@ class AnointingOfTheSickView extends StatelessWidget {
             isLoading: status == ServicesStatus.loading,
 
             child: Scaffold(
-              appBar: AppBar(
-                title: Text(
-                  l10n.parishServices,
-                  style: theme.textTheme.bodyMedium?.copyWith(color: theme.colorScheme.surface),
-                ),
-                centerTitle: true,
+              appBar: SampiroAppBar(
+                actions: const [Icon(Icons.abc), Text('test')],
+                title: l10n.parishServices,
                 leading: IconButton(
                   onPressed: () {
                     context.router.push(const ServicesRoute());
@@ -63,6 +61,20 @@ class AnointingOfTheSickView extends StatelessWidget {
                   icon: const Icon(Icons.arrow_back_ios_new_outlined),
                 ),
               ),
+
+              // appBar: AppBar(
+              //   title: Text(
+              //     l10n.parishServices,
+              //     style: theme.textTheme.bodyMedium?.copyWith(color: theme.colorScheme.surface),
+              //   ),
+              //   centerTitle: true,
+              //   leading: IconButton(
+              //     onPressed: () {
+              //       context.router.push(const ServicesRoute());
+              //     },
+              //     icon: const Icon(Icons.arrow_back_ios_new_outlined),
+              //   ),
+              // ),
               body: ListView(
                 children: [
                   Padding(

@@ -9,12 +9,16 @@ import 'package:sampiro/features/more/presentation/pages/more_page.dart';
 import 'package:sampiro/features/prayers/data/models/prayers_model.dart';
 import 'package:sampiro/features/prayers/presentation/pages/prayers_information_page.dart';
 import 'package:sampiro/features/prayers/presentation/pages/prayers_page.dart';
+import 'package:sampiro/features/reflection/presentation/pages/reflection_page.dart';
 import 'package:sampiro/features/services/presentation/pages/anointing_sick_page.dart';
 import 'package:sampiro/features/services/presentation/pages/baptismal_certificate_page.dart';
 import 'package:sampiro/features/services/presentation/pages/counseling_page.dart';
 import 'package:sampiro/features/services/presentation/pages/schedule_a_blessing_page.dart';
 import 'package:sampiro/features/services/presentation/pages/services_page.dart';
 import 'package:sampiro/features/updates/presentation/pages/updates_page.dart';
+import 'package:sampiro/features/video/data/models/parish_video_model.dart';
+import 'package:sampiro/features/video/presentation/pages/play_video_page.dart';
+import 'package:sampiro/features/video/presentation/pages/video_page.dart';
 
 part 'app_router.gr.dart';
 
@@ -80,6 +84,18 @@ class AppRouter extends RootStackRouter {
     AutoRoute(
       page: ScheduleABlessingRoute.page,
       path: '/schedule-bless',
+    ),
+    AutoRoute(
+      page: ReflectionRoute.page,
+      path: '/reflection',
+    ),
+    AutoRoute(
+      page: VideoRoute.page,
+      path: '/video',
+    ),
+    AutoRoute(
+      page: PlayVideoRoute.page,
+      path: '/play-video',
     ),
   ];
 }

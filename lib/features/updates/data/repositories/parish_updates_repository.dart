@@ -3,6 +3,7 @@ import 'package:fpdart/fpdart.dart';
 import 'package:injectable/injectable.dart';
 import 'package:sampiro/core/failures/failures.dart';
 import 'package:sampiro/core/firebase_options/firebase_collection.dart';
+import 'package:sampiro/features/updates/data/models/parish_update_model.dart';
 import 'package:sampiro/features/updates/domain/repositories/iparish_updates_repository.dart';
 
 @LazySingleton(as: IParishUpdatesRepository)
@@ -13,7 +14,7 @@ class ParishUpdatesRepository implements IParishUpdatesRepository {
   QueryDocumentSnapshot? _lastDocumentSnapshot;
 
   @override
-  Future<Either<Failure, Unit>> fetchParishUpdates(int resultPerPage) async {
+  Future<Either<Failure, List<ParishUpdateModel>>> fetchParishUpdates(int resultPerPage) async {
     try {
       final now = DateTime.now();
       final endOfDay = DateTime(now.year, now.month, now.day, 23, 59, 59, 999);
@@ -33,18 +34,16 @@ class ParishUpdatesRepository implements IParishUpdatesRepository {
         _lastDocumentSnapshot = querySnapshots.docs[querySnapshots.docs.length - 1];
       }
 
-      // TODO: To add back
-      // final parishUpdateList = querySnapshots.docs.map((doc) => ParishUpdate.fromJson(doc.data())).toList();
+      final parishUpdateList = querySnapshots.docs.map((doc) => ParishUpdateModel.fromJson(doc.data())).toList();
 
-      // return Right(parishUpdateList);
-      return const Right(unit);
+      return Right(parishUpdateList);
     } catch (e) {
       return Left(CustomFailure(message: e.toString()));
     }
   }
 
   @override
-  Future<Either<Failure, Unit>> fetchMoreParishUpdates(int resultPerPage) async {
+  Future<Either<Failure, List<ParishUpdateModel>>> fetchMoreParishUpdates(int resultPerPage) async {
     try {
       Query query = _firebaseFirestore
           .collection(FirebaseCollection.parishUpdates)
@@ -62,14 +61,11 @@ class ParishUpdatesRepository implements IParishUpdatesRepository {
         _lastDocumentSnapshot = querySnapshots.docs[querySnapshots.docs.length - 1];
       }
 
-      // TODO: To add back
-      // final parishUpdateList = querySnapshots.docs
-      //     .map((doc) => ParishUpdate.fromJson(doc.data()! as Map<String, dynamic>))
-      //     .toList();
+      final parishUpdateList = querySnapshots.docs
+          .map((doc) => ParishUpdateModel.fromJson(doc.data()! as Map<String, dynamic>))
+          .toList();
 
-      // return Right(parishUpdateList);
-
-      return const Right(unit);
+      return Right(parishUpdateList);
     } catch (e) {
       return Left(CustomFailure(message: e.toString()));
     }

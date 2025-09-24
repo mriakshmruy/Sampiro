@@ -222,6 +222,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get others => 'Others';
 
   @override
+  String get video => 'Video';
+
+  @override
   String get reason => 'Reason:*';
 
   @override

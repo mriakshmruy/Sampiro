@@ -515,6 +515,12 @@ abstract class AppLocalizations {
   /// **'Others'**
   String get others;
 
+  /// No description provided for @video.
+  ///
+  /// In en, this message translates to:
+  /// **'Video'**
+  String get video;
+
   /// No description provided for @reason.
   ///
   /// In en, this message translates to:
