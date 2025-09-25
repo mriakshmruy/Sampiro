@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:sampiro/app/bloc/bloc.dart';
+import 'package:sampiro/core/keys/sampiro_keys.dart';
 import 'package:sampiro/core/routes/app_router.dart';
 import 'package:sampiro/core/utils/input_formatter.dart';
 import 'package:sampiro/core/widgets/sampiro_drop_down.dart';
@@ -27,6 +28,7 @@ class CounselingView extends StatelessWidget {
             context: context,
             builder: (context) {
               return RequestDialog(
+                key: SampiroKeys.dialogKey,
                 docRefId: state.docRefId,
                 onPressed: () {
                   context.router.popUntilRoot();
@@ -82,6 +84,7 @@ class CounselingView extends StatelessWidget {
                     buildWhen: (previous, current) => previous.fieldName != current.fieldName,
                     builder: (context, state) {
                       return SampiroTextField(
+                        key: SampiroKeys.counselingNameKey,
                         isValid: state.isNameValid,
                         label: l10n.name1,
                         textCapitalization: TextCapitalization.words,
@@ -94,6 +97,7 @@ class CounselingView extends StatelessWidget {
                     buildWhen: (previous, current) => previous.mobileNo != current.mobileNo,
                     builder: (context, state) {
                       return SampiroTextField(
+                        key: SampiroKeys.counselingMobileNoKey,
                         label: l10n.mobileNo,
                         prefixText: '09',
                         isValid: state.isMobileNoValid,
@@ -106,6 +110,7 @@ class CounselingView extends StatelessWidget {
                     buildWhen: (previous, current) => previous.address != current.address,
                     builder: (context, state) {
                       return SampiroTextField(
+                        key: SampiroKeys.counselingAddressKey,
                         label: l10n.address,
                         isValid: state.isAddressValid,
                         onChanged: (address) => bloc.add(ServicesAddressChanged(address)),
@@ -116,6 +121,7 @@ class CounselingView extends StatelessWidget {
                     buildWhen: (previous, current) => previous.typeOfCounseling != current.typeOfCounseling,
                     builder: (context, state) {
                       return SampiroDropDown(
+                        key: SampiroKeys.typeOfCounselingKey,
                         label: l10n.typeOfCounseling,
                         isValid: state.isTypeOfCounselingValid,
 
@@ -161,6 +167,7 @@ class CounselingView extends StatelessWidget {
                         previous.preferredCounselingDate != current.preferredCounselingDate,
                     builder: (context, state) {
                       return SampiroTextField(
+                        key: SampiroKeys.preferredCounselingDateKey,
                         label: l10n.preferredCounselingDate,
                         isValid: state.isPreferredCounselingDateValid,
                         keyboardType: TextInputType.number,
@@ -194,6 +201,7 @@ class CounselingView extends StatelessWidget {
                       return Padding(
                         padding: const EdgeInsetsGeometry.symmetric(vertical: 16),
                         child: ElevatedButton(
+                          key: SampiroKeys.requestCounselingKey,
                           onPressed: state.isRequestValid
                               ? () {
                                   bloc.add(const ServicesSubmitted('counseling'));

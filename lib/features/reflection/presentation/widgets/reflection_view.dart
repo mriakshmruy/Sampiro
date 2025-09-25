@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:sampiro/core/keys/sampiro_keys.dart';
 import 'package:sampiro/core/resources/assets.gen.dart';
 import 'package:sampiro/core/routes/app_router.dart';
 import 'package:sampiro/features/dashboard/presentation/bloc/bloc.dart';
@@ -70,6 +71,7 @@ class ReflectionView extends StatelessWidget {
                           Padding(
                             padding: const EdgeInsets.only(top: 20),
                             child: Text(
+                              key: SampiroKeys.dailyReflectionKey,
                               state.reflection.reflection,
                               textAlign: TextAlign.right,
                               style: theme.textTheme.bodyMedium,
@@ -79,7 +81,7 @@ class ReflectionView extends StatelessWidget {
                       ),
                     );
                   } else if (state.status == ReflectionStatus.failed && state.errorMessage != null) {
-                    Text('${state.errorMessage}');
+                    Text(key: SampiroKeys.dailyReflectionErrorKey, '${state.errorMessage}');
                   }
                   return Container();
                 },

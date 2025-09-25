@@ -77,7 +77,7 @@
 //       usersBloc: mockUsersBloc,
 //       mockGoRouter: mockGoRouter,
 //     );
-//     await tester.pump();
+//
 
 //     expect(find.byType(AddUserView), findsOneWidget);
 
