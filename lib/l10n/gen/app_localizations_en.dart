@@ -231,6 +231,27 @@ class AppLocalizationsEn extends AppLocalizations {
   String get religion => 'Religion';
 
   @override
+  String get send => 'Send';
+
+  @override
+  String get typeYourTestimonial => 'Type your testimonial...';
+
+  @override
+  String get typeYourName => 'TYpe your name...';
+
+  @override
+  String get compose => 'Compose';
+
+  @override
+  String get addATestimonial => 'Add a Testimonial';
+
+  @override
+  String get yourTestimonial => 'Your Testimonial:';
+
+  @override
+  String get yourName => 'Your Name (Optional):';
+
+  @override
   String get timeOfBlessing => 'Time of Blessing:*';
 
   @override

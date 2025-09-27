@@ -73,6 +73,13 @@
     "video": "Video",
   "reason": "Reason:*",
   "religion": "Religion",
+  "send": "Send",
+  "typeYourTestimonial": "Type your testimonial...",
+  "typeYourName": "TYpe your name...",
+  "compose": "Compose",
+  "addATestimonial": "Add a Testimonial",
+  "yourTestimonial": "Your Testimonial:",
+  "yourName": "Your Name (Optional):",
   "timeOfBlessing": "Time of Blessing:*",
   "dateOfBlessing": "Date of Blessing:* (mm/dd/yyyy)",
  "scheduleABlessingRequest": "Schedule a Blessing Request"

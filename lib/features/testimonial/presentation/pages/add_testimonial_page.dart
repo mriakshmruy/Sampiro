@@ -1,0 +1,89 @@
+import 'package:app_ui/app_ui.dart';
+import 'package:auto_route/auto_route.dart';
+import 'package:flutter/material.dart';
+import 'package:sampiro/core/resources/assets.gen.dart';
+import 'package:sampiro/core/widgets/sampiro_app_bar.dart';
+import 'package:sampiro/core/widgets/sampiro_text_field.dart';
+import 'package:sampiro/l10n/l10n.dart';
+
+@RoutePage()
+class AddTestimonialPage extends StatelessWidget {
+  const AddTestimonialPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = context.l10n;
+    final theme = Theme.of(context);
+    return Scaffold(
+      backgroundColor: theme.colorScheme.primary,
+      appBar: SampiroAppBar(
+        appBarColor: theme.colorScheme.primary,
+        title: l10n.addATestimonial,
+        leading: IconButton(
+          onPressed: () {
+            context.router.maybePop();
+          },
+          icon: const Icon(Icons.arrow_back_ios_new_rounded),
+        ),
+      ),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(16),
+          child: Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(16),
+              color: theme.colorScheme.surface,
+            ),
+
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                ConstrainedBox(
+                  constraints: const BoxConstraints(maxHeight: 500),
+                  child: ColoredBox(
+                    color: theme.colorScheme.primary,
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: const BorderRadius.only(
+                          topLeft: UIConstants.radiusCircular,
+                          topRight: UIConstants.radiusCircular,
+                        ),
+                        image: DecorationImage(
+                          image: AssetImage(Assets.images.mamaMaryAddTestimonial.path),
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(10),
+                  child: SampiroTextField(
+                    label: l10n.yourTestimonial,
+                    hintText: l10n.typeYourTestimonial,
+                    minLines: 2,
+                    maxLines: 4,
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(10),
+                  child: SampiroTextField(
+                    label: l10n.yourName,
+                    hintText: l10n.typeYourName,
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(10),
+                  child: ElevatedButton(
+                    onPressed: () {},
+                    child: Text(l10n.send),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}

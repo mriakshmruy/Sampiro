@@ -533,6 +533,48 @@ abstract class AppLocalizations {
   /// **'Religion'**
   String get religion;
 
+  /// No description provided for @send.
+  ///
+  /// In en, this message translates to:
+  /// **'Send'**
+  String get send;
+
+  /// No description provided for @typeYourTestimonial.
+  ///
+  /// In en, this message translates to:
+  /// **'Type your testimonial...'**
+  String get typeYourTestimonial;
+
+  /// No description provided for @typeYourName.
+  ///
+  /// In en, this message translates to:
+  /// **'TYpe your name...'**
+  String get typeYourName;
+
+  /// No description provided for @compose.
+  ///
+  /// In en, this message translates to:
+  /// **'Compose'**
+  String get compose;
+
+  /// No description provided for @addATestimonial.
+  ///
+  /// In en, this message translates to:
+  /// **'Add a Testimonial'**
+  String get addATestimonial;
+
+  /// No description provided for @yourTestimonial.
+  ///
+  /// In en, this message translates to:
+  /// **'Your Testimonial:'**
+  String get yourTestimonial;
+
+  /// No description provided for @yourName.
+  ///
+  /// In en, this message translates to:
+  /// **'Your Name (Optional):'**
+  String get yourName;
+
   /// No description provided for @timeOfBlessing.
   ///
   /// In en, this message translates to:

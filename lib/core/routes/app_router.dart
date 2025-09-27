@@ -1,4 +1,3 @@
-@RoutePage()
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
@@ -15,6 +14,9 @@ import 'package:sampiro/features/services/presentation/pages/baptismal_certifica
 import 'package:sampiro/features/services/presentation/pages/counseling_page.dart';
 import 'package:sampiro/features/services/presentation/pages/schedule_a_blessing_page.dart';
 import 'package:sampiro/features/services/presentation/pages/services_page.dart';
+import 'package:sampiro/features/testimonial/presentation/pages/add_testimonial_page.dart';
+import 'package:sampiro/features/testimonial/presentation/pages/testimonial_bloc_wrapper_page.dart';
+import 'package:sampiro/features/testimonial/presentation/pages/testimonial_page.dart';
 import 'package:sampiro/features/updates/presentation/pages/updates_page.dart';
 import 'package:sampiro/features/video/data/models/parish_video_model.dart';
 import 'package:sampiro/features/video/presentation/pages/play_video_page.dart';
