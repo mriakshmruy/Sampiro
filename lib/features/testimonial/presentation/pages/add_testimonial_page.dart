@@ -1,9 +1,11 @@
 import 'package:app_ui/app_ui.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:sampiro/app/bloc/bloc.dart';
 import 'package:sampiro/core/resources/assets.gen.dart';
 import 'package:sampiro/core/widgets/sampiro_app_bar.dart';
 import 'package:sampiro/core/widgets/sampiro_text_field.dart';
+import 'package:sampiro/features/testimonial/presentation/bloc/testimonial_bloc.dart';
 import 'package:sampiro/l10n/l10n.dart';
 
 @RoutePage()
@@ -12,6 +14,7 @@ class AddTestimonialPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final bloc = context.read<TestimonialBloc>();
     final l10n = context.l10n;
     final theme = Theme.of(context);
     return Scaffold(
@@ -58,25 +61,50 @@ class AddTestimonialPage extends StatelessWidget {
                 ),
                 Padding(
                   padding: const EdgeInsets.all(10),
-                  child: SampiroTextField(
-                    label: l10n.yourTestimonial,
-                    hintText: l10n.typeYourTestimonial,
-                    minLines: 2,
-                    maxLines: 4,
+                  child: BlocBuilder<TestimonialBloc, TestimonialState>(
+                    buildWhen: (previous, current) => previous.isSendTestimonialValid != current.isSendTestimonialValid,
+                    builder: (context, state) {
+                      return SampiroTextField(
+                        isValid: state.isSendTestimonialValid,
+                        label: l10n.yourTestimonial,
+                        hintText: l10n.typeYourTestimonial,
+                        minLines: 2,
+                        maxLines: 6,
+                        onChanged: (testimonial) => bloc.add(TestimonialTyped(testimonial)),
+                      );
+                    },
                   ),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(10),
-                  child: SampiroTextField(
-                    label: l10n.yourName,
-                    hintText: l10n.typeYourName,
+                  child: BlocBuilder<TestimonialBloc, TestimonialState>(
+                    buildWhen: (previous, current) => previous.isNameValid != current.isNameValid,
+                    builder: (context, state) {
+                      return SampiroTextField(
+                        isValid: state.isNameValid,
+                        label: l10n.yourName,
+                        hintText: l10n.typeYourName,
+                        onChanged: (name) => bloc.add(TestimonialNameTyped(name)),
+                      );
+                    },
                   ),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(10),
-                  child: ElevatedButton(
-                    onPressed: () {},
-                    child: Text(l10n.send),
+                  child: BlocBuilder<TestimonialBloc, TestimonialState>(
+                    buildWhen: (previous, current) => previous.isSendTestimonialValid != current.isSendTestimonialValid,
+                    builder: (context, state) {
+                      return ElevatedButton(
+                        onPressed: state.isTestimonialValid
+                            ? () {
+                                bloc.add(const TestimonialSubmitted());
+                              }
+                            : null,
+                        child: Text(
+                          l10n.send,
+                        ),
+                      );
+                    },
                   ),
                 ),
               ],

@@ -1,5 +1,7 @@
 import 'package:bloc/bloc.dart';
+import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:sampiro/features/testimonial/data/models/parish_testimonial_model.dart';
 import 'package:sampiro/features/testimonial/domain/repositories/itestimonial_repository.dart';
 
 part 'testimonial_bloc.freezed.dart';
@@ -28,7 +30,7 @@ class TestimonialBloc extends Bloc<TestimonialEvent, TestimonialState> {
     TestimonialNameTyped event,
     Emitter<TestimonialState> emit,
   ) {
-    emit(state.copyWith(testimonial: event.name.trim()));
+    emit(state.copyWith(name: event.name.trim()));
   }
 
   Future<void> _onTestimonialSubmitted(
@@ -48,7 +50,29 @@ class TestimonialBloc extends Bloc<TestimonialEvent, TestimonialState> {
     } else {
       name = 'Anonymous';
     }
+    if (!kReleaseMode) debugPrint('--x $name here ');
 
-    // final result = await _testimonialRepository.submitTestimonials();
+    final result = await _testimonialRepository.submitTestimonials(
+      ParishTestimonialModel(name: state.name, testimonials: state.testimonial),
+    );
+
+    result.fold(
+      (left) {
+        emit(
+          state.copyWith(
+            statusForAddingTestimonial: TestimonialStatus.failed,
+            errorTestimonialAddingMessage: left.message,
+          ),
+        );
+      },
+      (_) {
+        emit(
+          state.copyWith(
+            statusForAddingTestimonial: TestimonialStatus.successful,
+            errorTestimonialAddingMessage: null,
+          ),
+        );
+      },
+    );
   }
 }

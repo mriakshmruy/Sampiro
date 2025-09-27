@@ -99,5 +99,14 @@ class AppRouter extends RootStackRouter {
       page: PlayVideoRoute.page,
       path: '/play-video',
     ),
+
+    AutoRoute(
+      page: TestimonialBlocWrapperRoute.page,
+      path: '/testimonials',
+      children: [
+        AutoRoute(path: 'view', page: TestimonialRoute.page),
+        AutoRoute(path: 'add', page: AddTestimonialRoute.page),
+      ],
+    ),
   ];
 }
