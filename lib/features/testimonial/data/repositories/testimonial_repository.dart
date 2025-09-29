@@ -22,4 +22,26 @@ class TestimonialRepository implements ITestimonialRepository {
       return Left(CustomFailure(message: e.toString()));
     }
   }
+
+  @override
+  Future<Either<Failure, List<ParishTestimonialModel>>> fetchTestimonial(int resultPerPage) async {
+    try {
+      final querySnapshots = await _firebaseFirestore
+          .collection(FirebaseCollection.testimonials)
+          .where('isPublic', isEqualTo: true)
+          .orderBy('createdAt', descending: true)
+          .limit(resultPerPage)
+          .get();
+
+      if (querySnapshots.docs.isNotEmpty) {
+        _lastDocumentSnapshot = querySnapshots.docs[querySnapshots.docs.length - 1];
+      }
+
+      final testimonialList = querySnapshots.docs.map((doc) => ParishTestimonialModel.fromJson(doc.data())).toList();
+
+      return Right(testimonialList);
+    } catch (e) {
+      return Left(CustomFailure(message: e.toString()));
+    }
+  }
 }
