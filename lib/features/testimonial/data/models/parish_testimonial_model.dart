@@ -6,10 +6,11 @@ part 'parish_testimonial_model.g.dart';
 @freezed
 abstract class ParishTestimonialModel with _$ParishTestimonialModel {
   const factory ParishTestimonialModel({
+    required dynamic createdAt,
     required String name,
     required String testimonials,
     String? firebaseDocumentId,
-    @Default(false) bool isPublic,
+    @Default(true) bool isPublic,
     @Default('') String updatedBy,
   }) = _ParishTestimonialModel;
 
