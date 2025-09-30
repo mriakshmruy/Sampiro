@@ -240,7 +240,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get typeYourTestimonial => 'Type your testimonial...';
 
   @override
-  String get typeYourName => 'TYpe your name...';
+  String get typeYourName => 'Type your name...';
 
   @override
   String get compose => 'Compose';

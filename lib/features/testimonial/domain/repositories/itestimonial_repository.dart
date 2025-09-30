@@ -5,4 +5,5 @@ import 'package:sampiro/features/testimonial/data/models/parish_testimonial_mode
 abstract class ITestimonialRepository {
   Future<Either<Failure, Unit>> submitTestimonials(ParishTestimonialModel testimonial);
   Future<Either<Failure, List<ParishTestimonialModel>>> fetchTestimonial(int resultPerPage);
+  Future<Either<Failure, List<ParishTestimonialModel>>> fetchMoreTestimonials(int resultPerPage);
 }

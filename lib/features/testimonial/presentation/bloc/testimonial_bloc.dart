@@ -17,11 +17,12 @@ class TestimonialBloc extends Bloc<TestimonialEvent, TestimonialState> {
     on<TestimonialNameTyped>(_onTestimonialNameTyped);
     on<TestimonialSubmitted>(_onTestimonialSubmitted);
     on<TestimonialFetched>(_onTestimonialFetched);
+    on<TestimonialLoadMore>(_onTestimonialLoadMore);
   }
 
   final ITestimonialRepository _testimonialRepository;
 
-  final resultPerPage = 5;
+  final resultPerPage = 3;
 
   Future<void> _onTestimonialFetched(
     TestimonialFetched event,
@@ -43,12 +44,40 @@ class TestimonialBloc extends Bloc<TestimonialEvent, TestimonialState> {
         );
       },
       (testimonialList) {
-        if (!kReleaseMode) debugPrint('--x $testimonialList');
         emit(
           state.copyWith(
             statusForFetchingTestimonial: TestimonialStatus.successful,
             errorTestimonialFetchingMessage: null,
             testimonialList: testimonialList,
+          ),
+        );
+      },
+    );
+  }
+
+  Future<void> _onTestimonialLoadMore(
+    TestimonialLoadMore event,
+    Emitter<TestimonialState> emit,
+  ) async {
+    if (state.statusForPaginationTestimonial == TestimonialStatus.loading || !state.hasNextPage) return;
+
+    emit(state.copyWith(statusForPaginationTestimonial: TestimonialStatus.loading));
+
+    final result = await _testimonialRepository.fetchMoreTestimonials(resultPerPage);
+    result.fold(
+      (_) {
+        emit(
+          state.copyWith(
+            statusForPaginationTestimonial: TestimonialStatus.failed,
+          ),
+        );
+      },
+      (testimonialList) {
+        emit(
+          state.copyWith(
+            testimonialList: [...state.testimonialList, ...testimonialList],
+            statusForPaginationTestimonial: TestimonialStatus.successful,
+            hasNextPage: testimonialList.length == resultPerPage,
           ),
         );
       },

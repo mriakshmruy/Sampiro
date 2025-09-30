@@ -1,6 +1,5 @@
 import 'package:app_ui/app_ui.dart';
 import 'package:auto_route/auto_route.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:sampiro/core/widgets/sampiro_app_bar.dart';
 import 'package:sampiro/core/widgets/sampiro_back_button.dart';
@@ -25,7 +24,6 @@ class _PlayVideoPageState extends State<PlayVideoPage> {
   @override
   void initState() {
     super.initState();
-    if (!kReleaseMode) debugPrint('--x ${widget.parishVideo.videoLink}');
 
     _videoController = VideoPlayerController.networkUrl(Uri.parse(widget.parishVideo.videoLink))
       ..addListener(() => setState(() {}))

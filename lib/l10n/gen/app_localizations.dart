@@ -554,7 +554,7 @@ abstract class AppLocalizations {
   /// No description provided for @typeYourName.
   ///
   /// In en, this message translates to:
-  /// **'TYpe your name...'**
+  /// **'Type your name...'**
   String get typeYourName;
 
   /// No description provided for @compose.

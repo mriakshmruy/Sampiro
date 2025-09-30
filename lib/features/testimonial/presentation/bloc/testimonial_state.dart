@@ -5,13 +5,18 @@ enum TestimonialStatus { none, loading, successful, failed }
 @freezed
 abstract class TestimonialState with _$TestimonialState {
   const factory TestimonialState({
+    // for adding
     @Default(TestimonialStatus.none) TestimonialStatus statusForAddingTestimonial,
-    @Default(TestimonialStatus.none) TestimonialStatus statusForFetchingTestimonial,
     @Default('') String testimonial,
     @Default('') String name,
+    // for fetching
+    @Default(TestimonialStatus.none) TestimonialStatus statusForFetchingTestimonial,
     @Default([]) List<ParishTestimonialModel> testimonialList,
     String? errorTestimonialAddingMessage,
     String? errorTestimonialFetchingMessage,
+    // for pagination
+    @Default(true) bool hasNextPage,
+    @Default(TestimonialStatus.none) TestimonialStatus statusForPaginationTestimonial,
   }) = _TestimonialState;
   const TestimonialState._();
 

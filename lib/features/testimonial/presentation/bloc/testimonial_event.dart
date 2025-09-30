@@ -9,4 +9,7 @@ abstract class TestimonialEvent with _$TestimonialEvent {
 
   // for fetching
   const factory TestimonialEvent.testimonialsFetched() = TestimonialFetched;
+
+  //  for pagination
+  const factory TestimonialEvent.testimonialsLoadMore() = TestimonialLoadMore;
 }
