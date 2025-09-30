@@ -515,6 +515,12 @@ abstract class AppLocalizations {
   /// **'Others'**
   String get others;
 
+  /// No description provided for @video.
+  ///
+  /// In en, this message translates to:
+  /// **'Video'**
+  String get video;
+
   /// No description provided for @reason.
   ///
   /// In en, this message translates to:
@@ -527,6 +533,60 @@ abstract class AppLocalizations {
   /// **'Religion'**
   String get religion;
 
+  /// No description provided for @send.
+  ///
+  /// In en, this message translates to:
+  /// **'Send'**
+  String get send;
+
+  /// No description provided for @close.
+  ///
+  /// In en, this message translates to:
+  /// **'Close'**
+  String get close;
+
+  /// No description provided for @typeYourTestimonial.
+  ///
+  /// In en, this message translates to:
+  /// **'Type your testimonial...'**
+  String get typeYourTestimonial;
+
+  /// No description provided for @typeYourName.
+  ///
+  /// In en, this message translates to:
+  /// **'Type your name...'**
+  String get typeYourName;
+
+  /// No description provided for @compose.
+  ///
+  /// In en, this message translates to:
+  /// **'Compose'**
+  String get compose;
+
+  /// No description provided for @addATestimonial.
+  ///
+  /// In en, this message translates to:
+  /// **'Add a Testimonial'**
+  String get addATestimonial;
+
+  /// No description provided for @yourTestimonial.
+  ///
+  /// In en, this message translates to:
+  /// **'Your Testimonial:'**
+  String get yourTestimonial;
+
+  /// No description provided for @yourTestimonialHasBeenSubmitted.
+  ///
+  /// In en, this message translates to:
+  /// **'Your testimonial has been submitted.'**
+  String get yourTestimonialHasBeenSubmitted;
+
+  /// No description provided for @yourName.
+  ///
+  /// In en, this message translates to:
+  /// **'Your Name (Optional):'**
+  String get yourName;
+
   /// No description provided for @timeOfBlessing.
   ///
   /// In en, this message translates to:
@@ -538,6 +598,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Date of Blessing:* (mm/dd/yyyy)'**
   String get dateOfBlessing;
+
+  /// No description provided for @testimonialMeaning.
+  ///
+  /// In en, this message translates to:
+  /// **'A testimonial to the Virgin Mary is an expression of gratitude or devotion, often sharing how Mary\'s guidance, comfort, or intercession helped someone in times of need. These can be conveyed through words, prayers, or offerings, reflecting Mary\'s compassionate role in providing spiritual support and protection.'**
+  String get testimonialMeaning;
 
   /// No description provided for @scheduleABlessingRequest.
   ///

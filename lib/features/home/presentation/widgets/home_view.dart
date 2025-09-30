@@ -1,6 +1,8 @@
 import 'package:app_ui/app_ui.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:sampiro/core/resources/assets.gen.dart';
+import 'package:sampiro/core/routes/app_router.dart';
 import 'package:sampiro/core/widgets/image_card.dart';
 import 'package:sampiro/l10n/l10n.dart';
 
@@ -38,7 +40,9 @@ class HomeView extends StatelessWidget {
             child: ImageCard(
               imagePath: Assets.images.headerMamaMary.path,
               title: l10n.testimonials,
-              onTap: () {},
+              onTap: () {
+                context.router.push(const TestimonialRoute());
+              },
 
               padding: const EdgeInsets.only(top: 20),
             ),

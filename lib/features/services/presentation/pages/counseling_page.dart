@@ -13,7 +13,7 @@ class CounselingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => ServicesBloc(servicesRepository: getIt.call<IServicesRepository>()),
+      create: (context) => ServicesBloc(servicesRepository: getIt<IServicesRepository>()),
       child: const CounselingView(),
     );
   }
