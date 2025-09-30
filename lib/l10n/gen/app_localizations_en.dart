@@ -234,6 +234,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get send => 'Send';
 
   @override
+  String get close => 'Close';
+
+  @override
   String get typeYourTestimonial => 'Type your testimonial...';
 
   @override
@@ -249,6 +252,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get yourTestimonial => 'Your Testimonial:';
 
   @override
+  String get yourTestimonialHasBeenSubmitted => 'Your testimonial has been submitted.';
+
+  @override
   String get yourName => 'Your Name (Optional):';
 
   @override
@@ -256,6 +262,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get dateOfBlessing => 'Date of Blessing:* (mm/dd/yyyy)';
+
+  @override
+  String get testimonialMeaning => 'A testimonial to the Virgin Mary is an expression of gratitude or devotion, often sharing how Mary\'s guidance, comfort, or intercession helped someone in times of need. These can be conveyed through words, prayers, or offerings, reflecting Mary\'s compassionate role in providing spiritual support and protection.';
 
   @override
   String get scheduleABlessingRequest => 'Schedule a Blessing Request';

@@ -70,19 +70,22 @@
   "houseCondo": "House/Condo",
   "office": "Office",
   "others": "Others",
-    "video": "Video",
+  "video": "Video",
   "reason": "Reason:*",
   "religion": "Religion",
   "send": "Send",
+  "close": "Close",
   "typeYourTestimonial": "Type your testimonial...",
   "typeYourName": "TYpe your name...",
   "compose": "Compose",
   "addATestimonial": "Add a Testimonial",
   "yourTestimonial": "Your Testimonial:",
+  "yourTestimonialHasBeenSubmitted": "Your testimonial has been submitted.",
   "yourName": "Your Name (Optional):",
   "timeOfBlessing": "Time of Blessing:*",
   "dateOfBlessing": "Date of Blessing:* (mm/dd/yyyy)",
- "scheduleABlessingRequest": "Schedule a Blessing Request"
+  "testimonialMeaning": "A testimonial to the Virgin Mary is an expression of gratitude or devotion, often sharing how Mary's guidance, comfort, or intercession helped someone in times of need. These can be conveyed through words, prayers, or offerings, reflecting Mary's compassionate role in providing spiritual support and protection.",
+  "scheduleABlessingRequest": "Schedule a Blessing Request"
   
 
 }

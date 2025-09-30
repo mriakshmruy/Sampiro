@@ -6,9 +6,12 @@ enum TestimonialStatus { none, loading, successful, failed }
 abstract class TestimonialState with _$TestimonialState {
   const factory TestimonialState({
     @Default(TestimonialStatus.none) TestimonialStatus statusForAddingTestimonial,
+    @Default(TestimonialStatus.none) TestimonialStatus statusForFetchingTestimonial,
     @Default('') String testimonial,
     @Default('') String name,
+    @Default([]) List<ParishTestimonialModel> testimonialList,
     String? errorTestimonialAddingMessage,
+    String? errorTestimonialFetchingMessage,
   }) = _TestimonialState;
   const TestimonialState._();
 

@@ -17,7 +17,8 @@ class TestimonialBlocWrapperPage extends StatelessWidget implements AutoRouteWra
   @override
   Widget wrappedRoute(BuildContext context) {
     return BlocProvider(
-      create: (context) => TestimonialBloc(testimonialRepository: getIt<ITestimonialRepository>()),
+      create: (context) =>
+          TestimonialBloc(testimonialRepository: getIt<ITestimonialRepository>())..add(const TestimonialFetched()),
       child: this,
     );
   }

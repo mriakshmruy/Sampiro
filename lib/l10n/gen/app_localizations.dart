@@ -539,6 +539,12 @@ abstract class AppLocalizations {
   /// **'Send'**
   String get send;
 
+  /// No description provided for @close.
+  ///
+  /// In en, this message translates to:
+  /// **'Close'**
+  String get close;
+
   /// No description provided for @typeYourTestimonial.
   ///
   /// In en, this message translates to:
@@ -569,6 +575,12 @@ abstract class AppLocalizations {
   /// **'Your Testimonial:'**
   String get yourTestimonial;
 
+  /// No description provided for @yourTestimonialHasBeenSubmitted.
+  ///
+  /// In en, this message translates to:
+  /// **'Your testimonial has been submitted.'**
+  String get yourTestimonialHasBeenSubmitted;
+
   /// No description provided for @yourName.
   ///
   /// In en, this message translates to:
@@ -586,6 +598,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Date of Blessing:* (mm/dd/yyyy)'**
   String get dateOfBlessing;
+
+  /// No description provided for @testimonialMeaning.
+  ///
+  /// In en, this message translates to:
+  /// **'A testimonial to the Virgin Mary is an expression of gratitude or devotion, often sharing how Mary\'s guidance, comfort, or intercession helped someone in times of need. These can be conveyed through words, prayers, or offerings, reflecting Mary\'s compassionate role in providing spiritual support and protection.'**
+  String get testimonialMeaning;
 
   /// No description provided for @scheduleABlessingRequest.
   ///

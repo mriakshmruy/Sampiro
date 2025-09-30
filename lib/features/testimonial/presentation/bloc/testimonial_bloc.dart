@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:sampiro/features/testimonial/data/models/parish_testimonial_model.dart';
@@ -15,9 +16,44 @@ class TestimonialBloc extends Bloc<TestimonialEvent, TestimonialState> {
     on<TestimonialTyped>(_onTestimonialTyped);
     on<TestimonialNameTyped>(_onTestimonialNameTyped);
     on<TestimonialSubmitted>(_onTestimonialSubmitted);
+    on<TestimonialFetched>(_onTestimonialFetched);
   }
 
   final ITestimonialRepository _testimonialRepository;
+
+  final resultPerPage = 5;
+
+  Future<void> _onTestimonialFetched(
+    TestimonialFetched event,
+    Emitter<TestimonialState> emit,
+  ) async {
+    emit(
+      state.copyWith(statusForFetchingTestimonial: TestimonialStatus.loading, errorTestimonialFetchingMessage: null),
+    );
+
+    final fetchTestimonial = await _testimonialRepository.fetchTestimonial(resultPerPage);
+
+    fetchTestimonial.fold(
+      (left) {
+        emit(
+          state.copyWith(
+            statusForFetchingTestimonial: TestimonialStatus.failed,
+            errorTestimonialFetchingMessage: left.message,
+          ),
+        );
+      },
+      (testimonialList) {
+        if (!kReleaseMode) debugPrint('--x $testimonialList');
+        emit(
+          state.copyWith(
+            statusForFetchingTestimonial: TestimonialStatus.successful,
+            errorTestimonialFetchingMessage: null,
+            testimonialList: testimonialList,
+          ),
+        );
+      },
+    );
+  }
 
   void _onTestimonialTyped(
     TestimonialTyped event,
@@ -50,12 +86,14 @@ class TestimonialBloc extends Bloc<TestimonialEvent, TestimonialState> {
     } else {
       name = 'Anonymous';
     }
-    if (!kReleaseMode) debugPrint('--x $name here ');
 
     final result = await _testimonialRepository.submitTestimonials(
-      ParishTestimonialModel(name: state.name, testimonials: state.testimonial),
+      ParishTestimonialModel(
+        name: state.name,
+        testimonials: state.testimonial,
+        createdAt: FieldValue.serverTimestamp(),
+      ),
     );
-
     result.fold(
       (left) {
         emit(
