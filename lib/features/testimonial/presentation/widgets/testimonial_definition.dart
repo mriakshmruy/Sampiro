@@ -18,9 +18,10 @@ class TestimonialDefinition extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
+            const SizedBox(height: 50),
             Center(
               child: ConstrainedBox(
-                constraints: const BoxConstraints(maxHeight: 260, maxWidth: 350),
+                constraints: const BoxConstraints(maxHeight: 350, maxWidth: 500),
                 child: Container(
                   decoration: BoxDecoration(
                     borderRadius: const BorderRadius.all(UIConstants.radiusCircular),
@@ -30,8 +31,15 @@ class TestimonialDefinition extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 50),
-            Center(child: Text(l10n.testimonialMeaning, style: theme.textTheme.bodyMedium)),
-            const SizedBox(height: 70),
+            Padding(
+              padding: const EdgeInsetsGeometry.all(12),
+              child: Text(
+                l10n.testimonialMeaning,
+                style: theme.textTheme.bodyMedium,
+                softWrap: true,
+              ),
+            ),
+            const SizedBox(height: 50),
             ElevatedButton(onPressed: context.router.maybePop, child: Text(l10n.close)),
           ],
         ),
